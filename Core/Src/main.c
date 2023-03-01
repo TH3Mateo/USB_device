@@ -62,20 +62,7 @@ const osThreadAttr_t LED_attributes = {
 
 
 
-/* Definitions for Blink */
-osThreadId_t BlinkHandle;
-const osThreadAttr_t Blink_attributes = {
-  .name = "Blink",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
-/* Definitions for BlinkB */
-osThreadId_t BlinkBHandle;
-const osThreadAttr_t BlinkB_attributes = {
-  .name = "BlinkB",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
-};
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -85,8 +72,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
 void MAIN (void *argument);
-void StartBlink(void *argument);
-void StartBlinkB(void *argument);
 void StartLED(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -144,16 +129,15 @@ int main(void)
         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
     }
 
-
-    osThreadDef(LEDHandle, osPriorityAboveNormal, 0, 128);
-    osThreadDef(MAINhandle,osPriorityAboveNormal6,0,128);
+    osKernelInitialize();
 
 
-    xTaskCreate(MAIN, "MAIN", 128,NULL, 1, NULL );
+    osThreadNew(MAIN,NULL,MAINhandle);
+//    xTaskCreate(MAIN, "MAIN", 128,MAINhandle, 1, NULL );
       /* USER CODE END 2 */
 
   /* Init scheduler */
-  osKernelInitialize();
+
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -312,12 +296,16 @@ static void MX_GPIO_Init(void)
 
 void MAIN(void *argument)
 {
+    osThreadId blinking = osThreadNew(StartLED, NULL, LEDHandle);
 
     while(1)
     {
-        xTaskCreate(StartLED, "LED", 128, NULL, 1, NULL);
+
         osDelay(3000);
-        vTaskDelete(LEDHandle);
+        osThreadSuspend(blinking);
+        osDelay(3000);
+        osThreadResume(blinking);
+
     }
 
 
@@ -346,17 +334,7 @@ void StartLED(void *argument)
   * @retval None
   */
 /* USER CODE END Header_StartBlink */
-void StartBlink(void *argument)
-{
-  /* USER CODE BEGIN 5 */
-  /* Infinite loop */
-    for(;;)
-    {
-        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
-        osDelay(300);
-    }
-  /* USER CODE END 5 */
-}
+
 
 /* USER CODE BEGIN Header_StartBlinkB */
 /**
