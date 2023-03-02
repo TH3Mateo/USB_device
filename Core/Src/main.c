@@ -60,6 +60,15 @@ const osThreadAttr_t LED_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
 };
 
+//defining thread for usb
+
+osThreadId USBHandle;
+const osThreadAttr_t USB_attributes = {
+        .name = "USB",
+        .stack_size = 128 * 8,
+        .priority = (osPriority_t) osPriorityNormal
+};
+
 
 
 
@@ -73,6 +82,7 @@ static void MX_GPIO_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
 void MAIN (void *argument);
 void StartLED(void *argument);
+void run_USB(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -297,6 +307,7 @@ static void MX_GPIO_Init(void)
 void MAIN(void *argument)
 {
     osThreadId blinking = osThreadNew(StartLED, NULL, LEDHandle);
+    osThreadId send = osThreadNew(run_USB, NULL, USBHandle);
 
     while(1)
     {
@@ -307,9 +318,16 @@ void MAIN(void *argument)
         osThreadResume(blinking);
 
     }
-
-
 }
+
+
+void run_USB(void *argument)
+{
+    while(1) {
+        USB_WritePacket(0x80, "Hello World", 11,);
+    }
+}
+
 
 
 

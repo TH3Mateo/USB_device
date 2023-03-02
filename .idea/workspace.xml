@@ -20,19 +20,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="added thongs, led stopped working">
+    <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="it fucking works bruh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_it.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.elf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.hex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +118,10 @@
       <workItem from="1677610587122" duration="6210000" />
       <workItem from="1677669185976" duration="6167000" />
       <workItem from="1677686939415" duration="3989000" />
-      <workItem from="1677702144626" duration="2931000" />
+      <workItem from="1677702144626" duration="3542000" />
+      <workItem from="1677752033498" duration="333000" />
+      <workItem from="1677755694114" duration="473000" />
+      <workItem from="1677756180513" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="added thongs, led stopped working">
       <created>1677673221717</created>
@@ -137,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677673221717</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="it fucking works bruh">
+      <created>1677706180122</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677706180122</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +145,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added thongs, led stopped working" />
-    <option name="LAST_COMMIT_MESSAGE" value="added thongs, led stopped working" />
+    <MESSAGE value="it fucking works bruh" />
+    <option name="LAST_COMMIT_MESSAGE" value="it fucking works bruh" />
   </component>
 </project>
