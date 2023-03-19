@@ -20,36 +20,29 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="WORKZ">
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_calibration.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_core.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_ranging.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_strings.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_def.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_device.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_interrupt_threshold_settings.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_tuning.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_calibration.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_core.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_ranging.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_strings.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_i2c_platform.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_platform.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_platform_log.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_types.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/platform/src/vl53l0x_platform.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/platform/src/vl53l0x_platform_log.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="almost no changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f4xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f4xx_hal_conf.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-6b1f43ccdc04321dd0b1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f4xx_hal_msp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f4xx_hal_msp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USB.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/USB.ioc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_hal_timebase_tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_hal_timebase_tim.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_it.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.hex" afterDir="false" />
@@ -98,23 +91,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/M/Desktop/STMprojects/USB&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/M/Desktop/STMprojects/USB",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "CMakeSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\M\Desktop\STMprojects\USB" />
@@ -179,7 +172,7 @@
       <workItem from="1679254440940" duration="541000" />
       <workItem from="1679255000886" duration="220000" />
       <workItem from="1679255233515" duration="777000" />
-      <workItem from="1679256041001" duration="455000" />
+      <workItem from="1679256041001" duration="2931000" />
     </task>
     <task id="LOCAL-00001" summary="added thongs, led stopped working">
       <created>1677673221717</created>
@@ -209,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678466083402</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="almost no changes">
+      <created>1679256862027</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679256862027</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +220,7 @@
     <MESSAGE value="it fucking works bruh" />
     <MESSAGE value="created usb task" />
     <MESSAGE value="WORKZ" />
-    <option name="LAST_COMMIT_MESSAGE" value="WORKZ" />
+    <MESSAGE value="almost no changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost no changes" />
   </component>
 </project>
