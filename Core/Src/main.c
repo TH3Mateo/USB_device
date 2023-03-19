@@ -21,6 +21,7 @@
 #include "cmsis_os.h"
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
+#include "vl53l0x_api.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -77,6 +78,8 @@ void SystemClock_Config(void);
 
 static void MX_GPIO_Init(void);
 
+static void MX_I2C1_Init(void);
+
 void StartBlink(void *argument);
 
 void MAIN(void *argument);
@@ -84,6 +87,8 @@ void MAIN(void *argument);
 void run_USB(void *argument);
 
 void StartLED(void *argument);
+
+
 
 /* USER CODE BEGIN PFP */
 uint8_t DataToSend[40];
@@ -234,6 +239,35 @@ void SystemClock_Config(void) {
   * @param None
   * @retval None
   */
+
+static void MX_I2C1_Init(void)
+{
+
+    /* USER CODE BEGIN I2C1_Init 0 */
+
+    /* USER CODE END I2C1_Init 0 */
+
+    /* USER CODE BEGIN I2C1_Init 1 */
+
+    /* USER CODE END I2C1_Init 1 */
+    hi2c1.Instance = I2C1;
+    hi2c1.Init.ClockSpeed = 100000;
+    hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+    hi2c1.Init.OwnAddress1 = 0;
+    hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+    hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+    hi2c1.Init.OwnAddress2 = 0;
+    hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+    hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+    if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    /* USER CODE BEGIN I2C1_Init 2 */
+
+    /* USER CODE END I2C1_Init 2 */
+
+}
 static void MX_GPIO_Init(void) {
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
@@ -273,8 +307,10 @@ void MAIN(void *argument) {
 
         osDelay(3000);
         osThreadSuspend(blinking);
+        printf("turned off");
         osDelay(3000);
         osThreadResume(blinking);
+        printf("turned on");
 
     }
 }
@@ -285,7 +321,6 @@ void run_USB(void *argument) {
         MessageLength = sprintf(DataToSend, "Wiadomosc nr %d\n\r", MessageCounter);
         CDC_Transmit_FS(DataToSend, MessageLength);
         osDelay(1000);
-
     }
 }
 

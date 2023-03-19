@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
+  <component name="CidrRootsConfiguration">
+    <sourceRoots>
+      <file path="$PROJECT_DIR$/Api/core/inc" />
+      <file path="$PROJECT_DIR$/Api/core/src" />
+      <file path="$PROJECT_DIR$/Api/platform/inc" />
+      <file path="$PROJECT_DIR$/Api/platform/src" />
+    </sourceRoots>
+  </component>
 </project>

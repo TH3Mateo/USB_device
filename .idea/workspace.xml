@@ -20,28 +20,36 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="created usb task">
-      <change beforePath="$PROJECT_DIR$/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/.cproject" afterDir="false" />
+    <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="WORKZ">
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_calibration.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_core.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_ranging.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_strings.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_def.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_device.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_interrupt_threshold_settings.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/inc/vl53l0x_tuning.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_calibration.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_core.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_ranging.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_strings.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_i2c_platform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_platform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_platform_log.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_types.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/platform/src/vl53l0x_platform.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/platform/src/vl53l0x_platform_log.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f4xx_hal_msp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f4xx_hal_msp.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USB.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/USB.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-fbec5c9a3119846c55cd.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-02-28T22-10-48-0254.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-USB.elf-Debug-1debd0e91ee70229f302.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-6b1f43ccdc04321dd0b1.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/stm32f4xx_it.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.hex" afterDir="false" />
@@ -107,13 +115,23 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\M\Desktop\STMprojects\USB" />
+    </key>
+  </component>
   <component name="RunManager" selected="Embedded GDB Server.debuglink">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="USB.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="USB" TARGET_NAME="USB.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="USB" RUN_TARGET_NAME="USB.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="debuglink" type="com.jetbrains.cidr.embedded.customgdbserver.type" factoryName="com.jetbrains.cidr.embedded.customgdbserver.factory" PROGRAM_PARAMS="-p 21530 -cp &quot;C:\ST\STM32CubeIDE_1.11.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.win32_2.0.500.202209151145\tools\bin&quot; --frequency 4000 --swd" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="USB" TARGET_NAME="USB.elf" version="1" RUN_TARGET_PROJECT_NAME="USB" RUN_TARGET_NAME="USB.elf">
+    <configuration name="debuglink" type="com.jetbrains.cidr.embedded.customgdbserver.type" factoryName="com.jetbrains.cidr.embedded.customgdbserver.factory" PROGRAM_PARAMS="-p 21530 -cp &quot;C:\ST\STM32CubeIDE_1.11.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.win32_2.0.500.202209151145\tools\bin&quot; --frequency 4000 --swd -z 61235 -a 64000000 -b 256" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="USB" TARGET_NAME="USB.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="USB" RUN_TARGET_NAME="USB.elf">
       <custom-gdb-server version="1" gdb-connect="tcp::21530" executable="C:\ST\STM32CubeIDE_1.11.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.stlink-gdb-server.win32_2.0.400.202209281104\tools\bin\ST-LINK_gdbserver.exe" warmup-ms="0" download-type="UPDATED_ONLY" reset-cmd="monitor reset" reset-type="AFTER_DOWNLOAD">
         <debugger kind="GDB" isBundled="true" />
       </custom-gdb-server>
@@ -152,6 +170,16 @@
       <workItem from="1678316166034" duration="74000" />
       <workItem from="1678398187975" duration="959000" />
       <workItem from="1678448901203" duration="81000" />
+      <workItem from="1678466061769" duration="982000" />
+      <workItem from="1678631888840" duration="145000" />
+      <workItem from="1678644980921" duration="34000" />
+      <workItem from="1678791824682" duration="60000" />
+      <workItem from="1678916233461" duration="2472000" />
+      <workItem from="1678971508228" duration="14000" />
+      <workItem from="1679254440940" duration="541000" />
+      <workItem from="1679255000886" duration="220000" />
+      <workItem from="1679255233515" duration="777000" />
+      <workItem from="1679256041001" duration="455000" />
     </task>
     <task id="LOCAL-00001" summary="added thongs, led stopped working">
       <created>1677673221717</created>
@@ -174,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677757116868</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="WORKZ">
+      <created>1678466083402</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678466083402</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +219,7 @@
     <MESSAGE value="added thongs, led stopped working" />
     <MESSAGE value="it fucking works bruh" />
     <MESSAGE value="created usb task" />
-    <option name="LAST_COMMIT_MESSAGE" value="created usb task" />
+    <MESSAGE value="WORKZ" />
+    <option name="LAST_COMMIT_MESSAGE" value="WORKZ" />
   </component>
 </project>
