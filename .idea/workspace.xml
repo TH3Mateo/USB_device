@@ -20,28 +20,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="fixed CMakeLists.txt,&#10;breaking on update">
-      <change beforePath="$PROJECT_DIR$/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/.cproject" afterDir="false" />
+    <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="blinking and usb spam works">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USB.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/USB.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.elf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.hex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +164,7 @@
       <workItem from="1682499443309" duration="48000" />
       <workItem from="1683237530053" duration="629000" />
       <workItem from="1688684940081" duration="693000" />
-      <workItem from="1689050294765" duration="1000" />
+      <workItem from="1689050294765" duration="428000" />
     </task>
     <task id="LOCAL-00001" summary="added thongs, led stopped working">
       <created>1677673221717</created>
@@ -234,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679259445841</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="blinking and usb spam works">
+      <created>1689050422901</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689050422901</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +235,8 @@
     <MESSAGE value="WORKZ" />
     <MESSAGE value="almost no changes" />
     <MESSAGE value="fixed CMakeLists.txt,&#10;breaking on update" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed CMakeLists.txt,&#10;breaking on update" />
+    <MESSAGE value="blinking and usb spam works" />
+    <option name="LAST_COMMIT_MESSAGE" value="blinking and usb spam works" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
