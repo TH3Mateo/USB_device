@@ -25,6 +25,8 @@
 /* USER CODE BEGIN Includes */
 #include "usbd_cdc_if.h"
 #include "stdio.h"
+#include "vl53l0x_api.h"
+//#include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
 /* USER CODE END Includes */
 
@@ -306,15 +308,16 @@ void MAIN(void *argument) {
     osThreadId blinking = osThreadNew(StartLED, NULL, LEDHandle);
     osThreadId send = osThreadNew(run_USB, NULL, USBHandle);
     osThreadResume(send);
+    printf("\r \n \r");
 
     while (1) {
 
         osDelay(3000);
         osThreadSuspend(blinking);
-        printf("turned off");
+        printf("turned off\n \r");
         osDelay(3000);
         osThreadResume(blinking);
-        printf("turned on");
+        printf("turned on \r \n");
 
     }
 }

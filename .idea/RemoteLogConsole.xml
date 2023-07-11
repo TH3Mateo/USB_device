@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteLogConsole">
+    <option name="activeSources">
+      <set>
+        <option value="05b5622c-d40d-4435-8dab-ed30c6624e26" />
+      </set>
+    </option>
+    <option name="sources">
+      <list>
+        <LogSource>
+          <option name="host" value="127.0.0.1" />
+          <option name="id" value="05b5622c-d40d-4435-8dab-ed30c6624e26" />
+          <option name="name" value="SWV" />
+          <option name="port" value="61235" />
+        </LogSource>
+      </list>
+    </option>
+  </component>
+</project>
