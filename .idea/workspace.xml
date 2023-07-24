@@ -21,8 +21,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6365ab93-64c8-4008-873b-e9b37cf49161" name="Changes" comment="blinking and usb spam works">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/language.settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/language.settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_calibration.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_core.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_ranging.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_api_strings.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_def.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_device.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_interrupt_threshold_settings.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/inc/vl53l0x_tuning.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/src/vl53l0x_api.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_calibration.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_core.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_ranging.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/core/src/vl53l0x_api_strings.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_i2c_platform.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_platform.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_platform_log.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/platform/inc/vl53l0x_types.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/platform/src/vl53l0x_platform.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/platform/src/vl53l0x_platform_log.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-94a21fe6e3a5a4b49cbd.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-07-06T23-09-04-0809.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-USB.elf-Debug-6b563643621c2658ad8b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/USB.elf.dir/Core/Src/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/USB.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/USB.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +86,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -164,7 +200,14 @@
       <workItem from="1682499443309" duration="48000" />
       <workItem from="1683237530053" duration="629000" />
       <workItem from="1688684940081" duration="693000" />
-      <workItem from="1689050294765" duration="428000" />
+      <workItem from="1689050294765" duration="1034000" />
+      <workItem from="1689201594710" duration="649000" />
+      <workItem from="1689532507874" duration="3912000" />
+      <workItem from="1689973889709" duration="2712000" />
+      <workItem from="1690005436089" duration="1802000" />
+      <workItem from="1690114632625" duration="1538000" />
+      <workItem from="1690141281808" duration="2117000" />
+      <workItem from="1690217639161" duration="1974000" />
     </task>
     <task id="LOCAL-00001" summary="added thongs, led stopped working">
       <created>1677673221717</created>
@@ -222,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689050422901</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="blinking and usb spam works">
+      <created>1689050735611</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689050735611</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +287,22 @@
     <MESSAGE value="fixed CMakeLists.txt,&#10;breaking on update" />
     <MESSAGE value="blinking and usb spam works" />
     <option name="LAST_COMMIT_MESSAGE" value="blinking and usb spam works" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
+          <line>303</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
+          <line>180</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
