@@ -24,18 +24,28 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "usbd_cdc_if.h"
+#include "usbd_core.h"
 #include "stdio.h"
+#include "configurables.h"
 //#include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+int _write(int file, char *ptr, int len) {
+    int DataIdx;
+    for (DataIdx = 0; DataIdx < len; DataIdx++) {
+        ITM_SendChar((*ptr++));
+    }
+    return len;
+}
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+I2C_HandleTypeDef hi2c1;
+USBD_HandleTypeDef USB1;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -44,7 +54,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-I2C_HandleTypeDef hi2c1;
+
 
 /* Definitions for Blink */
 
@@ -55,16 +65,30 @@ const osThreadAttr_t Master_attributes = {
         .priority = (osPriority_t) osPriorityAboveNormal3,
 };
 
-osThreadId_t USBHandle;
-const osThreadAttr_t USB_attributes = {
-        .name = "USB",
-        .stack_size = 128 * 8,
+osThreadId_t COM_manager_attributes;
+const osThreadAttr_t COM_attributes = {
+        .name = "COM",
+        .stack_size = 128 * 2,
         .priority = (osPriority_t) osPriorityNormal,
 };
 
-osThreadId_t LEDHandle;
+osThreadId_t LED_manager_attributes;
 const osThreadAttr_t LED_attributes = {
         .name = "LED",
+        .stack_size = 128 * 1,
+        .priority = (osPriority_t) osPriorityNormal,
+};
+
+osThreadId_t TEMP_manager_attributes;
+const osThreadAttr_t TEMP_attributes = {
+        .name = "TEMP",
+        .stack_size = 128 * 1,
+        .priority = (osPriority_t) osPriorityNormal,
+};
+
+osThreadId_t POT_manager_attributes;
+const osThreadAttr_t POT_attributes = {
+        .name = "POT",
         .stack_size = 128 * 1,
         .priority = (osPriority_t) osPriorityNormal,
 };
@@ -81,36 +105,48 @@ static void MX_I2C1_Init(void);
 
 
 /* USER CODE BEGIN PFP */
-void run_USB(void *argument);
+void COM_manager(void *argument);
 
-void StartLED(void *argument);
+void LED_manager(void *argument);
 
 void Master(void *argument);
 
-uint8_t DataToSend[40];
-uint8_t MessageCounter = 0;
-uint8_t MessageLength = 0;
+void TEMP_manager(void *argument);
+
+void POT_manager(void *argument);
+
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 // printf function
-int _write(int file, char *ptr, int len) {
-    int DataIdx;
-    for (DataIdx = 0; DataIdx < len; DataIdx++) {
-        ITM_SendChar((*ptr++));
-    }
-    return len;
-}
+
 /* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
   * @retval int
   */
+uint8_t DataToSend[40];
+uint8_t MessageCounter = 0;
+uint8_t MessageLength = 0;
+
+
 int main(void) {
+    uint8_t enable_potentiometer = 0;
+
     /* USER CODE BEGIN 1 */
+    uint32_t before = HAL_GetTick();
+    while(HAL_GetTick()-before<CONNECTION_TIMEOUT){
+        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
+        HAL_Delay(100);
+        if(USBD_LL_DevConnected(&USB1)==HAL_OK){
+            enable_potentiometer = 1;
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+            break;
+        }
+    };
 
     /* USER CODE END 1 */
 
@@ -119,34 +155,33 @@ int main(void) {
     /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
     HAL_Init();
 
-    /* USER CODE BEGIN Init */
-
-    /* USER CODE END Init */
 
     /* Configure the system clock */
     SystemClock_Config();
 
-    /* USER CODE BEGIN SysInit */
-    /* USER CODE END SysInit */
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
     MX_I2C1_Init();
     MX_USB_DEVICE_Init();
 
+
     /* USER CODE BEGIN 2 */
+
+
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
     for (int i = 0; i < 5; i++) {
-        HAL_Delay(500);
+        HAL_Delay(200);
         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
     }
 
     osKernelInitialize();
 
 
-    osThreadNew(Master, NULL,&Master_attributes);
-
-
+    osThreadNew(COM_manager, NULL, &COM_attributes);
+    osThreadNew(LED_manager, NULL, &LED_attributes);
+//    osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
+//    osThreadNew(POT_manager, NULL, &POT_attributes);
     /* USER CODE END 2 */
 
 
@@ -301,8 +336,8 @@ static void MX_GPIO_Init(void) {
 
 
 void Master(void *argument) {
-    osThreadId blinking = osThreadNew(StartLED, NULL, LEDHandle);
-    osThreadId send = osThreadNew(run_USB, NULL, USBHandle);
+    osThreadId blinking = osThreadNew(LED_manager, NULL, LED_manager_attributes);
+    osThreadId send = osThreadNew(COM_manager, NULL, COM_manager_attributes);
     osThreadResume(send);
     printf("\r \n \r");
 
@@ -319,7 +354,7 @@ void Master(void *argument) {
 }
 
 
-void run_USB(void *argument) {
+void COM_manager(void *argument) {
     while (1) {
         MessageLength = sprintf(DataToSend, "Wiadomosc nr %d\n\r", MessageCounter);
         CDC_Transmit_FS(DataToSend, MessageLength);
@@ -327,13 +362,25 @@ void run_USB(void *argument) {
     }
 }
 
-
-void StartLED(void *argument) {
+#if LED1_BINARY_BLINK==0x01
+void LED_manager(void *argument) {
     while (1) {
         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
         osDelay(100);
     }
 }
+#endif
+
+#if LED1_HEATER_INFO==0x01
+
+
+#endif
+
+#if LED2_CONNECTION_INFO==0x01
+
+
+#endif
+
 
 
 

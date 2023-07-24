@@ -6897,10 +6897,10 @@ LOAD c:/st/stm32cubeide_1.11.2/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ext
  .text.MAIN     0x0000000008000888       0x7c ./Core/Src/main.o
                 0x0000000008000888                MAIN
  .text.run_USB  0x0000000008000904       0x48 ./Core/Src/main.o
-                0x0000000008000904                run_USB
+                0x0000000008000904                COM_manager
  .text.StartLED
                 0x000000000800094c       0x1c ./Core/Src/main.o
-                0x000000000800094c                StartLED
+                0x000000000800094c                LED_manager
  .text.HAL_TIM_PeriodElapsedCallback
                 0x0000000008000968       0x24 ./Core/Src/main.o
                 0x0000000008000968                HAL_TIM_PeriodElapsedCallback
@@ -7913,12 +7913,12 @@ LOAD c:/st/stm32cubeide_1.11.2/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ext
  .bss.MAINHandle
                 0x00000000200000e4        0x4 ./Core/Src/main.o
                 0x00000000200000e4                MAINHandle
- .bss.USBHandle
+ .bss.COM_manager_attributes
                 0x00000000200000e8        0x4 ./Core/Src/main.o
-                0x00000000200000e8                USBHandle
- .bss.LEDHandle
+                0x00000000200000e8                COM_manager_attributes
+ .bss.LED_manager_attributes
                 0x00000000200000ec        0x4 ./Core/Src/main.o
-                0x00000000200000ec                LEDHandle
+                0x00000000200000ec                LED_manager_attributes
  .bss.DataToSend
                 0x00000000200000f0       0x28 ./Core/Src/main.o
                 0x00000000200000f0                DataToSend
