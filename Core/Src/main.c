@@ -23,6 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "semphr.h"
 #include "usbd_cdc_if.h"
 #include "usbd_core.h"
 #include "stdio.h"
@@ -45,12 +46,16 @@ int _write(int file, char *ptr, int len) {
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 I2C_HandleTypeDef hi2c1;
-USBD_HandleTypeDef USB1;
+extern USBD_HandleTypeDef hUsbDeviceFS;
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+typedef struct {
+    SemaphoreHandle_t semaphore;
+    uint16_t value;
+} MUTEX;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -109,7 +114,7 @@ void COM_manager(void *argument);
 
 void LED_manager(void *argument);
 
-void Master(void *argument);
+//void Master(void *argument);
 
 void TEMP_manager(void *argument);
 
@@ -128,25 +133,22 @@ void POT_manager(void *argument);
   * @brief  The application entry point.
   * @retval int
   */
-uint8_t DataToSend[40];
+uint8_t DataToSend[16];
 uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
 
+#define RX_BUFF_SIZE 16
+MUTEX ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
+MUTEX Command = {.semaphore = NULL, .value = 0x00};
+uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
+uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
 
 int main(void) {
-    uint8_t enable_potentiometer = 0;
 
     /* USER CODE BEGIN 1 */
-    uint32_t before = HAL_GetTick();
-    while(HAL_GetTick()-before<CONNECTION_TIMEOUT){
-        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
-        HAL_Delay(100);
-        if(USBD_LL_DevConnected(&USB1)==HAL_OK){
-            enable_potentiometer = 1;
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
-            break;
-        }
-    };
+    uint8_t enable_potentiometer = 1;
+
+
 
     /* USER CODE END 1 */
 
@@ -168,20 +170,38 @@ int main(void) {
 
     /* USER CODE BEGIN 2 */
 
-
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
-    for (int i = 0; i < 5; i++) {
-        HAL_Delay(200);
+    uint32_t before = HAL_GetTick();
+    while((HAL_GetTick()-before)<CONNECTION_TIMEOUT){
         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
+        HAL_Delay(100);
+        printf("waiting for connection \r \n ");
+        USBD_StatusTypeDef x = USBD_LL_DevConnected(&hUsbDeviceFS);
+        if(hUsbDeviceFS.dev_state==USBD_STATE_CONFIGURED){
+            enable_potentiometer = 0;
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+            break;
+        }
+    };
+    if(enable_potentiometer==1){
+        USBD_DeInit(&hUsbDeviceFS);
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
     }
+
+
 
     osKernelInitialize();
 
+    if (enable_potentiometer == 1) {
+        //    osThreadNew(POT_manager, NULL, &POT_attributes);
 
-    osThreadNew(COM_manager, NULL, &COM_attributes);
-    osThreadNew(LED_manager, NULL, &LED_attributes);
+    }else
+    {
+        osThreadNew(COM_manager, NULL, &COM_attributes);
+
+    }
+
+//    osThreadNew(LED_manager, NULL, &LED_attributes);
 //    osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
-//    osThreadNew(POT_manager, NULL, &POT_attributes);
     /* USER CODE END 2 */
 
 
@@ -354,25 +374,48 @@ void Master(void *argument) {
 }
 
 
+
+
 void COM_manager(void *argument) {
+    uint32_t len = 32;
+    printf("COM manager started \r \n");
+    USBD_CDC_SetRxBuffer(&hUsbDeviceFS, CDC_RX_Buffer);
+
     while (1) {
-        MessageLength = sprintf(DataToSend, "Wiadomosc nr %d\n\r", MessageCounter);
-        CDC_Transmit_FS(DataToSend, MessageLength);
-        osDelay(1000);
+        CDC_Transmit_FS (CDC_RX_Buffer,RX_BUFF_SIZE );
+
+
+
+
+        memset(CDC_RX_Buffer, 0, RX_BUFF_SIZE);
+
+    }
+}
+
+
+void POT_manager(void *argument) {
+    uint16_t potentiometer_value =
+    while (1) {
+
     }
 }
 
 #if LED1_BINARY_BLINK==0x01
-void LED_manager(void *argument) {
-    while (1) {
-        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
-        osDelay(100);
-    }
-}
+//void LED_manager(void *argument) {
+//    while (1) {
+//        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
+//        printf("blinking \r \n");
+//        osDelay(100);
+//    }
+//}
 #endif
 
 #if LED1_HEATER_INFO==0x01
+void LED_manager(void *argument) {
+    while (1) {
 
+    }
+}
 
 #endif
 
