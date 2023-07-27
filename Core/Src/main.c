@@ -28,6 +28,8 @@
 #include "usbd_core.h"
 #include "stdio.h"
 #include "configurables.h"
+#include "commands.h"
+#include "utils.h"
 //#include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
 /* USER CODE END Includes */
@@ -54,8 +56,14 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 /* USER CODE BEGIN PM */
 typedef struct {
     SemaphoreHandle_t semaphore;
-    uint16_t value;
-} MUTEX;
+    float value;
+} MUTEX_f;
+
+typedef struct {
+    SemaphoreHandle_t semaphore;
+    GPIO_TypeDef* port;
+    uint16_t pin;
+} MUTEX_digitPin;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -64,12 +72,7 @@ ADC_HandleTypeDef hadc1;
 I2C_HandleTypeDef hi2c1;
 
 /* Definitions for Blink */
-osThreadId_t BlinkHandle;
-const osThreadAttr_t Blink_attributes = {
-  .name = "Blink",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
+
 /* USER CODE BEGIN PV */
 const osThreadAttr_t Master_attributes = {
         .name = "Master",
@@ -87,7 +90,7 @@ const osThreadAttr_t COM_attributes = {
 osThreadId_t LED_manager_attributes;
 const osThreadAttr_t LED_attributes = {
         .name = "LED",
-        .stack_size = 128 * 1,
+        .stack_size = 32,
         .priority = (osPriority_t) osPriorityNormal,
 };
 
@@ -142,8 +145,9 @@ uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
 
 #define RX_BUFF_SIZE 16
-MUTEX ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
-MUTEX Command = {.semaphore = NULL, .value = 0x00};
+MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
+MUTEX_digitPin LED1 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
+MUTEX_digitPin LED2 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_2};
 uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
 uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
 
@@ -181,6 +185,7 @@ int main(void) {
 
     uint32_t before = HAL_GetTick();
     while((HAL_GetTick()-before)<CONNECTION_TIMEOUT){
+
         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
         HAL_Delay(100);
         printf("waiting for connection \r \n ");
@@ -209,7 +214,7 @@ int main(void) {
 
     }
 
-//    osThreadNew(LED_manager, NULL, &LED_attributes);
+    osThreadNew(LED_manager, NULL, &LED_attributes);
 //    osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
   /* USER CODE END 2 */
 
@@ -446,14 +451,45 @@ void COM_manager(void *argument) {
     uint32_t len = 32;
     printf("COM manager started \r \n");
     USBD_CDC_SetRxBuffer(&hUsbDeviceFS, CDC_RX_Buffer);
+//    extern uint8_t received_bool;
 
     while (1) {
-        CDC_Transmit_FS (CDC_RX_Buffer,RX_BUFF_SIZE );
+        if(received_bool == 1){
+
+            printf("received command: %c \r \n", CDC_RX_Buffer[0]);
+            switch(CDC_RX_Buffer[0]) {
+                case SET_LED1_STATE:
+                    xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
+                    printf("switching LED1 \r \n");
+                    HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[RX_BUFF_SIZE-1]);
+                    xSemaphoreGive(LED1.semaphore);
+                    break;
+                case SET_LED2_STATE:
+                    xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
+                    printf("switching LED2 \r \n");
+                    HAL_GPIO_WritePin(LED2.port, LED2.pin, CDC_RX_Buffer[RX_BUFF_SIZE-1]);
+                    xSemaphoreGive(LED2.semaphore);
+                    break;
+                case REQUEST_ACTUAL_TEMPERATURE:
+                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
+                    printf("sending actual temperature \r \n");
+                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
+                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
+
+                    break;
+                case START_SENDING_PROGRAM:
+                    break;
+
+
+            }
+            received_bool = 0;
+            memset(CDC_RX_Buffer, 0, RX_BUFF_SIZE);
+        }
 
 
 
 
-        memset(CDC_RX_Buffer, 0, RX_BUFF_SIZE);
+
 
     }
 }
@@ -468,13 +504,27 @@ void POT_manager(void *argument) {
 }
 
 #if LED1_BINARY_BLINK==0x01
-//void LED_manager(void *argument) {
-//    while (1) {
-//        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
-//        printf("blinking \r \n");
-//        osDelay(100);
-//    }
-//}
+void LED_manager(void *argument) {
+    while (1) {
+        if(received_bool==1){
+            unsigned char order[8];
+            HexToBin(CDC_RX_Buffer[0], order);
+            xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
+            for (int i = 7; i >= 0; i--) {
+                HAL_Delay(10);
+                HAL_GPIO_WritePin(LED1.port, LED1.pin, order[i]);
+            }
+            xSemaphoreGive(LED1.semaphore);
+            while (received_bool==1){
+                HAL_Delay(10);
+            }
+
+        }
+
+
+
+    }
+}
 #endif
 
 #if LED1_HEATER_INFO==0x01
