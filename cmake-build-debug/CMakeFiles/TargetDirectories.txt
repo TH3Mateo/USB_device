@@ -1,3 +1,3 @@
-C:/Users/M/Desktop/STMprojects/USB/cmake-build-debug/CMakeFiles/USB.elf.dir
-C:/Users/M/Desktop/STMprojects/USB/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/M/Desktop/STMprojects/USB/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/M/Desktop/STM_projects/USB_device/cmake-build-debug/CMakeFiles/USB.elf.dir
+C:/Users/M/Desktop/STM_projects/USB_device/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/M/Desktop/STM_projects/USB_device/cmake-build-debug/CMakeFiles/rebuild_cache.dir

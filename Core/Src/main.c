@@ -140,9 +140,7 @@ void POT_manager(void *argument);
   * @brief  The application entry point.
   * @retval int
   */
-uint8_t DataToSend[16];
-uint8_t MessageCounter = 0;
-uint8_t MessageLength = 0;
+
 
 #define RX_BUFF_SIZE 16
 MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
@@ -150,7 +148,7 @@ MUTEX_digitPin LED1 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
 MUTEX_digitPin LED2 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_2};
 uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
 uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
-
+uint8_t msg[] = {0x05,0,0,0,0,0,0,0,0x72,0x65,0x63,0x65,0x69,0x76,0x65,0x64};
 int main(void) {
 
     /* USER CODE BEGIN 1 */
@@ -426,25 +424,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 
-void Master(void *argument) {
-    osThreadId blinking = osThreadNew(LED_manager, NULL, LED_manager_attributes);
-    osThreadId send = osThreadNew(COM_manager, NULL, COM_manager_attributes);
-    osThreadResume(send);
-    printf("\r \n \r");
-
-    while (1) {
-
-        osDelay(3000);
-        osThreadSuspend(blinking);
-        printf("turned off\n \r");
-        osDelay(3000);
-        osThreadResume(blinking);
-        printf("turned on \r \n");
-
-    }
-}
-
-
 
 
 void COM_manager(void *argument) {
@@ -455,6 +434,7 @@ void COM_manager(void *argument) {
 
     while (1) {
         if(received_bool == 1){
+
 
             printf("received command: %c \r \n", CDC_RX_Buffer[0]);
             switch(CDC_RX_Buffer[0]) {
@@ -471,6 +451,7 @@ void COM_manager(void *argument) {
                     xSemaphoreGive(LED2.semaphore);
                     break;
                 case REQUEST_ACTUAL_TEMPERATURE:
+                    CDC_Transmit_FS(msg,16);
                     xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
                     printf("sending actual temperature \r \n");
                     CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
@@ -525,6 +506,15 @@ void LED_manager(void *argument) {
 
     }
 }
+#else
+void LED_manager(void *argument) {
+    while(1){
+//        HAL_Delay(100);
+//        xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
+//        HAL_GPIO_TogglePin(LED1.port,LED1.pin);
+//        xSemaphoreGive(LED1.semaphore);
+    };
+    }
 #endif
 
 #if LED1_HEATER_INFO==0x01
