@@ -136,10 +136,8 @@ void POT_manager(void *argument);
 
 /* USER CODE END 0 */
 
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
+
+
 uint8_t DataToSend[16];
 uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
