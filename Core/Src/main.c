@@ -451,7 +451,7 @@ void COM_manager(void *argument) {
                     xSemaphoreGive(LED2.semaphore);
                     break;
                 case REQUEST_ACTUAL_TEMPERATURE:
-                    CDC_Transmit_FS(msg,16);
+//                    CDC_Transmit_FS(msg,16);
                     xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
                     printf("sending actual temperature \r \n");
                     CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
