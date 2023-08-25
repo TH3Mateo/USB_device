@@ -74,17 +74,12 @@ I2C_HandleTypeDef hi2c1;
 /* Definitions for Blink */
 
 /* USER CODE BEGIN PV */
-const osThreadAttr_t Master_attributes = {
-        .name = "Master",
-        .stack_size = 128 * 4,
-        .priority = (osPriority_t) osPriorityAboveNormal3,
-};
 
 osThreadId_t COM_manager_attributes;
 const osThreadAttr_t COM_attributes = {
         .name = "COM",
         .stack_size = 128 * 2,
-        .priority = (osPriority_t) osPriorityNormal,
+        .priority = (osPriority_t) osPriorityAboveNormal2,
 };
 
 osThreadId_t LED_manager_attributes;
@@ -142,7 +137,7 @@ uint8_t DataToSend[16];
 uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
 
-#define RX_BUFF_SIZE 16
+
 MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
 MUTEX_digitPin LED1 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
 MUTEX_digitPin LED2 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_2};
@@ -424,23 +419,23 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 
-void Master(void *argument) {
-    osThreadId blinking = osThreadNew(LED_manager, NULL, LED_manager_attributes);
-    osThreadId send = osThreadNew(COM_manager, NULL, COM_manager_attributes);
-    osThreadResume(send);
-    printf("\r \n \r");
-
-    while (1) {
-
-        osDelay(3000);
-        osThreadSuspend(blinking);
-        printf("turned off\n \r");
-        osDelay(3000);
-        osThreadResume(blinking);
-        printf("turned on \r \n");
-
-    }
-}
+//void Master(void *argument) {
+//    osThreadId blinking = osThreadNew(LED_manager, NULL, LED_manager_attributes);
+//    osThreadId send = osThreadNew(COM_manager, NULL, COM_manager_attributes);
+//    osThreadResume(send);
+//    printf("\r \n \r");
+//
+//    while (1) {
+//
+//        osDelay(3000);
+//        osThreadSuspend(blinking);
+//        printf("turned off\n \r");
+//        osDelay(3000);
+//        osThreadResume(blinking);
+//        printf("turned on \r \n");
+//
+//    }
+//}
 
 
 
@@ -450,38 +445,44 @@ void COM_manager(void *argument) {
     printf("COM manager started \r \n");
     USBD_CDC_SetRxBuffer(&hUsbDeviceFS, CDC_RX_Buffer);
 //    extern uint8_t received_bool;
-
     while (1) {
-        if(received_bool == 1){
 
-            printf("received command: %c \r \n", CDC_RX_Buffer[0]);
-            switch(CDC_RX_Buffer[0]) {
-                case SET_LED1_STATE:
-                    xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
-                    printf("switching LED1 \r \n");
-                    HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[RX_BUFF_SIZE-1]);
-                    xSemaphoreGive(LED1.semaphore);
-                    break;
-                case SET_LED2_STATE:
-                    xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
-                    printf("switching LED2 \r \n");
-                    HAL_GPIO_WritePin(LED2.port, LED2.pin, CDC_RX_Buffer[RX_BUFF_SIZE-1]);
-                    xSemaphoreGive(LED2.semaphore);
-                    break;
-                case REQUEST_ACTUAL_TEMPERATURE:
-                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
-                    printf("sending actual temperature \r \n");
-                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
-                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
-
-                    break;
-                case START_SENDING_PROGRAM:
-                    break;
+        if(*hUsbDeviceFS.received_flag==0x01){
 
 
+            printf("received command: %02X \r \n", CDC_RX_Buffer[0]);
+            for (int i = 0; i < RX_BUFF_SIZE; i++) {
+                printf("%02X ", CDC_RX_Buffer[i]);
             }
-            received_bool = 0;
-            memset(CDC_RX_Buffer, 0, RX_BUFF_SIZE);
+//            switch(CDC_RX_Buffer[0]) {
+//                case SET_LED1_STATE:
+//
+//                    xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
+//                    printf("switching LED1 \r \n");
+//                    HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
+//                    xSemaphoreGive(LED1.semaphore);
+//                    break;
+//                case SET_LED2_STATE:
+//                    xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
+//                    printf("switching LED2 \r \n");
+//                    HAL_GPIO_WritePin(LED2.port, LED2.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
+//                    xSemaphoreGive(LED2.semaphore);
+//                    break;
+//                case REQUEST_ACTUAL_TEMPERATURE:
+////                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
+//                    printf("sending actual temperature \r \n");
+////                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
+////                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
+//
+//                    break;
+//                case START_SENDING_PROGRAM:
+//                    break;
+//
+//
+//            }
+            *hUsbDeviceFS.received_flag = 0;
+            printf("zeroing received flag \r \n");
+            //            memset(CDC_RX_Buffer, 0, RX_BUFF_SIZE);
         }
 
 
@@ -519,6 +520,37 @@ void LED_manager(void *argument) {
 
         }
 
+
+
+    }
+}
+#else
+//void LED_manager(void *argument) {
+//    while (1) {
+//        if(received_bool==1){
+//            xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
+//            HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[0]);
+//            xSemaphoreGive(LED1.semaphore);
+//            while (received_bool==1){
+//                HAL_Delay(10);
+//            }
+//
+//        }
+//
+
+void LED_manager(void *argument) {
+    uint8_t prev_bool = *hUsbDeviceFS.received_flag;
+    printf("LED manager started \r \n");
+    printf("prev_bool: %d \r \n", prev_bool);
+    while (1) {
+if(prev_bool!=*hUsbDeviceFS.received_flag){
+            prev_bool = *hUsbDeviceFS.received_flag;
+            printf("bool_state has changed \r \n");
+        }
+////            xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
+//            HAL_GPIO_TogglePin(LED2.port, LED2.pin);
+////            xSemaphoreGive(LED2.semaphore);
+//            HAL_Delay(200);
 
 
     }

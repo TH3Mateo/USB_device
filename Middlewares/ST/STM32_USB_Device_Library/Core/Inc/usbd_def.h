@@ -387,6 +387,7 @@ typedef struct _USBD_HandleTypeDef
   void                    *pConfDesc;
   uint32_t                classId;
   uint32_t                NumClasses;
+  uint8_t*               received_flag;
 #ifdef USE_USBD_COMPOSITE
   USBD_CompositeElementTypeDef tclasslist[USBD_MAX_SUPPORTED_CLASS];
 #endif /* USE_USBD_COMPOSITE */
