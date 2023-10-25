@@ -13,3 +13,14 @@
 #define CONNECTION_TIMEOUT 4000
 #define RX_BUFF_SIZE 17
 #endif //USB_CONFIGURABLES_H
+
+
+#ifndef THERMAL_CONFIGURABLES_H
+
+#define R1 (int) 10000
+
+
+
+
+
+#endif //THERMAL_CONFIGURABLES_H

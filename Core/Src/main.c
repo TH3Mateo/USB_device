@@ -30,6 +30,7 @@
 #include "configurables.h"
 #include "commands.h"
 #include "utils.h"
+#include "thermal_control.h"
 //#include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
 /* USER CODE END Includes */
@@ -444,46 +445,49 @@ void COM_manager(void *argument) {
     uint32_t len = 32;
     printf("COM manager started \r \n");
     USBD_CDC_SetRxBuffer(&hUsbDeviceFS, CDC_RX_Buffer);
+    printf("before while loop \r \n");
 //    extern uint8_t received_bool;
     while (1) {
 
-        if(*hUsbDeviceFS.received_flag==0x01){
+//printf("waiting for data \r \n");
+        if(hUsbDeviceFS.received_flag==0x01){
 
 
             printf("received command: %02X \r \n", CDC_RX_Buffer[0]);
             for (int i = 0; i < RX_BUFF_SIZE; i++) {
                 printf("%02X ", CDC_RX_Buffer[i]);
             }
-//            switch(CDC_RX_Buffer[0]) {
-//                case SET_LED1_STATE:
-//
-//                    xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
-//                    printf("switching LED1 \r \n");
-//                    HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
-//                    xSemaphoreGive(LED1.semaphore);
-//                    break;
-//                case SET_LED2_STATE:
-//                    xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
-//                    printf("switching LED2 \r \n");
-//                    HAL_GPIO_WritePin(LED2.port, LED2.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
-//                    xSemaphoreGive(LED2.semaphore);
-//                    break;
-//                case REQUEST_ACTUAL_TEMPERATURE:
-////                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
-//                    printf("sending actual temperature \r \n");
-////                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
-////                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
-//
-//                    break;
-//                case START_SENDING_PROGRAM:
-//                    break;
-//
-//
-//            }
-            *hUsbDeviceFS.received_flag = 0;
+            switch(CDC_RX_Buffer[0]) {
+                case SET_LED1_STATE:
+
+                    xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
+                    printf("switching LED1 \r \n");
+                    HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
+                    xSemaphoreGive(LED1.semaphore);
+                    break;
+                case SET_LED2_STATE:
+                    xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
+                    printf("switching LED2 \r \n");
+                    HAL_GPIO_WritePin(LED2.port, LED2.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
+                    xSemaphoreGive(LED2.semaphore);
+                    break;
+                case REQUEST_ACTUAL_TEMPERATURE:
+//                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
+                    printf("sending actual temperature \r \n");
+//                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
+//                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
+
+                    break;
+                case START_SENDING_PROGRAM:
+                    break;
+
+
+            }
+            hUsbDeviceFS.received_flag = 0;
             printf("zeroing received flag \r \n");
             //            memset(CDC_RX_Buffer, 0, RX_BUFF_SIZE);
         }
+
 
 
 
@@ -539,12 +543,12 @@ void LED_manager(void *argument) {
 //
 
 void LED_manager(void *argument) {
-    uint8_t prev_bool = *hUsbDeviceFS.received_flag;
+    uint8_t prev_bool = hUsbDeviceFS.received_flag;
     printf("LED manager started \r \n");
     printf("prev_bool: %d \r \n", prev_bool);
     while (1) {
-if(prev_bool!=*hUsbDeviceFS.received_flag){
-            prev_bool = *hUsbDeviceFS.received_flag;
+if(prev_bool!=hUsbDeviceFS.received_flag){
+            prev_bool = hUsbDeviceFS.received_flag;
             printf("bool_state has changed \r \n");
         }
 ////            xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
