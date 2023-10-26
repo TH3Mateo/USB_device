@@ -140,6 +140,7 @@ uint8_t MessageLength = 0;
 
 
 MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
+MUTEX_f TARGET_TEMP = {.semaphore = NULL, .value = 0};
 MUTEX_digitPin LED1 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
 MUTEX_digitPin LED2 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_2};
 uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
@@ -415,7 +416,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+
+
 }
+
+
 
 /* USER CODE BEGIN 4 */
 
@@ -459,11 +464,8 @@ void COM_manager(void *argument) {
             }
             switch(CDC_RX_Buffer[0]) {
                 case SET_LED1_STATE:
-
-                    xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
                     printf("switching LED1 \r \n");
                     HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
-                    xSemaphoreGive(LED1.semaphore);
                     break;
                 case SET_LED2_STATE:
                     xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
@@ -476,16 +478,17 @@ void COM_manager(void *argument) {
                     printf("sending actual temperature \r \n");
 //                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
 //                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
-
+                case SET_TARGET_TEMPERATURE:
+                    printf("setting target temperature \r \n");
+                    xSemaphoreTake(TARGET_TEMP.semaphore, 60);
+                    TARGET_TEMP.value = HexToDec(CDC_RX_Buffer+1, 4);
                     break;
                 case START_SENDING_PROGRAM:
                     break;
 
 
             }
-            hUsbDeviceFS.received_flag = 0;
-            printf("zeroing received flag \r \n");
-            //            memset(CDC_RX_Buffer, 0, RX_BUFF_SIZE);
+
         }
 
 
@@ -504,6 +507,31 @@ void POT_manager(void *argument) {
     HAL_Delay(1000);
 
     };
+}
+
+void TEMP_manager(void *argument) {
+    uint16_t cnt = 0;
+    float prev_error = 0;
+    float integral = 0;
+    while (1) {
+
+        float measured_temp = calc_temp(HAL_ADC_GetValue(&hadc1));
+
+        if(cnt== TEMP_CORRECTION_INTERVAL) {
+            float error =(measured_temp- ACTUAL_TEMP.value);
+            if (abs((int)(error*1000))>MAX_DYNAMIC_ERROR){
+                integral += error;
+//                HAL_DAC_write(calc_dac_value(error, integral, error-prev_error));
+                prev_error = error;
+
+
+        }
+            cnt=0;
+
+
+        }
+        cnt++;
+    }
 }
 
 #if LED1_BINARY_BLINK==0x01

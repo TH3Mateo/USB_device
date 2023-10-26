@@ -8,4 +8,5 @@
 
 const unsigned char* HexToBin(uint8_t byte, unsigned char* bits);
 
+float HexToDec(uint8_t* hex, uint8_t byte_count);
 #endif //USB_UTILS_H

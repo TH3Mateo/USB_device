@@ -17,7 +17,14 @@
 
 #ifndef THERMAL_CONFIGURABLES_H
 
-#define R1 (int) 10000
+#define R1 (int)10000
+
+#define PID_PROPORTIONAL (float)0.5
+#define PID_INTEGRAL (float)0.5
+#define PID_DERIVATIVE (float)0.5
+#define MAX_DYNAMIC_ERROR 10 //in
+
+#define TEMP_CORRECTION_INTERVAL (uint16_t)500
 
 
 

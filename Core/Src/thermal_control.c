@@ -4,9 +4,8 @@
 
 #include "thermal_control.h"
 #include "math.h"
-#include "stdio.h"
+#include "configurables.h"
 
-const int R1 = 10000;
 float logR2, R2;
 
 int out = 0;
@@ -14,17 +13,22 @@ int out = 0;
 #define c2 2.378405444e-04
 #define c3 2.019202697e-07
 
-int map_f(double x, long in_min, long in_max, int out_min, int out_max)
-{
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
 
-double calc_temp(float V)
+float calc_temp(uint32_t adc)
 {
     double T;
-    R2 = R1 * (1023.0 / (float)V - 1.0);
+    R2 = R1 * (4096.0 / (float)adc - 1.0);
     logR2 = log(R2);
     T = (1.0 / (c1 + c2 * logR2 + c3 * logR2 * logR2 * logR2)) - 273.15;
     return T;
 }
+
+uint16_t calc_dac_value(float error,float integral, float derivative){
+    //calculating output with PID formula
+    double dac_out = PID_PROPORTIONAL * error + PID_INTEGRAL * integral + PID_DERIVATIVE * derivative;
+
+
+
+    return (uint16_t)dac_out;
+};
 
