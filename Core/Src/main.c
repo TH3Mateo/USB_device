@@ -425,24 +425,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 
-//void Master(void *argument) {
-//    osThreadId blinking = osThreadNew(LED_manager, NULL, LED_manager_attributes);
-//    osThreadId send = osThreadNew(COM_manager, NULL, COM_manager_attributes);
-//    osThreadResume(send);
-//    printf("\r \n \r");
-//
-//    while (1) {
-//
-//        osDelay(3000);
-//        osThreadSuspend(blinking);
-//        printf("turned off\n \r");
-//        osDelay(3000);
-//        osThreadResume(blinking);
-//        printf("turned on \r \n");
-//
-//    }
-//}
-
 
 
 
