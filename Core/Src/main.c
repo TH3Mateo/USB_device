@@ -466,6 +466,7 @@ void COM_manager(void *argument) {
                 case SET_LED2_STATE:
                     xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
                     printf("switching LED2 \r \n");
+
                     HAL_GPIO_WritePin(LED2.port, LED2.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
                     xSemaphoreGive(LED2.semaphore);
                     break;
