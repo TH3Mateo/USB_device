@@ -507,29 +507,34 @@ void POT_manager(void *argument) {
 }
 
 void TEMP_manager(void *argument) {
-    uint16_t cnt = 0;
+    uint16_t dac_out;
     float prev_error = 0;
     float integral = 0;
+    float prev_integral = 0;
+    float error = 0;
+    uint32_t time_variable=HAL_GetTick();
     while (1) {
 
         float measured_temp = calc_temp(HAL_ADC_GetValue(&hadc1));
 
-        if(cnt== TEMP_CORRECTION_INTERVAL) {
-            float error =(measured_temp- ACTUAL_TEMP.value);
-            if (abs((int)(error*1000))>MAX_DYNAMIC_ERROR){
-                integral += error;
-//                HAL_DAC_write(calc_dac_value(error, integral, error-prev_error));
-                prev_error = error;
+        if(HAL_GetTick()-time_variable>=TEMP_CORRECTION_INTERVAL) {
+            time_variable = HAL_GetTick()-time_variable;
+            error =(measured_temp- ACTUAL_TEMP.value);
+            error = TARGET_TEMP.value - measured_temp;
+            integral = prev_integral + error * TEMP_CORRECTION_INTERVAL;
+
+            dac_out = PID_PROPORTIONAL*error + PID_INTEGRAL*integral + PID_DERIVATIVE*((error - prev_error ) / TEMP_CORRECTION_INTERVAL);
+            prev_error = error;
+            prev_integral = integral;
+            time_variable = HAL_GetTick();
+
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+
 
 
         }
-            cnt=0;
-
-
         }
-        cnt++;
     }
-}
 
 #if LED1_BINARY_BLINK==0x01
 void LED_manager(void *argument) {
