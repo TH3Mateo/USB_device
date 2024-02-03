@@ -637,8 +637,7 @@ void TEMP_manager(void *argument) {
             prev_integral = integral;
             time_variable = HAL_GetTick();
 
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
-
+            TIM1->CCR1 = dac_out*MAX_PWM_VALUE;
 
 
         }
