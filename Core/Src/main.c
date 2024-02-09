@@ -20,6 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "usb_device.h"
+#include "usbd_cdc_if.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -31,6 +32,7 @@
 #include "commands.h"
 #include "utils.h"
 #include "thermal_control.h"
+
 //#include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
 /* USER CODE END Includes */
@@ -141,8 +143,8 @@ uint8_t MessageLength = 0;
 
 MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
 MUTEX_f TARGET_TEMP = {.semaphore = NULL, .value = 0};
-MUTEX_digitPin LED1 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
-MUTEX_digitPin LED2 = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_2};
+MUTEX_digitPin BUILTIN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
+MUTEX_digitPin EXT_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_2};
 uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
 uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
 
@@ -430,6 +432,7 @@ static void MX_GPIO_Init(void)
 
 void COM_manager(void *argument) {
     uint32_t len = 32;
+    uint8_t feedback[RX_BUFF_SIZE];
     printf("COM manager started \r \n");
     USBD_CDC_SetRxBuffer(&hUsbDeviceFS, CDC_RX_Buffer);
     printf("before while loop \r \n");
@@ -437,48 +440,47 @@ void COM_manager(void *argument) {
     while (1) {
 
 //printf("waiting for data \r \n");
-        if(hUsbDeviceFS.received_flag==0x01){
+        if (hUsbDeviceFS.received_flag == 0x01) {
 
 
             printf("received command: %02X \r \n", CDC_RX_Buffer[0]);
             for (int i = 0; i < RX_BUFF_SIZE; i++) {
                 printf("%02X ", CDC_RX_Buffer[i]);
             }
-            switch(CDC_RX_Buffer[0]) {
-                case SET_LED1_STATE:
+            switch (CDC_RX_Buffer[0]) {
+                case SET_LED_STATE:
                     printf("switching LED1 \r \n");
-                    HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
+                    HAL_GPIO_WritePin(BUILTIN_LED.port, BUILTIN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 2]);
+                    feedback = "BL switched ";
+                    feedback[RX_BUFF_SIZE - 2] = CDC_RX_Buffer[RX_BUFF_SIZE - 2];
+                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     break;
-                case SET_LED2_STATE:
-                    xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
-                    printf("switching LED2 \r \n");
-                    HAL_GPIO_WritePin(LED2.port, LED2.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
-                    xSemaphoreGive(LED2.semaphore);
-                    break;
+//                case SET_LED_STATE:
+////                    xSemaphoreTake(EXTERN_LED.semaphore, portMAX_DELAY);
+//                    printf("switching LED2 \r \n");
+//
+//                    HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 2]);
+//                    feedback = "EL switched ";
+//                    feedback[RX_BUFF_SIZE - 2] = CDC_RX_Buffer[RX_BUFF_SIZE - 2];
+//                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
+////                    xSemaphoreGive(EXTERN_LED.semaphore);
+//                    break;
                 case REQUEST_ACTUAL_TEMPERATURE:
-//                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
+                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
                     printf("sending actual temperature \r \n");
-//                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
-//                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
+                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
+                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
                 case SET_TARGET_TEMPERATURE:
                     printf("setting target temperature \r \n");
                     xSemaphoreTake(TARGET_TEMP.semaphore, 60);
-                    TARGET_TEMP.value = HexToDec(CDC_RX_Buffer+1, 4);
-                    break;
-                case START_SENDING_PROGRAM:
-                    break;
+                    TARGET_TEMP.value = HexToDec(CDC_RX_Buffer + 1, 4);
+                    feedback = "target temp set";
+                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
+                    xSemaphoreGive(TARGET_TEMP.semaphore);
 
-
+                    break;
             }
-
         }
-
-
-
-
-
-
-
     }
 }
 
