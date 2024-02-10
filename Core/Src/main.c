@@ -457,16 +457,6 @@ void COM_manager(void *argument) {
                     feedback[RX_BUFF_SIZE - 4]= CDC_RX_Buffer[RX_BUFF_SIZE - 3];
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     break;
-//                case SET_LED_STATE:
-////                    xSemaphoreTake(EXTERN_LED.semaphore, portMAX_DELAY);
-//                    printf("switching LED EXTERNAL \r \n");
-//
-//                    HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 2]);
-//                    strcpy(feedback, "EL switched ");
-//                    feedback[RX_BUFF_SIZE - 2] = CDC_RX_Buffer[RX_BUFF_SIZE - 2];
-//                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
-////                    xSemaphoreGive(EXTERN_LED.semaphore);
-//                    break;
                 case REQUEST_ACTUAL_TEMPERATURE:
 //                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
                     printf("sending actual temperature \r \n");
