@@ -458,7 +458,6 @@ void COM_manager(void *argument) {
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     break;
                 case REQUEST_ACTUAL_TEMPERATURE:
-//                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
                     printf("sending actual temperature \r \n");
                     char value[RX_BUFF_SIZE];
                     memset(value, 0x20, RX_BUFF_SIZE);
