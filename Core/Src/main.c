@@ -572,7 +572,7 @@ void COM_manager(void *argument) {
                 case SET_LED_STATE:
                     printf("switching LED1 \r \n");
                     HAL_GPIO_WritePin(BUILTIN_LED.port, BUILTIN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
-                    feedback = "BL switched ";
+                    strcpy(feedback, "BL switched ");
                     feedback[RX_BUFF_SIZE-2] = CDC_RX_Buffer[RX_BUFF_SIZE-2];
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     break;
@@ -581,7 +581,8 @@ void COM_manager(void *argument) {
                     printf("switching LED2 \r \n");
 
                     HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
-                    feedback = "EL switched ";
+                    strcpy(feedback, "EL switched ");
+
                     feedback[RX_BUFF_SIZE-2] = CDC_RX_Buffer[RX_BUFF_SIZE-2];
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
 //                    xSemaphoreGive(EXTERN_LED.semaphore);
@@ -595,8 +596,8 @@ void COM_manager(void *argument) {
                     printf("setting target temperature \r \n");
                     xSemaphoreTake(TARGET_TEMP.semaphore, 60);
                     TARGET_TEMP.value = HexToDec(CDC_RX_Buffer+1, 4);
-                    feedback = "target temp set";
-                    CDC_transmit_FS(feedback, RX_BUFF_SIZE);
+                    strcpy(feedback, "target temp set ");
+                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     xSemaphoreGive(TARGET_TEMP.semaphore);
 
                     break;
