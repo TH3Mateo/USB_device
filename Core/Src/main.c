@@ -141,10 +141,10 @@ uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
 
 
-MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
+MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 999};
 MUTEX_f TARGET_TEMP = {.semaphore = NULL, .value = 0};
-MUTEX_digitPin BUILTIN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
-MUTEX_digitPin EXT_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_2};
+MUTEX_digitPin BUILTIN_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_13};
+MUTEX_digitPin EXTERN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
 uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
 uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
 
@@ -190,6 +190,7 @@ int main(void) {
         if(hUsbDeviceFS.dev_state==USBD_STATE_CONFIGURED){
             enable_potentiometer = 0;
             HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+            printf("waiting for connection \r \n");
             break;
         }
     };
@@ -212,7 +213,7 @@ int main(void) {
     }
 
     osThreadNew(LED_manager, NULL, &LED_attributes);
-//    osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
+    osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -403,7 +404,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1|GPIO_PIN_2, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
@@ -412,7 +414,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PA1 PA2 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2;
+  GPIO_InitStruct.Pin = GPIO_PIN_1;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -449,37 +451,47 @@ void COM_manager(void *argument) {
             }
             switch (CDC_RX_Buffer[0]) {
                 case SET_LED_STATE:
-                    printf("switching LED1 \r \n");
-                    HAL_GPIO_WritePin(BUILTIN_LED.port, BUILTIN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 2]);
-                    feedback = "BL switched ";
-                    feedback[RX_BUFF_SIZE - 2] = CDC_RX_Buffer[RX_BUFF_SIZE - 2];
+                    printf("switching LED BUILTIN \r \n");
+                    HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 2]);
+                    strcpy(feedback, "BL switched ");
+                    feedback[RX_BUFF_SIZE - 4]= CDC_RX_Buffer[RX_BUFF_SIZE - 3];
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     break;
 //                case SET_LED_STATE:
 ////                    xSemaphoreTake(EXTERN_LED.semaphore, portMAX_DELAY);
-//                    printf("switching LED2 \r \n");
+//                    printf("switching LED EXTERNAL \r \n");
 //
 //                    HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 2]);
-//                    feedback = "EL switched ";
+//                    strcpy(feedback, "EL switched ");
 //                    feedback[RX_BUFF_SIZE - 2] = CDC_RX_Buffer[RX_BUFF_SIZE - 2];
 //                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
 ////                    xSemaphoreGive(EXTERN_LED.semaphore);
 //                    break;
                 case REQUEST_ACTUAL_TEMPERATURE:
-                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
+//                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
                     printf("sending actual temperature \r \n");
-                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
-                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
+                    char value[RX_BUFF_SIZE];
+                    memset(value, 0x20, RX_BUFF_SIZE);
+                    strcpy(value,(uint8_t *) &ACTUAL_TEMP.value);
+                    CDC_Transmit_FS(value, RX_BUFF_SIZE);
+//                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
+                    break;
                 case SET_TARGET_TEMPERATURE:
                     printf("setting target temperature \r \n");
                     xSemaphoreTake(TARGET_TEMP.semaphore, 60);
                     TARGET_TEMP.value = HexToDec(CDC_RX_Buffer + 1, 4);
-                    feedback = "target temp set";
+                    strcpy(feedback, "target temp set ");
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     xSemaphoreGive(TARGET_TEMP.semaphore);
 
                     break;
+                default:
+                    printf("unknown command \r \n");
+                    break;
             }
+//            CDC_RX_Buffer[0]=0;
+            memset(feedback, 0x20, RX_BUFF_SIZE);
+            hUsbDeviceFS.received_flag = 0x00;
         }
     }
 }
@@ -494,27 +506,33 @@ void POT_manager(void *argument) {
 }
 
 void TEMP_manager(void *argument) {
-    uint16_t cnt = 0;
+    uint16_t dac_out;
     float prev_error = 0;
     float integral = 0;
+    float prev_integral = 0;
+    float error = 0;
+    uint32_t time_variable=HAL_GetTick();
     while (1) {
 
-        float measured_temp = calc_temp(HAL_ADC_GetValue(&hadc1));
 
-        if(cnt== TEMP_CORRECTION_INTERVAL) {
-            float error =(measured_temp- ACTUAL_TEMP.value);
-            if (abs((int)(error*1000))>MAX_DYNAMIC_ERROR){
-                integral += error;
-//                HAL_DAC_write(calc_dac_value(error, integral, error-prev_error));
-                prev_error = error;
+        if(HAL_GetTick()-time_variable>=TEMP_CORRECTION_INTERVAL) {
+            xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
+            ACTUAL_TEMP.value = calc_temp(HAL_ADC_GetValue(&hadc1));
+
+            time_variable = HAL_GetTick()-time_variable;
+            error = TARGET_TEMP.value - ACTUAL_TEMP.value;
+            integral = prev_integral + error * TEMP_CORRECTION_INTERVAL;
+
+            dac_out = PID_PROPORTIONAL*error + PID_INTEGRAL*integral + PID_DERIVATIVE*((error - prev_error ) / TEMP_CORRECTION_INTERVAL);
+            prev_error = error;
+            prev_integral = integral;
+            time_variable = HAL_GetTick();
+
+
+            TIM1->CCR1 = dac_out*MAX_PWM_VALUE;
 
 
         }
-            cnt=0;
-
-
-        }
-        cnt++;
     }
 }
 

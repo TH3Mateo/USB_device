@@ -25,6 +25,7 @@
 #define MAX_DYNAMIC_ERROR 10 //in
 
 #define TEMP_CORRECTION_INTERVAL (uint16_t)500
+#define MAX_PWM_VALUE 65535
 
 
 
