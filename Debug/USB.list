@@ -946,7 +946,7 @@ void MAIN(void *argument) {
  8000898:	4814      	ldr	r0, [pc, #80]	; (80008ec <MAIN+0x64>)
  800089a:	f005 f935 	bl	8005b08 <osThreadNew>
  800089e:	60f8      	str	r0, [r7, #12]
-    osThreadId send = osThreadNew(run_USB, NULL, COM_manager_attributes);
+    osThreadId send = osThreadNew(run_USB, NULL, COM_manager_handle);
  80008a0:	4b13      	ldr	r3, [pc, #76]	; (80008f0 <MAIN+0x68>)
  80008a2:	681b      	ldr	r3, [r3, #0]
  80008a4:	461a      	mov	r2, r3

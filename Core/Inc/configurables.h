@@ -11,7 +11,7 @@
 
 #define DEVICE_ID 0xFF
 #define CONNECTION_TIMEOUT 4000
-#define RX_BUFF_SIZE 17
+#define RX_BUFF_SIZE 16
 #endif //USB_CONFIGURABLES_H
 
 
@@ -24,7 +24,7 @@
 #define PID_DERIVATIVE (float)0.5
 #define MAX_DYNAMIC_ERROR 10 //in
 
-#define TEMP_CORRECTION_INTERVAL (uint16_t)500
+#define TEMP_CORRECTION_INTERVAL (uint16_t)200
 #define MAX_PWM_VALUE 65535
 
 

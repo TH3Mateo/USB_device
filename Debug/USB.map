@@ -7913,9 +7913,9 @@ LOAD c:/st/stm32cubeide_1.11.2/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ext
  .bss.MAINHandle
                 0x00000000200000e4        0x4 ./Core/Src/main.o
                 0x00000000200000e4                MAINHandle
- .bss.COM_manager_attributes
+ .bss.COM_manager_handle
                 0x00000000200000e8        0x4 ./Core/Src/main.o
-                0x00000000200000e8                COM_manager_attributes
+                0x00000000200000e8                COM_manager_handle
  .bss.LED_manager_attributes
                 0x00000000200000ec        0x4 ./Core/Src/main.o
                 0x00000000200000ec                LED_manager_attributes

@@ -39,10 +39,12 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-int _write(int file, char *ptr, int len) {
+int _write(int le, char *ptr, int len)
+{
     int DataIdx;
-    for (DataIdx = 0; DataIdx < len; DataIdx++) {
-        ITM_SendChar((*ptr++));
+    for(DataIdx = 0; DataIdx < len; DataIdx++)
+    {
+        ITM_SendChar(*ptr++);
     }
     return len;
 }
@@ -78,11 +80,11 @@ I2C_HandleTypeDef hi2c1;
 
 /* USER CODE BEGIN PV */
 
-osThreadId_t COM_manager_attributes;
+osThreadId_t COM_manager_handle;
 const osThreadAttr_t COM_attributes = {
         .name = "COM",
         .stack_size = 128 * 2,
-        .priority = (osPriority_t) osPriorityAboveNormal2,
+        .priority = (osPriority_t) osPriorityNormal,
 };
 
 osThreadId_t LED_manager_attributes;
@@ -92,7 +94,7 @@ const osThreadAttr_t LED_attributes = {
         .priority = (osPriority_t) osPriorityNormal,
 };
 
-osThreadId_t TEMP_manager_attributes;
+osThreadId_t TEMP_manager_handle;
 const osThreadAttr_t TEMP_attributes = {
         .name = "TEMP",
         .stack_size = 128 * 1,
@@ -141,7 +143,7 @@ uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
 
 
-MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 999};
+MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
 MUTEX_f TARGET_TEMP = {.semaphore = NULL, .value = 0};
 MUTEX_digitPin BUILTIN_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_13};
 MUTEX_digitPin EXTERN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
@@ -212,12 +214,10 @@ int main(void) {
 
     }
 
-    osThreadNew(LED_manager, NULL, &LED_attributes);
-    osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
+    COM_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
+    TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
   /* USER CODE END 2 */
-
   /* Init scheduler */
-  osKernelInitialize();
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -441,7 +441,7 @@ void COM_manager(void *argument) {
 //    extern uint8_t received_bool;
     while (1) {
 
-//printf("waiting for data \r \n");
+printf("waiting for data \r \n");
         if (hUsbDeviceFS.received_flag == 0x01) {
 
 
@@ -453,34 +453,52 @@ void COM_manager(void *argument) {
                 case SET_LED_STATE:
                     printf("switching LED BUILTIN \r \n");
                     HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 2]);
-                    strcpy(feedback, "BL switched ");
-                    feedback[RX_BUFF_SIZE - 4]= CDC_RX_Buffer[RX_BUFF_SIZE - 3];
+                    strcpy(feedback+(RX_BUFF_SIZE-12), "BL switched");
+                    feedback[0]= SET_LED_STATE;
+// Read
+//                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     break;
                 case REQUEST_ACTUAL_TEMPERATURE:
                     printf("sending actual temperature \r \n");
                     char value[RX_BUFF_SIZE];
-                    memset(value, 0x20, RX_BUFF_SIZE);
-                    strcpy(value,(uint8_t *) &ACTUAL_TEMP.value);
+// Write
+                    memset(value, 0x00, RX_BUFF_SIZE);
+                    * ((float *) (value + (sizeof(value) - sizeof(float)))) = ACTUAL_TEMP.value;
+                    value[0]= REQUEST_ACTUAL_TEMPERATURE;
+// Read
+//                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
                     CDC_Transmit_FS(value, RX_BUFF_SIZE);
 //                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
                     break;
                 case SET_TARGET_TEMPERATURE:
                     printf("setting target temperature \r \n");
-                    xSemaphoreTake(TARGET_TEMP.semaphore, 60);
-                    TARGET_TEMP.value = HexToDec(CDC_RX_Buffer + 1, 4);
-                    strcpy(feedback, "target temp set ");
+                    TARGET_TEMP.value = HexToDec(CDC_RX_Buffer, 4);
+// Write
+                    memset(feedback, 0x00, RX_BUFF_SIZE);
+                    * ((float *) (feedback + (sizeof(feedback) - sizeof(float)))) = TARGET_TEMP.value;
+                    feedback[0]= SET_TARGET_TEMPERATURE;;
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
-                    xSemaphoreGive(TARGET_TEMP.semaphore);
 
                     break;
+                case REQUEST_ACTUAL_HEATER_STATE:
+                    printf("sending actual heater state \r \n");
+                    char h_value[RX_BUFF_SIZE];
+// Write
+                    memset(h_value, 0x20, RX_BUFF_SIZE);
+                    * ((int *) (h_value + (sizeof(h_value) - sizeof(int)))) = ((TIM1->CCR1)/MAX_PWM_VALUE)*100;
+
+// Read
+//                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
+                    CDC_Transmit_FS(value, RX_BUFF_SIZE);
                 default:
                     printf("unknown command \r \n");
                     break;
             }
-//            CDC_RX_Buffer[0]=0;
+            CDC_RX_Buffer[0]=0;
             memset(feedback, 0x20, RX_BUFF_SIZE);
             hUsbDeviceFS.received_flag = 0x00;
+//        osDelay(100);
         }
     }
 }
@@ -501,11 +519,12 @@ void TEMP_manager(void *argument) {
     float prev_integral = 0;
     float error = 0;
     uint32_t time_variable=HAL_GetTick();
+//    uint32_t time_diff;
     while (1) {
 
 
-        if(HAL_GetTick()-time_variable>=TEMP_CORRECTION_INTERVAL) {
-            xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
+        if(HAL_GetTick()%TEMP_CORRECTION_INTERVAL==0) {
+//            xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
             ACTUAL_TEMP.value = calc_temp(HAL_ADC_GetValue(&hadc1));
 
             time_variable = HAL_GetTick()-time_variable;
