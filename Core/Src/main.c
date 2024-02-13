@@ -451,12 +451,22 @@ printf("waiting for data \r \n");
             }
             switch (CDC_RX_Buffer[0]) {
                 case SET_LED_STATE:
-                    printf("switching LED BUILTIN \r \n");
-                    HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 2]);
-                    strcpy(feedback+(RX_BUFF_SIZE-12), "BL switched");
+                    switch(CDC_RX_Buffer[RX_BUFF_SIZE - 2]){
+                        case 0x01:
+                            HAL_GPIO_WritePin(BUILTIN_LED.port, BUILTIN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 1]);
+                            strcpy(feedback+(RX_BUFF_SIZE-12), "BL switched");
+
+                            break;
+                        case 0x02:
+                            HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 1]);
+                            strcpy(feedback+(RX_BUFF_SIZE-12), "EL switched");
+                            break;
+                        default:
+                            printf("unknown command \r \n");
+                            break;
+                    }
+
                     feedback[0]= SET_LED_STATE;
-// Read
-//                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     break;
                 case REQUEST_ACTUAL_TEMPERATURE:
@@ -473,7 +483,7 @@ printf("waiting for data \r \n");
                     break;
                 case SET_TARGET_TEMPERATURE:
                     printf("setting target temperature \r \n");
-                    TARGET_TEMP.value = HexToDec(CDC_RX_Buffer, 4);
+                    TARGET_TEMP.value = * ((float *) (CDC_RX_Buffer + (sizeof(CDC_RX_Buffer) - sizeof(float))));
 // Write
                     memset(feedback, 0x00, RX_BUFF_SIZE);
                     * ((float *) (feedback + (sizeof(feedback) - sizeof(float)))) = TARGET_TEMP.value;
