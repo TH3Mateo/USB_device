@@ -452,6 +452,8 @@ static void MX_GPIO_Init(void)
 
 
 
+
+
 void COM_manager(void *argument) {
     uint32_t len = 32;
     uint8_t feedback[RX_BUFF_SIZE];
@@ -461,8 +463,8 @@ void COM_manager(void *argument) {
 //    extern uint8_t received_bool;
     while (1) {
 
-//printf("waiting for data \r \n");
-        if(hUsbDeviceFS.received_flag==0x01){
+printf("waiting for data \r \n");
+        if (hUsbDeviceFS.received_flag == 0x01) {
 
 
             printf("received command: %02X \r \n", CDC_RX_Buffer[0]);
