@@ -20,6 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "usb_device.h"
+#include "usbd_cdc_if.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -31,16 +32,19 @@
 #include "commands.h"
 #include "utils.h"
 #include "thermal_control.h"
+
 //#include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-int _write(int file, char *ptr, int len) {
+int _write(int le, char *ptr, int len)
+{
     int DataIdx;
-    for (DataIdx = 0; DataIdx < len; DataIdx++) {
-        ITM_SendChar((*ptr++));
+    for(DataIdx = 0; DataIdx < len; DataIdx++)
+    {
+        ITM_SendChar(*ptr++);
     }
     return len;
 }
@@ -72,15 +76,15 @@ ADC_HandleTypeDef hadc1;
 
 I2C_HandleTypeDef hi2c1;
 
-TIM_HandleTypeDef htim1;
+/* Definitions for Blink */
 
 /* USER CODE BEGIN PV */
 
-osThreadId_t COM_manager_attributes;
+osThreadId_t COM_manager_handle;
 const osThreadAttr_t COM_attributes = {
         .name = "COM",
         .stack_size = 128 * 2,
-        .priority = (osPriority_t) osPriorityAboveNormal2,
+        .priority = (osPriority_t) osPriorityNormal,
 };
 
 osThreadId_t LED_manager_attributes;
@@ -90,7 +94,7 @@ const osThreadAttr_t LED_attributes = {
         .priority = (osPriority_t) osPriorityNormal,
 };
 
-osThreadId_t TEMP_manager_attributes;
+osThreadId_t TEMP_manager_handle;
 const osThreadAttr_t TEMP_attributes = {
         .name = "TEMP",
         .stack_size = 128 * 1,
@@ -103,8 +107,6 @@ const osThreadAttr_t POT_attributes = {
         .stack_size = 128 * 1,
         .priority = (osPriority_t) osPriorityNormal,
 };
-/* USER CODE BEGIN PV */
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -112,8 +114,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_ADC1_Init(void);
-static void MX_TIM1_Init(void);
-void StartDefaultTask(void *argument);
+void StartBlink(void *argument);
 
 /* USER CODE BEGIN PFP */
 void COM_manager(void *argument);
@@ -144,7 +145,7 @@ uint8_t MessageLength = 0;
 MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
 MUTEX_f TARGET_TEMP = {.semaphore = NULL, .value = 0};
 MUTEX_digitPin BUILTIN_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_13};
-MUTEX_digitPin EXTERN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_0};
+MUTEX_digitPin EXTERN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
 uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
 uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
 
@@ -177,8 +178,7 @@ int main(void) {
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_ADC1_Init();
-  MX_TIM1_Init();
-    MX_USB_DEVICE_Init();
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 
     uint32_t before = HAL_GetTick();
@@ -190,7 +190,8 @@ int main(void) {
         USBD_StatusTypeDef x = USBD_LL_DevConnected(&hUsbDeviceFS);
         if(hUsbDeviceFS.dev_state==USBD_STATE_CONFIGURED){
             enable_potentiometer = 0;
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+            printf("waiting for connection \r \n");
             break;
         }
     };
@@ -199,7 +200,7 @@ int main(void) {
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
     }
 
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
+
 
     osKernelInitialize();
 
@@ -212,39 +213,34 @@ int main(void) {
 
     }
 
-    osThreadNew(LED_manager, NULL, &LED_attributes);
-//    osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
+    COM_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
+    TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
   /* USER CODE END 2 */
-
   /* Init scheduler */
-  osKernelInitialize();
-
-  /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
-  /* USER CODE END RTOS_MUTEX */
-
-  /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
-  /* USER CODE END RTOS_SEMAPHORES */
-
-  /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
-  /* USER CODE END RTOS_TIMERS */
-
-  /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
-  /* USER CODE END RTOS_QUEUES */
-
-  /* Create the thread(s) */
-  /* creation of defaultTask */
-
-  /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
-  /* USER CODE END RTOS_THREADS */
-
-  /* USER CODE BEGIN RTOS_EVENTS */
-  /* add events, ... */
-  /* USER CODE END RTOS_EVENTS */
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2023 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+/**
+* @}
+*/
+/**
+* @}
+*/
 
   /* Start scheduler */
   osKernelStart();
@@ -389,81 +385,6 @@ static void MX_I2C1_Init(void)
 }
 
 /**
-  * @brief TIM1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_TIM1_Init(void)
-{
-
-  /* USER CODE BEGIN TIM1_Init 0 */
-
-  /* USER CODE END TIM1_Init 0 */
-
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-  TIM_OC_InitTypeDef sConfigOC = {0};
-  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
-
-  /* USER CODE BEGIN TIM1_Init 1 */
-
-  /* USER CODE END TIM1_Init 1 */
-  htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 0;
-  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 65535;
-  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim1.Init.RepetitionCounter = 0;
-  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
-  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
-  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
-  sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
-  sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
-  sBreakDeadTimeConfig.DeadTime = 0;
-  sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
-  sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
-  sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
-  if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TIM1_Init 2 */
-
-  /* USER CODE END TIM1_Init 2 */
-  HAL_TIM_MspPostInit(&htim1);
-
-}
-
-/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -530,26 +451,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 
-//void Master(void *argument) {
-//    osThreadId blinking = osThreadNew(LED_manager, NULL, LED_manager_attributes);
-//    osThreadId send = osThreadNew(COM_manager, NULL, COM_manager_attributes);
-//    osThreadResume(send);
-//    printf("\r \n \r");
-//
-//    while (1) {
-//
-//        osDelay(3000);
-//        osThreadSuspend(blinking);
-//        printf("turned off\n \r");
-//        osDelay(3000);
-//        osThreadResume(blinking);
-//        printf("turned on \r \n");
-//
-//    }
-//}
-
-
-
 
 void COM_manager(void *argument) {
     uint32_t len = 32;
@@ -568,47 +469,67 @@ void COM_manager(void *argument) {
             for (int i = 0; i < RX_BUFF_SIZE; i++) {
                 printf("%02X ", CDC_RX_Buffer[i]);
             }
-            switch(CDC_RX_Buffer[0]) {
+            switch (CDC_RX_Buffer[0]) {
                 case SET_LED_STATE:
-                    printf("switching LED1 \r \n");
-                    HAL_GPIO_WritePin(BUILTIN_LED.port, BUILTIN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
-                    strcpy(feedback, "BL switched ");
-                    feedback[RX_BUFF_SIZE-2] = CDC_RX_Buffer[RX_BUFF_SIZE-2];
-                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
-                    break;
-                case SET_LED2_STATE:
-//                    xSemaphoreTake(EXTERN_LED.semaphore, portMAX_DELAY);
-                    printf("switching LED2 \r \n");
+                    switch(CDC_RX_Buffer[RX_BUFF_SIZE - 2]){
+                        case 0x01:
+                            HAL_GPIO_WritePin(BUILTIN_LED.port, BUILTIN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 1]);
+                            strcpy(feedback+(RX_BUFF_SIZE-12), "BL switched");
 
-                    HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE-2]);
-                    strcpy(feedback, "EL switched ");
+                            break;
+                        case 0x02:
+                            HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 1]);
+                            strcpy(feedback+(RX_BUFF_SIZE-12), "EL switched");
+                            break;
+                        default:
+                            printf("unknown command \r \n");
+                            break;
+                    }
 
-                    feedback[RX_BUFF_SIZE-2] = CDC_RX_Buffer[RX_BUFF_SIZE-2];
+                    feedback[0]= SET_LED_STATE;
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
-//                    xSemaphoreGive(EXTERN_LED.semaphore);
                     break;
                 case REQUEST_ACTUAL_TEMPERATURE:
-                    xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
                     printf("sending actual temperature \r \n");
-                    CDC_Transmit_FS((uint8_t *) &ACTUAL_TEMP.value, sizeof(ACTUAL_TEMP.value));
-                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
+                    char value[RX_BUFF_SIZE];
+// Write
+                    memset(value, 0x00, RX_BUFF_SIZE);
+                    * ((float *) (value + (sizeof(value) - sizeof(float)))) = ACTUAL_TEMP.value;
+                    value[0]= REQUEST_ACTUAL_TEMPERATURE;
+// Read
+//                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
+                    CDC_Transmit_FS(value, RX_BUFF_SIZE);
+//                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
+                    break;
                 case SET_TARGET_TEMPERATURE:
                     printf("setting target temperature \r \n");
-                    xSemaphoreTake(TARGET_TEMP.semaphore, 60);
-                    TARGET_TEMP.value = HexToDec(CDC_RX_Buffer+1, 4);
-                    strcpy(feedback, "target temp set ");
+                    TARGET_TEMP.value = * ((float *) (CDC_RX_Buffer + (sizeof(CDC_RX_Buffer) - sizeof(float))));
+// Write
+                    memset(feedback, 0x00, RX_BUFF_SIZE);
+                    * ((float *) (feedback + (sizeof(feedback) - sizeof(float)))) = TARGET_TEMP.value;
+                    feedback[0]= SET_TARGET_TEMPERATURE;;
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
-                    xSemaphoreGive(TARGET_TEMP.semaphore);
 
                     break;
-//                case START_SENDING_PROGRAM:
-//                    break;
+                case REQUEST_ACTUAL_HEATER_STATE:
+                    printf("sending actual heater state \r \n");
+                    char h_value[RX_BUFF_SIZE];
+// Write
+                    memset(h_value, 0x20, RX_BUFF_SIZE);
+                    * ((int *) (h_value + (sizeof(h_value) - sizeof(int)))) = ((TIM1->CCR1)/MAX_PWM_VALUE)*100;
 
-
+// Read
+//                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
+                    CDC_Transmit_FS(value, RX_BUFF_SIZE);
+                default:
+                    printf("unknown command \r \n");
+                    break;
             }
-
+            CDC_RX_Buffer[0]=0;
+            memset(feedback, 0x20, RX_BUFF_SIZE);
+            hUsbDeviceFS.received_flag = 0x00;
+//        osDelay(100);
         }
-
     }
 }
 
@@ -631,13 +552,12 @@ void TEMP_manager(void *argument) {
     while (1) {
 
 
-        if(HAL_GetTick()-time_variable>=TEMP_CORRECTION_INTERVAL) {
-            xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
-            float measured_temp = calc_temp(HAL_ADC_GetValue(&hadc1));
+        if(HAL_GetTick()%TEMP_CORRECTION_INTERVAL==0) {
+//            xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
+            ACTUAL_TEMP.value = calc_temp(HAL_ADC_GetValue(&hadc1));
 
             time_variable = HAL_GetTick()-time_variable;
-            error =(measured_temp- ACTUAL_TEMP.value);
-            error = TARGET_TEMP.value - measured_temp;
+            error = TARGET_TEMP.value - ACTUAL_TEMP.value;
             integral = prev_integral + error * TEMP_CORRECTION_INTERVAL;
 
             dac_out = PID_PROPORTIONAL*error + PID_INTEGRAL*integral + PID_DERIVATIVE*((error - prev_error ) / TEMP_CORRECTION_INTERVAL);
@@ -650,8 +570,8 @@ void TEMP_manager(void *argument) {
 
 
         }
-        }
     }
+}
 
 #if LED1_BINARY_BLINK==0x01
 void LED_manager(void *argument) {
@@ -735,19 +655,19 @@ void LED_manager(void *argument) {
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
-{
-  /* init code for USB_DEVICE */
-  MX_USB_DEVICE_Init();
-  /* USER CODE BEGIN 5 */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
-  /* USER CODE END 5 */
-}
+/* USER CODE END Header_StartBlink */
+
+/* USER CODE END 5 */
+
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM11 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
 
 /**
   * @brief  This function is executed in case of error occurrence.

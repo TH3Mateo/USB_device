@@ -23,18 +23,12 @@ float calc_temp(uint32_t adc)
     return T;
 }
 
-//uint16_t calc_dac_value(float error,float integral, float derivative,float target_temp){
-//    //calculating output with PID formula
-////    double dac_out = PID_PROPORTIONAL * error + PID_INTEGRAL * integral + PID_DERIVATIVE * derivative;
-//    error = desired_value – actual_value
-//            integral = integral_prior + error * iteration_time
-//    derivative = (error – error_prior) / iteration_time
-//            output = KP*error + KI*integral + KD*derivative + bias
-//    error_prior = error
-//    integral_prior = integral
-//    double dac_out = PID_PROPORTIONAL * error + (PID_INTEGRAL * integral) + (PID_DERIVATIVE * derivative);
-//
-//
-//    return (uint16_t)dac_out;
-//};
+uint16_t calc_dac_value(float error,float integral, float derivative){
+    //calculating output with PID formula
+    double dac_out = PID_PROPORTIONAL * error + PID_INTEGRAL * integral + PID_DERIVATIVE * derivative;
+
+
+
+    return (uint16_t)dac_out;
+};
 
