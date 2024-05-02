@@ -84,7 +84,7 @@ osThreadId_t COM_manager_handle;
 const osThreadAttr_t COM_attributes = {
         .name = "COM",
         .stack_size = 128 * 2,
-        .priority = (osPriority_t) osPriorityNormal,
+        .priority = (osPriority_t) osPriorityAboveNormal1,
 };
 
 osThreadId_t LED_manager_attributes;
@@ -199,22 +199,17 @@ int main(void) {
     if(enable_potentiometer==1){
         USBD_DeInit(&hUsbDeviceFS);
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+    }else
+    {
+        COM_manager_handle =osThreadNew(COM_manager, NULL, &COM_attributes);
+
     }
 
 
 
     osKernelInitialize();
 
-    if (enable_potentiometer == 1) {
-        //    osThreadNew(POT_manager, NULL, &POT_attributes);
 
-    }else
-    {
-        osThreadNew(COM_manager, NULL, &COM_attributes);
-
-    }
-
-    COM_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
     TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
   /* USER CODE END 2 */
   /* Init scheduler */
