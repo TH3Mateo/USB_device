@@ -84,7 +84,7 @@ osThreadId_t COM_manager_handle;
 const osThreadAttr_t COM_attributes = {
         .name = "COM",
         .stack_size = 128 * 2,
-        .priority = (osPriority_t) osPriorityNormal,
+        .priority = (osPriority_t) osPriorityAboveNormal1,
 };
 
 osThreadId_t LED_manager_attributes;
@@ -182,6 +182,7 @@ int main(void)
   MX_TIM1_Init();
   MX_USB_DEVICE_Init();
 
+
     /* USER CODE BEGIN 2 */
 
     uint32_t before = HAL_GetTick();
@@ -190,7 +191,6 @@ int main(void)
         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
         HAL_Delay(100);
         printf("waiting for connection \r \n ");
-        USBD_StatusTypeDef x = USBD_LL_DevConnected(&hUsbDeviceFS);
         if(hUsbDeviceFS.dev_state==USBD_STATE_CONFIGURED){
             enable_potentiometer = 0;
             HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
@@ -198,25 +198,18 @@ int main(void)
             break;
         }
     };
+
+    osKernelInitialize();
     if(enable_potentiometer==1){
         USBD_DeInit(&hUsbDeviceFS);
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
-    }
-
-
-
-    osKernelInitialize();
-
-    if (enable_potentiometer == 1) {
-        //    osThreadNew(POT_manager, NULL, &POT_attributes);
-
     }else
     {
-        osThreadNew(COM_manager, NULL, &COM_attributes);
+        COM_manager_handle = osThreadNew(COM_manager, NULL, &COM_attributes);
 
     }
 
-    COM_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
+
     TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
   /* USER CODE END 2 */
 
@@ -586,6 +579,7 @@ printf("waiting for data \r \n");
 // Read
 //                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
                     CDC_Transmit_FS(value, RX_BUFF_SIZE);
+                    break;
                 default:
                     printf("unknown command \r \n");
                     break;
@@ -679,10 +673,7 @@ void LED_manager(void *argument) {
     printf("LED manager started \r \n");
     printf("prev_bool: %d \r \n", prev_bool);
     while (1) {
-if(prev_bool!=hUsbDeviceFS.received_flag){
-            prev_bool = hUsbDeviceFS.received_flag;
-            printf("bool_state has changed \r \n");
-        }
+
 ////            xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
 //            HAL_GPIO_TogglePin(LED2.port, LED2.pin);
 ////            xSemaphoreGive(LED2.semaphore);

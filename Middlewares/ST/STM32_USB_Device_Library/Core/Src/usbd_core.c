@@ -576,7 +576,7 @@ USBD_StatusTypeDef USBD_LL_DevConnected(USBD_HandleTypeDef *pdev)
   /* Prevent unused argument compilation warning */
   UNUSED(pdev);
 
-  return USBD_OK;
+  return pdev->dev_connection_status;
 }
 
 /**
