@@ -20,7 +20,6 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "usb_device.h"
-#include "usbd_cdc_if.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -77,7 +76,12 @@ ADC_HandleTypeDef hadc1;
 I2C_HandleTypeDef hi2c1;
 
 /* Definitions for Blink */
-
+osThreadId_t BlinkHandle;
+const osThreadAttr_t Blink_attributes = {
+  .name = "Blink",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 /* USER CODE BEGIN PV */
 
 osThreadId_t COM_manager_handle;
@@ -134,10 +138,6 @@ void POT_manager(void *argument);
 /* USER CODE BEGIN 0 */
 // printf function
 
-/* USER CODE END 0 */
-
-
-
 uint8_t DataToSend[16];
 uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
@@ -149,6 +149,10 @@ MUTEX_digitPin BUILTIN_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_13
 MUTEX_digitPin EXTERN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
 uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
 uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
+
+/* USER CODE END 0 */
+
+
 
 int main(void) {
 
@@ -179,8 +183,8 @@ int main(void) {
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_ADC1_Init();
-  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+    MX_USB_DEVICE_Init();
 
     uint32_t before = HAL_GetTick();
     while((HAL_GetTick()-before)<CONNECTION_TIMEOUT){
@@ -212,7 +216,9 @@ int main(void) {
 
     TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
   /* USER CODE END 2 */
+
   /* Init scheduler */
+  osKernelInitialize();
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -399,8 +405,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1|GPIO_PIN_2, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
@@ -409,17 +414,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PA1 PA2 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-
-
 }
-
-
 
 /* USER CODE BEGIN 4 */
 
@@ -632,9 +633,18 @@ void LED_manager(void *argument) {
   * @retval None
   */
 /* USER CODE END Header_StartBlink */
-
-/* USER CODE END 5 */
-
+void StartBlink(void *argument)
+{
+  /* init code for USB_DEVICE */
+  MX_USB_DEVICE_Init();
+  /* USER CODE BEGIN 5 */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END 5 */
+}
 
 /**
   * @brief  Period elapsed callback in non blocking mode
