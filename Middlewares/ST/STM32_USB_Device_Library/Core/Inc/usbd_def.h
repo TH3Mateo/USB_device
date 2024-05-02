@@ -251,6 +251,7 @@ typedef struct _USBD_HandleTypeDef
   uint8_t                 dev_connection_status;
   uint8_t                 dev_test_mode;
   uint32_t                dev_remote_wakeup;
+  uint8_t                   received_flag;
 
   USBD_SetupReqTypedef    request;
   USBD_DescriptorsTypeDef *pDesc;
@@ -258,8 +259,6 @@ typedef struct _USBD_HandleTypeDef
   void                    *pClassData;
   void                    *pUserData;
   void                    *pData;
-  uint8_t               received_flag;
-
 } USBD_HandleTypeDef;
 
 /**
