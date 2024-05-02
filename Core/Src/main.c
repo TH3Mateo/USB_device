@@ -187,8 +187,8 @@ int main(void)
   MX_I2C1_Init();
   MX_ADC1_Init();
   MX_TIM1_Init();
-  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+    MX_USB_DEVICE_Init();
 
     uint32_t before = HAL_GetTick();
     while((HAL_GetTick()-before)<CONNECTION_TIMEOUT){
@@ -196,6 +196,7 @@ int main(void)
         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
         HAL_Delay(100);
         printf("waiting for connection \r \n ");
+        USBD_StatusTypeDef x = USBD_LL_DevConnected(&hUsbDeviceFS);
         if(hUsbDeviceFS.dev_state==USBD_STATE_CONFIGURED){
             enable_potentiometer = 0;
             HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
@@ -203,8 +204,6 @@ int main(void)
             break;
         }
     };
-
-    osKernelInitialize();
     if(enable_potentiometer==1){
         USBD_DeInit(&hUsbDeviceFS);
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
@@ -213,6 +212,9 @@ int main(void)
         COM_manager_handle = osThreadNew(COM_manager, NULL, &COM_attributes);
 
     }
+
+
+
 
 
     TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
@@ -239,7 +241,6 @@ int main(void)
 
   /* Create the thread(s) */
   /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -657,7 +658,10 @@ void LED_manager(void *argument) {
     printf("LED manager started \r \n");
     printf("prev_bool: %d \r \n", prev_bool);
     while (1) {
-
+if(prev_bool!=hUsbDeviceFS.received_flag){
+            prev_bool = hUsbDeviceFS.received_flag;
+            printf("bool_state has changed \r \n");
+        }
 ////            xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
 //            HAL_GPIO_TogglePin(LED2.port, LED2.pin);
 ////            xSemaphoreGive(LED2.semaphore);
