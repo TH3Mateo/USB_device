@@ -31,11 +31,10 @@
 #include "commands.h"
 #include "utils.h"
 #include "thermal_control.h"
-
+//#include "usbd_cdc_if.h"
 //#include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
 /* USER CODE END Includes */
-
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 int _write(int le, char *ptr, int len)
@@ -52,6 +51,7 @@ int _write(int le, char *ptr, int len)
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 I2C_HandleTypeDef hi2c1;
+
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
 /* USER CODE END PD */
@@ -60,7 +60,7 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 /* USER CODE BEGIN PM */
 typedef struct {
     SemaphoreHandle_t semaphore;
-    float value;
+    double value;
 } MUTEX_f;
 
 typedef struct {
@@ -75,6 +75,8 @@ ADC_HandleTypeDef hadc1;
 
 I2C_HandleTypeDef hi2c1;
 
+TIM_HandleTypeDef htim2;
+
 /* Definitions for Blink */
 osThreadId_t BlinkHandle;
 const osThreadAttr_t Blink_attributes = {
@@ -88,7 +90,7 @@ osThreadId_t COM_manager_handle;
 const osThreadAttr_t COM_attributes = {
         .name = "COM",
         .stack_size = 128 * 2,
-        .priority = (osPriority_t) osPriorityAboveNormal1,
+        .priority = (osPriority_t) osPriorityNormal,
 };
 
 osThreadId_t LED_manager_attributes;
@@ -118,6 +120,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_ADC1_Init(void);
+static void MX_TIM2_Init(void);
 void StartBlink(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -137,7 +140,6 @@ void POT_manager(void *argument);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 // printf function
-
 uint8_t DataToSend[16];
 uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
@@ -145,20 +147,20 @@ uint8_t MessageLength = 0;
 
 MUTEX_f ACTUAL_TEMP = {.semaphore = NULL, .value = 0};
 MUTEX_f TARGET_TEMP = {.semaphore = NULL, .value = 0};
-MUTEX_digitPin BUILTIN_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_13};
-MUTEX_digitPin EXTERN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_1};
-uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
-uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
+MUTEX_digitPin BLUE_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_5};
+MUTEX_digitPin RED_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_6};
+MUTEX_digitPin GREEN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_7};
 
 /* USER CODE END 0 */
 
-
-
-int main(void) {
-
-    /* USER CODE BEGIN 1 */
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
     uint8_t enable_potentiometer = 1;
-
 
 
   /* USER CODE END 1 */
@@ -175,7 +177,9 @@ int main(void) {
   /* Configure the system clock */
   SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
+
+
+    /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
 
@@ -183,66 +187,81 @@ int main(void) {
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_ADC1_Init();
+  MX_TIM2_Init();
+
   /* USER CODE BEGIN 2 */
     MX_USB_DEVICE_Init();
+    printf("waiting for connection \r \n ");
+    HAL_GPIO_WritePin(BLUE_LED.port, BLUE_LED.pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(RED_LED.port, RED_LED.pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GREEN_LED.port, GREEN_LED.pin, GPIO_PIN_SET);
 
     uint32_t before = HAL_GetTick();
     while((HAL_GetTick()-before)<CONNECTION_TIMEOUT){
 
-        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
+        HAL_GPIO_TogglePin(BLUE_LED.port, BLUE_LED.pin);
         HAL_Delay(100);
         printf("waiting for connection \r \n ");
         USBD_StatusTypeDef x = USBD_LL_DevConnected(&hUsbDeviceFS);
         if(hUsbDeviceFS.dev_state==USBD_STATE_CONFIGURED){
             enable_potentiometer = 0;
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
-            printf("waiting for connection \r \n");
-            break;
+            HAL_GPIO_WritePin(BLUE_LED.port, BLUE_LED.pin, GPIO_PIN_RESET);
+            printf("connected");
         }
     };
+
     if(enable_potentiometer==1){
         USBD_DeInit(&hUsbDeviceFS);
-        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
-    }else
-    {
-        COM_manager_handle =osThreadNew(COM_manager, NULL, &COM_attributes);
-
+        HAL_GPIO_WritePin(BLUE_LED.port, BLUE_LED.pin, GPIO_PIN_SET);
     }
 
 
 
     osKernelInitialize();
 
+    if (enable_potentiometer == 1) {
+        //    osThreadNew(POT_manager, NULL, &POT_attributes);
 
+    }else
+    {
+        osThreadNew(COM_manager, NULL, &COM_attributes);
+
+    }
+
+    COM_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
     TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
   /* USER CODE END 2 */
 
   /* Init scheduler */
   osKernelInitialize();
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/**
-* @}
-*/
-/**
-* @}
-*/
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* creation of Blink */
+  BlinkHandle = osThreadNew(StartBlink, NULL, &Blink_attributes);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
   osKernelStart();
@@ -390,6 +409,65 @@ static void MX_I2C1_Init(void)
 }
 
 /**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+    /* USER CODE BEGIN TIM2_Init 0 */
+
+    /* USER CODE END TIM2_Init 0 */
+
+    TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+    TIM_MasterConfigTypeDef sMasterConfig = {0};
+    TIM_OC_InitTypeDef sConfigOC = {0};
+
+    /* USER CODE BEGIN TIM2_Init 1 */
+
+    /* USER CODE END TIM2_Init 1 */
+    htim2.Instance = TIM2;
+    htim2.Init.Prescaler = 48-1;
+    htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim2.Init.Period = 100-1;
+    htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+    if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+    if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+    sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+    if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    sConfigOC.OCMode = TIM_OCMODE_PWM1;
+    sConfigOC.Pulse = 0;
+    sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+    sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+    if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    /* USER CODE BEGIN TIM2_Init 2 */
+
+    /* USER CODE END TIM2_Init 2 */
+    HAL_TIM_MspPostInit(&htim2);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -397,6 +475,8 @@ static void MX_I2C1_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+/* USER CODE BEGIN MX_GPIO_Init_1 */
+/* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
@@ -405,7 +485,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1|GPIO_PIN_2, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
@@ -413,13 +493,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA1 PA2 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  /*Configure GPIO pins : PA5 PA6 PA7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+
+
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+    GPIO_InitStruct.Pin = GPIO_PIN_2;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;  // Alternate Function Push-Pull
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;
+
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -430,31 +523,31 @@ static void MX_GPIO_Init(void)
 
 void COM_manager(void *argument) {
     uint32_t len = 32;
-    uint8_t feedback[RX_BUFF_SIZE];
+    char feedback[RX_BUFF_SIZE];
     printf("COM manager started \r \n");
-    USBD_CDC_SetRxBuffer(&hUsbDeviceFS, CDC_RX_Buffer);
     printf("before while loop \r \n");
 //    extern uint8_t received_bool;
     while (1) {
 
-printf("waiting for data \r \n");
+//printf("waiting for data \r \n");
         if (hUsbDeviceFS.received_flag == 0x01) {
+            HAL_Delay(1);
 
 
-            printf("received command: %02X \r \n", CDC_RX_Buffer[0]);
+            printf("received command: %02X \r \n", UserRxBufferFS[0]);
             for (int i = 0; i < RX_BUFF_SIZE; i++) {
-                printf("%02X ", CDC_RX_Buffer[i]);
+                printf("%02X ", UserRxBufferFS[i]);
             }
-            switch (CDC_RX_Buffer[0]) {
+            switch (UserRxBufferFS[0]) {
                 case SET_LED_STATE:
-                    switch(CDC_RX_Buffer[RX_BUFF_SIZE - 2]){
+                    switch(UserRxBufferFS[RX_BUFF_SIZE - 2]){
                         case 0x01:
-                            HAL_GPIO_WritePin(BUILTIN_LED.port, BUILTIN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 1]);
+                            HAL_GPIO_WritePin(RED_LED.port, RED_LED.pin, !UserRxBufferFS[RX_BUFF_SIZE - 1]);
                             strcpy(feedback+(RX_BUFF_SIZE-12), "BL switched");
 
                             break;
                         case 0x02:
-                            HAL_GPIO_WritePin(EXTERN_LED.port, EXTERN_LED.pin, CDC_RX_Buffer[RX_BUFF_SIZE - 1]);
+                            HAL_GPIO_WritePin(GREEN_LED.port, GREEN_LED.pin, !UserRxBufferFS[RX_BUFF_SIZE - 1]);
                             strcpy(feedback+(RX_BUFF_SIZE-12), "EL switched");
                             break;
                         default:
@@ -470,7 +563,7 @@ printf("waiting for data \r \n");
                     char value[RX_BUFF_SIZE];
 // Write
                     memset(value, 0x00, RX_BUFF_SIZE);
-                    * ((float *) (value + (sizeof(value) - sizeof(float)))) = ACTUAL_TEMP.value;
+                    * ((double *) (value + (sizeof(value) - sizeof(double)))) = ACTUAL_TEMP.value;
                     value[0]= REQUEST_ACTUAL_TEMPERATURE;
 // Read
 //                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
@@ -479,11 +572,11 @@ printf("waiting for data \r \n");
                     break;
                 case SET_TARGET_TEMPERATURE:
                     printf("setting target temperature \r \n");
-                    TARGET_TEMP.value = * ((float *) (CDC_RX_Buffer + (sizeof(CDC_RX_Buffer) - sizeof(float))));
-// Write
+//                    float ee =
+                    TARGET_TEMP.value = * ((float *) (UserRxBufferFS + (sizeof(UserRxBufferFS) - sizeof(float))));
                     memset(feedback, 0x00, RX_BUFF_SIZE);
-                    * ((float *) (feedback + (sizeof(feedback) - sizeof(float)))) = TARGET_TEMP.value;
-                    feedback[0]= SET_TARGET_TEMPERATURE;;
+                    * ((double *) (feedback + (sizeof(feedback) - sizeof(double)))) = TARGET_TEMP.value;
+                    feedback[0]= SET_TARGET_TEMPERATURE;
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
 
                     break;
@@ -492,7 +585,7 @@ printf("waiting for data \r \n");
                     char h_value[RX_BUFF_SIZE];
 // Write
                     memset(h_value, 0x20, RX_BUFF_SIZE);
-                    * ((int *) (h_value + (sizeof(h_value) - sizeof(int)))) = ((TIM1->CCR1)/MAX_PWM_VALUE)*100;
+                    * ((int *) (h_value + (sizeof(h_value) - sizeof(int)))) = ((TIM2->CCR2)/MAX_PWM_VALUE)*100;
 
 // Read
 //                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
@@ -501,7 +594,7 @@ printf("waiting for data \r \n");
                     printf("unknown command \r \n");
                     break;
             }
-            CDC_RX_Buffer[0]=0;
+
             memset(feedback, 0x20, RX_BUFF_SIZE);
             hUsbDeviceFS.received_flag = 0x00;
 //        osDelay(100);
@@ -519,6 +612,10 @@ void POT_manager(void *argument) {
 }
 
 void TEMP_manager(void *argument) {
+    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 100-0);
+
+    HAL_ADC_Start(&hadc1);
     uint16_t dac_out;
     float prev_error = 0;
     float integral = 0;
@@ -531,19 +628,27 @@ void TEMP_manager(void *argument) {
 
         if(HAL_GetTick()%TEMP_CORRECTION_INTERVAL==0) {
 //            xSemaphoreTake(ACTUAL_TEMP.semaphore, portMAX_DELAY);
-            ACTUAL_TEMP.value = calc_temp(HAL_ADC_GetValue(&hadc1));
+            HAL_ADC_Start(&hadc1);
+            HAL_Delay(10);
+            if (HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK) {
+                ACTUAL_TEMP.value = calc_temp(HAL_ADC_GetValue(&hadc1));
+
+            }
+            HAL_ADC_Stop(&hadc1);
 
             time_variable = HAL_GetTick()-time_variable;
-            error = TARGET_TEMP.value - ACTUAL_TEMP.value;
+            error = TARGET_TEMP.value==0 ? 0.0 : (TARGET_TEMP.value - ACTUAL_TEMP.value);
             integral = prev_integral + error * TEMP_CORRECTION_INTERVAL;
 
-            dac_out = PID_PROPORTIONAL*error + PID_INTEGRAL*integral + PID_DERIVATIVE*((error - prev_error ) / TEMP_CORRECTION_INTERVAL);
+//            dac_out = PID_PROPORTIONAL*error + PID_INTEGRAL*integral + PID_DERIVATIVE*((error - prev_error ) / TEMP_CORRECTION_INTERVAL);
+            dac_out =  (TARGET_TEMP.value   - ACTUAL_TEMP.value)*100/ACTUAL_TEMP.value;
             prev_error = error;
             prev_integral = integral;
             time_variable = HAL_GetTick();
 
+            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, dac_out > 100 ? 0:(100-dac_out));
 
-            TIM1->CCR1 = dac_out*MAX_PWM_VALUE;
+
 
 
         }
@@ -591,10 +696,10 @@ void LED_manager(void *argument) {
     printf("LED manager started \r \n");
     printf("prev_bool: %d \r \n", prev_bool);
     while (1) {
-if(prev_bool!=hUsbDeviceFS.received_flag){
-            prev_bool = hUsbDeviceFS.received_flag;
-            printf("bool_state has changed \r \n");
-        }
+//if(prev_bool!=hUsbDeviceFS.received_flag){
+//            prev_bool = hUsbDeviceFS.received_flag;
+//            printf("bool_state has changed \r \n");
+//        }
 ////            xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
 //            HAL_GPIO_TogglePin(LED2.port, LED2.pin);
 ////            xSemaphoreGive(LED2.semaphore);

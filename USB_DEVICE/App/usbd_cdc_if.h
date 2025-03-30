@@ -30,6 +30,11 @@
 #include "usbd_cdc.h"
 
 /* USER CODE BEGIN INCLUDE */
+#include "configurables.h"
+
+//uint8_t CDC_RX_Buffer[RX_BUFF_SIZE];
+//uint8_t CDC_TX_Buffer[RX_BUFF_SIZE];
+
 
 /* USER CODE END INCLUDE */
 
@@ -48,10 +53,10 @@
   * @{
   */
 /* Define size for the receive and transmit buffer over CDC */
-#define APP_RX_DATA_SIZE  1024
-#define APP_TX_DATA_SIZE  1024
+#define APP_RX_DATA_SIZE  16
+#define APP_TX_DATA_SIZE  16
 /* USER CODE BEGIN EXPORTED_DEFINES */
-
+extern uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
 /* USER CODE END EXPORTED_DEFINES */
 
 /**

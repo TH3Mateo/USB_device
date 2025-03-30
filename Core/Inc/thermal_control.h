@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-float calc_temp(uint32_t V);
+double calc_temp(uint32_t V);
 
 uint16_t calc_dac_value(float error,float integral, float derivative);
 
