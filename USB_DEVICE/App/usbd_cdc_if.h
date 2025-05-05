@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
+
 #ifndef __USBD_CDC_IF_H__
 #define __USBD_CDC_IF_H__
 
@@ -53,8 +54,8 @@
   * @{
   */
 /* Define size for the receive and transmit buffer over CDC */
-#define APP_RX_DATA_SIZE  16
-#define APP_TX_DATA_SIZE  16
+#define APP_RX_DATA_SIZE  1024
+#define APP_TX_DATA_SIZE  1024
 /* USER CODE BEGIN EXPORTED_DEFINES */
 extern uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
 /* USER CODE END EXPORTED_DEFINES */

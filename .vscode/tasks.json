@@ -1,0 +1,53 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "build all",
+			"command": "make -j16",
+		},
+		{
+			"label": "start gdb",
+			"type": "shell",
+			"command": "make debug",
+			"isBackground": true,
+	
+		  "problemMatcher": {
+			"pattern": 
+			  {
+				"regexp": ".*:.*",
+				"file": 1,
+				"location": 2,
+				"message": 3
+			  },
+			
+			"background": {
+			  "activeOnStart": true,
+			  "beginsPattern": ".*:.*",
+			  "endsPattern":  ".*:.*",
+			}
+		  },
+		},
+		{
+			"label": "kill OpenOCD",
+			"type": "shell",
+			"command": "taskkill",
+			"args": [
+			  "/IM",
+			  "openocd.exe",
+			  "/F"
+			],
+			"problemMatcher": {
+		"pattern": [
+		  {
+			"regexp": ".",
+			"file": 1,
+			"location": 2,
+			"message": 3
+		  }
+		],
+	  
+	  }
+		  },
+	]
+}

@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "cwd": "${workspaceRoot}",
+        "executable": "${workspaceFolder}/build/${workspaceFolderBasename}.elf",
+        "name": "Debug with OpenOCD",
+        "request": "launch",
+        "type": "cortex-debug",
+        "servertype": "openocd",
+        "configFiles": ["interface/stlink.cfg","target/stm32f4x.cfg"  ],
+        "searchDir": [],
+        "runToEntryPoint": "main",
+        "showDevDebugOutput": "none"
+      },
+      // {
+      //   "type": "cppdbg",
+      //   "request": "launch",
+      //   "name": "Launch STM32 Program",
+      //   "program": "${workspaceFolder}/build/generated.elf",
+      //   "cwd": "${workspaceFolder}",
+      //   "miDebuggerPath": "arm-none-eabi-gdb",
+      //   "miDebuggerServerAddress": "localhost:3333",
+      //   "setupCommands": [
+                
+      //     // {"text": "set mem inaccessible-by-default off"},
+      //     // {"text": "set remotetimeout unlimited"},
+      //     // {"text": "target extended-remote localhost:3333"},
+      //     {"text":"b main"}, 
+
+      // ],
+      //   "serverLaunchTimeout": 10000,
+      //   "stopAtEntry": true,
+      //   "preLaunchTask": "start gdb",
+      //   "postDebugTask": "kill OpenOCD"
+      // },
+
+    ],
+  }

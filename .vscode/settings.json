@@ -1,0 +1,27 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "stm32f4xx_hal_gpio.h": "c",
+        "stm32f4xx_hal_pcd.h": "c",
+        "dshot.h": "c",
+        "stm32f4xx_hal.h": "c",
+        "stm32_hal_legacy.h": "c",
+        "stm32f4xx_hal_conf.h": "c",
+        "stm32f4xx.h": "c",
+        "stm32f4xx_hal_tim.h": "c",
+        "stm32f4xx_hal_def.h": "c",
+        "tim.h": "c",
+        "type_traits": "c"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.compilerPath": "arm-none-eabi-gcc",
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/Inc",
+        "${workspaceFolder}/Drivers",
+        "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
+        "${workspaceFolder}/Drivers/CMSIS/Include",
+        "${workspaceFolder}/Core/Inc"
+    ],
+    "makefile.configureOnOpen": true,
+}
