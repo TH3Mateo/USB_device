@@ -1,0 +1,342 @@
+ARM GAS  C:\Users\M\AppData\Local\Temp\ccqThmbd.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"thermal_control.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	__aeabi_dmul
+  20              		.global	__aeabi_ddiv
+  21              		.section	.text.round_to_two_decimal_places,"ax",%progbits
+  22              		.align	1
+  23              		.global	round_to_two_decimal_places
+  24              		.syntax unified
+  25              		.thumb
+  26              		.thumb_func
+  28              	round_to_two_decimal_places:
+  29              	.LVL0:
+  30              	.LFB0:
+  31              		.file 1 "Core/Src/thermal_control.c"
+   1:Core/Src/thermal_control.c **** //
+   2:Core/Src/thermal_control.c **** // Created by M on 25/10/2023.
+   3:Core/Src/thermal_control.c **** //
+   4:Core/Src/thermal_control.c **** 
+   5:Core/Src/thermal_control.c **** #include "thermal_control.h"
+   6:Core/Src/thermal_control.c **** #include "math.h"
+   7:Core/Src/thermal_control.c **** #include "configurables.h"
+   8:Core/Src/thermal_control.c **** 
+   9:Core/Src/thermal_control.c **** float logR2, R2;
+  10:Core/Src/thermal_control.c **** 
+  11:Core/Src/thermal_control.c **** int out = 0;
+  12:Core/Src/thermal_control.c **** #define BETA 3950.0
+  13:Core/Src/thermal_control.c **** #define T_25 298.15
+  14:Core/Src/thermal_control.c **** #define R1 96600.0
+  15:Core/Src/thermal_control.c **** #define R_T25 100000.0
+  16:Core/Src/thermal_control.c **** 
+  17:Core/Src/thermal_control.c **** 
+  18:Core/Src/thermal_control.c **** double T;
+  19:Core/Src/thermal_control.c **** 
+  20:Core/Src/thermal_control.c **** double round_to_two_decimal_places(double value) {
+  32              		.loc 1 20 50 view -0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  36              		.loc 1 20 50 is_stmt 0 view .LVU1
+  37 0000 08B5     		push	{r3, lr}
+  38              	.LCFI0:
+ARM GAS  C:\Users\M\AppData\Local\Temp\ccqThmbd.s 			page 2
+
+
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 3, -8
+  41              		.cfi_offset 14, -4
+  42 0002 51EC100B 		vmov	r0, r1, d0
+  21:Core/Src/thermal_control.c ****     return round(value * 100.0) / 100.0;
+  43              		.loc 1 21 5 is_stmt 1 view .LVU2
+  44              		.loc 1 21 12 is_stmt 0 view .LVU3
+  45 0006 0022     		movs	r2, #0
+  46 0008 074B     		ldr	r3, .L3
+  47 000a FFF7FEFF 		bl	__aeabi_dmul
+  48              	.LVL1:
+  49              		.loc 1 21 12 view .LVU4
+  50 000e 41EC100B 		vmov	d0, r0, r1
+  51 0012 FFF7FEFF 		bl	round
+  52              	.LVL2:
+  53 0016 51EC100B 		vmov	r0, r1, d0
+  54              		.loc 1 21 33 view .LVU5
+  55 001a 0022     		movs	r2, #0
+  56 001c 024B     		ldr	r3, .L3
+  57 001e FFF7FEFF 		bl	__aeabi_ddiv
+  58              	.LVL3:
+  22:Core/Src/thermal_control.c **** }
+  59              		.loc 1 22 1 view .LVU6
+  60 0022 41EC100B 		vmov	d0, r0, r1
+  61 0026 08BD     		pop	{r3, pc}
+  62              	.L4:
+  63              		.align	2
+  64              	.L3:
+  65 0028 00005940 		.word	1079574528
+  66              		.cfi_endproc
+  67              	.LFE0:
+  69              		.global	__aeabi_ui2d
+  70              		.global	__aeabi_dsub
+  71              		.global	__aeabi_dadd
+  72              		.section	.text.calc_temp,"ax",%progbits
+  73              		.align	1
+  74              		.global	calc_temp
+  75              		.syntax unified
+  76              		.thumb
+  77              		.thumb_func
+  79              	calc_temp:
+  80              	.LVL4:
+  81              	.LFB1:
+  23:Core/Src/thermal_control.c **** double calc_temp(uint32_t adc)
+  24:Core/Src/thermal_control.c **** {
+  82              		.loc 1 24 1 is_stmt 1 view -0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86              		.loc 1 24 1 is_stmt 0 view .LVU8
+  87 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  88              	.LCFI1:
+  89              		.cfi_def_cfa_offset 24
+  90              		.cfi_offset 3, -24
+  91              		.cfi_offset 4, -20
+  92              		.cfi_offset 5, -16
+  93              		.cfi_offset 6, -12
+ARM GAS  C:\Users\M\AppData\Local\Temp\ccqThmbd.s 			page 3
+
+
+  94              		.cfi_offset 7, -8
+  95              		.cfi_offset 14, -4
+  25:Core/Src/thermal_control.c ****     float adc_voltage = (float)adc * 3.3 / 4095;
+  96              		.loc 1 25 5 is_stmt 1 view .LVU9
+  97              	.LVL5:
+  26:Core/Src/thermal_control.c ****     double r_ntc = R1 * (adc/4096.0)/(1-(adc/4096.0));
+  98              		.loc 1 26 5 view .LVU10
+  99              		.loc 1 26 29 is_stmt 0 view .LVU11
+ 100 0002 FFF7FEFF 		bl	__aeabi_ui2d
+ 101              	.LVL6:
+ 102              		.loc 1 26 29 view .LVU12
+ 103 0006 0022     		movs	r2, #0
+ 104 0008 274B     		ldr	r3, .L7+40
+ 105 000a FFF7FEFF 		bl	__aeabi_dmul
+ 106              	.LVL7:
+ 107 000e 0646     		mov	r6, r0
+ 108 0010 0F46     		mov	r7, r1
+ 109              		.loc 1 26 23 view .LVU13
+ 110 0012 1BA3     		adr	r3, .L7
+ 111 0014 D3E90023 		ldrd	r2, [r3]
+ 112 0018 FFF7FEFF 		bl	__aeabi_dmul
+ 113              	.LVL8:
+ 114 001c 0446     		mov	r4, r0
+ 115 001e 0D46     		mov	r5, r1
+ 116              		.loc 1 26 40 view .LVU14
+ 117 0020 3246     		mov	r2, r6
+ 118 0022 3B46     		mov	r3, r7
+ 119 0024 0020     		movs	r0, #0
+ 120 0026 2149     		ldr	r1, .L7+44
+ 121 0028 FFF7FEFF 		bl	__aeabi_dsub
+ 122              	.LVL9:
+ 123 002c 0246     		mov	r2, r0
+ 124 002e 0B46     		mov	r3, r1
+ 125              		.loc 1 26 12 view .LVU15
+ 126 0030 2046     		mov	r0, r4
+ 127 0032 2946     		mov	r1, r5
+ 128 0034 FFF7FEFF 		bl	__aeabi_ddiv
+ 129              	.LVL10:
+  27:Core/Src/thermal_control.c **** 
+  28:Core/Src/thermal_control.c ****     // Calculate temperature using Beta formula
+  29:Core/Src/thermal_control.c ****     double temp_kelvin = BETA / (log(r_ntc / R_T25) + (BETA / T_25));
+ 130              		.loc 1 29 5 is_stmt 1 view .LVU16
+ 131              		.loc 1 29 34 is_stmt 0 view .LVU17
+ 132 0038 13A3     		adr	r3, .L7+8
+ 133 003a D3E90023 		ldrd	r2, [r3]
+ 134 003e FFF7FEFF 		bl	__aeabi_ddiv
+ 135              	.LVL11:
+ 136              		.loc 1 29 34 view .LVU18
+ 137 0042 41EC100B 		vmov	d0, r0, r1
+ 138 0046 FFF7FEFF 		bl	log
+ 139              	.LVL12:
+ 140 004a 51EC100B 		vmov	r0, r1, d0
+ 141              		.loc 1 29 53 view .LVU19
+ 142 004e 10A3     		adr	r3, .L7+16
+ 143 0050 D3E90023 		ldrd	r2, [r3]
+ 144 0054 FFF7FEFF 		bl	__aeabi_dadd
+ 145              	.LVL13:
+ARM GAS  C:\Users\M\AppData\Local\Temp\ccqThmbd.s 			page 4
+
+
+ 146 0058 0246     		mov	r2, r0
+ 147 005a 0B46     		mov	r3, r1
+ 148              		.loc 1 29 12 view .LVU20
+ 149 005c 0EA1     		adr	r1, .L7+24
+ 150 005e D1E90001 		ldrd	r0, [r1]
+ 151 0062 FFF7FEFF 		bl	__aeabi_ddiv
+ 152              	.LVL14:
+  30:Core/Src/thermal_control.c ****     return round_to_two_decimal_places( temp_kelvin - 273.15);  // Convert to Celsius
+ 153              		.loc 1 30 5 is_stmt 1 view .LVU21
+ 154              		.loc 1 30 12 is_stmt 0 view .LVU22
+ 155 0066 0EA3     		adr	r3, .L7+32
+ 156 0068 D3E90023 		ldrd	r2, [r3]
+ 157 006c FFF7FEFF 		bl	__aeabi_dsub
+ 158              	.LVL15:
+ 159              		.loc 1 30 12 view .LVU23
+ 160 0070 41EC100B 		vmov	d0, r0, r1
+ 161 0074 FFF7FEFF 		bl	round_to_two_decimal_places
+ 162              	.LVL16:
+  31:Core/Src/thermal_control.c **** 
+  32:Core/Src/thermal_control.c **** }
+ 163              		.loc 1 32 1 view .LVU24
+ 164 0078 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 165              	.L8:
+ 166 007a 00BFAFF3 		.align	3
+ 166      0080
+ 167              	.L7:
+ 168 0080 00000000 		.word	0
+ 169 0084 8095F740 		.word	1089967488
+ 170 0088 00000000 		.word	0
+ 171 008c 006AF840 		.word	1090021888
+ 172 0090 10E0B7AF 		.word	-1346904048
+ 173 0094 297F2A40 		.word	1076526889
+ 174 0098 00000000 		.word	0
+ 175 009c 00DCAE40 		.word	1085201408
+ 176 00a0 66666666 		.word	1717986918
+ 177 00a4 66127140 		.word	1081152102
+ 178 00a8 0000303F 		.word	1060110336
+ 179 00ac 0000F03F 		.word	1072693248
+ 180              		.cfi_endproc
+ 181              	.LFE1:
+ 183              		.section	.text.calc_dac_value,"ax",%progbits
+ 184              		.align	1
+ 185              		.global	calc_dac_value
+ 186              		.syntax unified
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	calc_dac_value:
+ 191              	.LVL17:
+ 192              	.LFB2:
+  33:Core/Src/thermal_control.c **** 
+  34:Core/Src/thermal_control.c **** uint16_t calc_dac_value(float error,float integral, float derivative){
+ 193              		.loc 1 34 70 is_stmt 1 view -0
+ 194              		.cfi_startproc
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              		@ link register save eliminated.
+  35:Core/Src/thermal_control.c ****     //calculating output with PID formula
+ARM GAS  C:\Users\M\AppData\Local\Temp\ccqThmbd.s 			page 5
+
+
+  36:Core/Src/thermal_control.c ****     double dac_out = PID_PROPORTIONAL * error + PID_INTEGRAL * integral + PID_DERIVATIVE * derivati
+ 198              		.loc 1 36 5 view .LVU26
+ 199              		.loc 1 36 39 is_stmt 0 view .LVU27
+ 200 0000 DFED097A 		vldr.32	s15, .L10
+ 201 0004 20EE270A 		vmul.f32	s0, s0, s15
+ 202              	.LVL18:
+ 203              		.loc 1 36 62 view .LVU28
+ 204 0008 9FED087A 		vldr.32	s14, .L10+4
+ 205 000c 60EE870A 		vmul.f32	s1, s1, s14
+ 206              	.LVL19:
+ 207              		.loc 1 36 47 view .LVU29
+ 208 0010 30EE200A 		vadd.f32	s0, s0, s1
+ 209              		.loc 1 36 90 view .LVU30
+ 210 0014 21EE271A 		vmul.f32	s2, s2, s15
+ 211              	.LVL20:
+ 212              		.loc 1 36 73 view .LVU31
+ 213 0018 30EE010A 		vadd.f32	s0, s0, s2
+ 214              	.LVL21:
+  37:Core/Src/thermal_control.c **** 
+  38:Core/Src/thermal_control.c **** 
+  39:Core/Src/thermal_control.c **** 
+  40:Core/Src/thermal_control.c **** 
+  41:Core/Src/thermal_control.c ****     return (uint16_t)dac_out;
+ 215              		.loc 1 41 5 is_stmt 1 view .LVU32
+ 216              		.loc 1 41 12 is_stmt 0 view .LVU33
+ 217 001c BCEEC00A 		vcvt.u32.f32	s0, s0
+ 218              	.LVL22:
+  42:Core/Src/thermal_control.c **** };
+ 219              		.loc 1 42 1 view .LVU34
+ 220 0020 10EE103A 		vmov	r3, s0	@ int
+ 221 0024 98B2     		uxth	r0, r3
+ 222 0026 7047     		bx	lr
+ 223              	.L11:
+ 224              		.align	2
+ 225              	.L10:
+ 226 0028 CDCCCC3D 		.word	1036831949
+ 227 002c 0AD7233C 		.word	1008981770
+ 228              		.cfi_endproc
+ 229              	.LFE2:
+ 231              		.global	T
+ 232              		.global	out
+ 233              		.global	R2
+ 234              		.global	logR2
+ 235              		.section	.bss.R2,"aw",%nobits
+ 236              		.align	2
+ 239              	R2:
+ 240 0000 00000000 		.space	4
+ 241              		.section	.bss.T,"aw",%nobits
+ 242              		.align	3
+ 245              	T:
+ 246 0000 00000000 		.space	8
+ 246      00000000 
+ 247              		.section	.bss.logR2,"aw",%nobits
+ 248              		.align	2
+ 251              	logR2:
+ 252 0000 00000000 		.space	4
+ 253              		.section	.bss.out,"aw",%nobits
+ARM GAS  C:\Users\M\AppData\Local\Temp\ccqThmbd.s 			page 6
+
+
+ 254              		.align	2
+ 257              	out:
+ 258 0000 00000000 		.space	4
+ 259              		.text
+ 260              	.Letext0:
+ 261              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 262              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 263              		.file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ARM GAS  C:\Users\M\AppData\Local\Temp\ccqThmbd.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 thermal_control.c
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:22     .text.round_to_two_decimal_places:00000000 $t
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:28     .text.round_to_two_decimal_places:00000000 round_to_two_decimal_places
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:65     .text.round_to_two_decimal_places:00000028 $d
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:73     .text.calc_temp:00000000 $t
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:79     .text.calc_temp:00000000 calc_temp
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:168    .text.calc_temp:00000080 $d
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:184    .text.calc_dac_value:00000000 $t
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:190    .text.calc_dac_value:00000000 calc_dac_value
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:226    .text.calc_dac_value:00000028 $d
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:245    .bss.T:00000000 T
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:257    .bss.out:00000000 out
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:239    .bss.R2:00000000 R2
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:251    .bss.logR2:00000000 logR2
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:236    .bss.R2:00000000 $d
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:242    .bss.T:00000000 $d
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:248    .bss.logR2:00000000 $d
+C:\Users\M\AppData\Local\Temp\ccqThmbd.s:254    .bss.out:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_dmul
+__aeabi_ddiv
+round
+__aeabi_ui2d
+__aeabi_dsub
+__aeabi_dadd
+log

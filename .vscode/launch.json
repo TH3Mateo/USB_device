@@ -8,7 +8,7 @@
         "request": "launch",
         "type": "cortex-debug",
         "servertype": "openocd",
-        "configFiles": ["interface/stlink.cfg","target/stm32f4x.cfg"  ],
+        "configFiles": ["${workspaceFolder}/openocd.cfg"],
         "searchDir": [],
         "runToEntryPoint": "main",
         "showDevDebugOutput": "none"

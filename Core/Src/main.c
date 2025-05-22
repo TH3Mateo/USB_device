@@ -94,7 +94,7 @@ const osThreadAttr_t COM_attributes = {
         .priority = (osPriority_t) osPriorityNormal,
 };
 
-osThreadId_t LED_manager_attributes;
+osThreadId_t LED_manager_handle;
 const osThreadAttr_t LED_attributes = {
         .name = "LED",
         .stack_size = 32,
@@ -108,7 +108,7 @@ const osThreadAttr_t TEMP_attributes = {
         .priority = (osPriority_t) osPriorityNormal,
 };
 
-osThreadId_t POT_manager_attributes;
+osThreadId_t POT_manager_handle;
 const osThreadAttr_t POT_attributes = {
         .name = "POT",
         .stack_size = 128 * 1,
@@ -190,7 +190,7 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
     MX_USB_DEVICE_Init();
-    printf("waiting for connection \r \n ");
+    // printf("waiting for connection \r \n ");
     HAL_GPIO_WritePin(BLUE_LED.port, BLUE_LED.pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(RED_LED.port, RED_LED.pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(GREEN_LED.port, GREEN_LED.pin, GPIO_PIN_SET);
@@ -299,9 +299,9 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 25;
-  RCC_OscInitStruct.PLL.PLLN = 384;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV6;
-  RCC_OscInitStruct.PLL.PLLQ = 8;
+  RCC_OscInitStruct.PLL.PLLN = 192;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
+  RCC_OscInitStruct.PLL.PLLQ = 4;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -316,7 +316,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -513,7 +513,7 @@ void COM_manager(void *argument) {
     while (1) {
 
 //printf("waiting for data \r \n");
-        if (hUsbDeviceFS.received_flag == 0x01) {
+        if (hUsbDeviceFS.dev_connection_status == 0x01) {
             HAL_Delay(1);
 
 
@@ -579,7 +579,7 @@ void COM_manager(void *argument) {
             }
 
             memset(feedback, 0x20, RX_BUFF_SIZE);
-            hUsbDeviceFS.received_flag = 0x00;
+            hUsbDeviceFS.dev_connection_status = 0x00;
 //        osDelay(100);
         }
     }
@@ -675,12 +675,12 @@ void LED_manager(void *argument) {
 //
 
 void LED_manager(void *argument) {
-    uint8_t prev_bool = hUsbDeviceFS.received_flag;
+    uint8_t prev_bool = hUsbDeviceFS.dev_connection_status;
     printf("LED manager started \r \n");
     printf("prev_bool: %d \r \n", prev_bool);
     while (1) {
-//if(prev_bool!=hUsbDeviceFS.received_flag){
-//            prev_bool = hUsbDeviceFS.received_flag;
+//if(prev_bool!=hUsbDeviceFS.dev_connection_status){
+//            prev_bool = hUsbDeviceFS.dev_connection_status;
 //            printf("bool_state has changed \r \n");
 //        }
 ////            xSemaphoreTake(LED2.semaphore, portMAX_DELAY);

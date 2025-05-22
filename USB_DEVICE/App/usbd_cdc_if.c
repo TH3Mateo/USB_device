@@ -263,7 +263,7 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 6 */
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-  hUsbDeviceFS.received_flag =  1;
+  hUsbDeviceFS.dev_connection_status =  1;
     memcpy(UserRxBufferFS, Buf, sizeof(&Buf));
 //  printf("setting received flag to %d \r \n", hUsbDeviceFS.received_flag);
 //    for (int i = 0; i < *Len; i++) {

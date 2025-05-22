@@ -11,7 +11,10 @@
         "stm32f4xx_hal_tim.h": "c",
         "stm32f4xx_hal_def.h": "c",
         "tim.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "usbd_cdc_if.h": "c",
+        "cmsis_os.h": "c",
+        "utils.h": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "C_Cpp.default.compilerPath": "arm-none-eabi-gcc",
@@ -24,4 +27,5 @@
         "${workspaceFolder}/Core/Inc"
     ],
     "makefile.configureOnOpen": true,
+    "cortex-debug.variableUseNaturalFormat": true,
 }
