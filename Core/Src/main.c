@@ -206,6 +206,7 @@ int main(void)
             enable_potentiometer = 0;
             HAL_GPIO_WritePin(BLUE_LED.port, BLUE_LED.pin, GPIO_PIN_RESET);
             printf("connected");
+            break;
         }
     };
 
@@ -567,12 +568,13 @@ void COM_manager(void *argument) {
                     printf("sending actual heater state \r \n");
                     char h_value[RX_BUFF_SIZE];
 // Write
-                    memset(h_value, 0x20, RX_BUFF_SIZE);
-                    * ((int *) (h_value + (sizeof(h_value) - sizeof(int)))) = ((TIM2->CCR2)/MAX_PWM_VALUE)*100;
-
+                    memset(h_value, 0x00, RX_BUFF_SIZE);
+                    // * ((uint8_t *) (h_value + (sizeof(h_value) - sizeof(uint8_t)))) = ;
+                    h_value[0]= REQUEST_ACTUAL_HEATER_STATE;
+                    h_value[RX_BUFF_SIZE - 1] = 25;
 // Read
 //                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
-                    CDC_Transmit_FS(value, RX_BUFF_SIZE);
+                    CDC_Transmit_FS(h_value, RX_BUFF_SIZE);
                 default:
                     printf("unknown command \r \n");
                     break;

@@ -3,7 +3,7 @@
     "configurations": [
       {
         "cwd": "${workspaceRoot}",
-        "executable": "${workspaceFolder}/build/${workspaceFolderBasename}.elf",
+        "executable": "${workspaceFolder}/build/USB.elf",
         "name": "Debug with OpenOCD",
         "request": "launch",
         "type": "cortex-debug",
