@@ -1,10 +1,37 @@
 {
     "version": "0.2.0",
     "configurations": [
+            {
+        "name": "JLink",
+        "cwd": "${workspaceFolder}",
+        "executable": "${workspaceFolder}/build/${workspaceFolderBasename}.elf",
+        "request": "launch",
+        "type": "cortex-debug",
+        "device": "STM32F411CC",
+        "runToEntryPoint": "main",
+        "showDevDebugOutput": "none",
+        "servertype": "jlink",
+        "swoConfig": {
+          "enabled": true,
+          "cpuFrequency": 48000000,
+          "swoFrequency": 1000000,
+          "source": "probe",
+          "port": 0,
+          "decoders": [
+            {
+              "label": "SWO output",
+              "type": "console",
+              "port": 0,
+              "showOnstartup": true,
+              "encoding":"ascii",
+          }
+          ]
+        }
+      },
       {
         "cwd": "${workspaceRoot}",
         "executable": "${workspaceFolder}/build/${workspaceFolderBasename}.elf",
-        "name": "Debug with OpenOCD",
+        "name": "OpenOCD",
         "request": "launch",
         "type": "cortex-debug",
         "servertype": "openocd",

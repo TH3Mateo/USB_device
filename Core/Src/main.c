@@ -19,6 +19,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "SEGGER_SYSVIEW.h"
+#include "SEGGER_RTT.h"
 #include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -26,6 +28,7 @@
 #include "semphr.h"
 #include "usbd_cdc_if.h"
 #include "usbd_core.h"
+#include "VL53L0X.h"
 #include "stdio.h"
 #include "configurables.h"
 #include "commands.h"
@@ -38,15 +41,6 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-int _write(int le, char *ptr, int len)
-{
-    int DataIdx;
-    for(DataIdx = 0; DataIdx < len; DataIdx++)
-    {
-        ITM_SendChar(*ptr++);
-    }
-    return len;
-}
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -79,13 +73,6 @@ I2C_HandleTypeDef hi2c1;
 TIM_HandleTypeDef htim2;
 
 /* Definitions for Blink */
-osThreadId_t BlinkHandle;
-const osThreadAttr_t Blink_attributes = {
-  .name = "Blink",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
-/* USER CODE BEGIN PV */
 
 osThreadId_t COM_manager_handle;
 const osThreadAttr_t COM_attributes = {
@@ -108,10 +95,17 @@ const osThreadAttr_t TEMP_attributes = {
         .priority = (osPriority_t) osPriorityNormal,
 };
 
-osThreadId_t POT_manager_handle;
-const osThreadAttr_t POT_attributes = {
-        .name = "POT",
+osThreadId_t TOF_manager_handle;
+const osThreadAttr_t TOF_attributes = {
+        .name = "TOF",
         .stack_size = 128 * 1,
+        .priority = (osPriority_t) osPriorityNormal,
+};
+
+osThreadId_t DISPLAY_manager_handle;
+const osThreadAttr_t DISPLAY_attributes = {
+        .name = "DISPLAY",
+        .stack_size = 128 * 4,
         .priority = (osPriority_t) osPriorityNormal,
 };
 /* USER CODE END PV */
@@ -133,14 +127,14 @@ void LED_manager(void *argument);
 
 void TEMP_manager(void *argument);
 
-void POT_manager(void *argument);
-
+void TOF_manager(void *argument);
+void DISPLAY_manager(void *argument);
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-// printf function
+// RTT(0,function
 uint8_t DataToSend[16];
 uint8_t MessageCounter = 0;
 uint8_t MessageLength = 0;
@@ -180,7 +174,8 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+    // SEGGER_SYSVIEW_Conf();
+    SEGGER_SYSVIEW_Start();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -190,7 +185,7 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
     MX_USB_DEVICE_Init();
-    // printf("waiting for connection \r \n ");
+    // RTT(0,"waiting for connection \r \n ");
     HAL_GPIO_WritePin(BLUE_LED.port, BLUE_LED.pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(RED_LED.port, RED_LED.pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(GREEN_LED.port, GREEN_LED.pin, GPIO_PIN_SET);
@@ -200,12 +195,13 @@ int main(void)
 
         HAL_GPIO_TogglePin(BLUE_LED.port, BLUE_LED.pin);
         HAL_Delay(100);
-        printf("waiting for connection \r \n ");
+        RTT(0,"waiting for connection \r \n ");
         USBD_StatusTypeDef x = USBD_LL_DevConnected(&hUsbDeviceFS);
         if(hUsbDeviceFS.dev_state==USBD_STATE_CONFIGURED){
             enable_potentiometer = 0;
             HAL_GPIO_WritePin(BLUE_LED.port, BLUE_LED.pin, GPIO_PIN_RESET);
-            printf("connected");
+            RTT(0,"connected");
+            break;
         }
     };
 
@@ -227,8 +223,17 @@ int main(void)
 
     }
 
-    COM_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
-    TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
+    // COM_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
+    // TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
+  DISPLAY_manager_handle = osThreadNew(DISPLAY_manager, NULL, &DISPLAY_attributes);
+  TOF_manager_handle = osThreadNew(TOF_manager, NULL, &TOF_attributes);
+    // LED_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
+
+    // RTT(0,"starting scheduler \r \n ");
+    // SEGGER_SYSVIEW_Print("starting scheduler \r \n ");
+    // SEGGER_SYSVIEW_Start();
+
+    
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -238,28 +243,6 @@ int main(void)
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
-  /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
-  /* USER CODE END RTOS_SEMAPHORES */
-
-  /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
-  /* USER CODE END RTOS_TIMERS */
-
-  /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
-  /* USER CODE END RTOS_QUEUES */
-
-  /* Create the thread(s) */
-  /* creation of Blink */
-  BlinkHandle = osThreadNew(StartBlink, NULL, &Blink_attributes);
-
-  /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
-  /* USER CODE END RTOS_THREADS */
-
-  /* USER CODE BEGIN RTOS_EVENTS */
-  /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
@@ -507,19 +490,19 @@ static void MX_GPIO_Init(void)
 void COM_manager(void *argument) {
     uint32_t len = 32;
     char feedback[RX_BUFF_SIZE];
-    printf("COM manager started \r \n");
-    printf("before while loop \r \n");
+    RTT(0,"COM manager started \r \n");
+    RTT(0,"before while loop \r \n");
 //    extern uint8_t received_bool;
     while (1) {
 
-//printf("waiting for data \r \n");
+//RTT(0,"waiting for data \r \n");
         if (hUsbDeviceFS.dev_connection_status == 0x01) {
             HAL_Delay(1);
 
 
-            printf("received command: %02X \r \n", UserRxBufferFS[0]);
+            RTT(0,"received command: %02X \r \n", UserRxBufferFS[0]);
             for (int i = 0; i < RX_BUFF_SIZE; i++) {
-                printf("%02X ", UserRxBufferFS[i]);
+                RTT(0,"%02X ", UserRxBufferFS[i]);
             }
             switch (UserRxBufferFS[0]) {
                 case SET_LED_STATE:
@@ -534,7 +517,7 @@ void COM_manager(void *argument) {
                             strcpy(feedback+(RX_BUFF_SIZE-12), "EL switched");
                             break;
                         default:
-                            printf("unknown command \r \n");
+                            RTT(0,"unknown command \r \n");
                             break;
                     }
 
@@ -542,7 +525,7 @@ void COM_manager(void *argument) {
                     CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
                     break;
                 case REQUEST_ACTUAL_TEMPERATURE:
-                    printf("sending actual temperature \r \n");
+                    RTT(0,"sending actual temperature \r \n");
                     char value[RX_BUFF_SIZE];
 // Write
                     memset(value, 0x00, RX_BUFF_SIZE);
@@ -554,7 +537,7 @@ void COM_manager(void *argument) {
 //                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
                     break;
                 case SET_TARGET_TEMPERATURE:
-                    printf("setting target temperature \r \n");
+                    RTT(0,"setting target temperature \r \n");
 //                    float ee =
                     TARGET_TEMP.value = * ((float *) (UserRxBufferFS + (sizeof(UserRxBufferFS) - sizeof(float))));
                     memset(feedback, 0x00, RX_BUFF_SIZE);
@@ -564,7 +547,7 @@ void COM_manager(void *argument) {
 
                     break;
                 case REQUEST_ACTUAL_HEATER_STATE:
-                    printf("sending actual heater state \r \n");
+                    RTT(0,"sending actual heater state \r \n");
                     char h_value[RX_BUFF_SIZE];
 // Write
                     memset(h_value, 0x20, RX_BUFF_SIZE);
@@ -574,7 +557,7 @@ void COM_manager(void *argument) {
 //                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
                     CDC_Transmit_FS(value, RX_BUFF_SIZE);
                 default:
-                    printf("unknown command \r \n");
+                    RTT(0,"unknown command \r \n");
                     break;
             }
 
@@ -676,12 +659,12 @@ void LED_manager(void *argument) {
 
 void LED_manager(void *argument) {
     uint8_t prev_bool = hUsbDeviceFS.dev_connection_status;
-    printf("LED manager started \r \n");
-    printf("prev_bool: %d \r \n", prev_bool);
+    RTT(0,"LED manager started \r \n");
+    RTT(0,"prev_bool: %d \r \n", prev_bool);
     while (1) {
 //if(prev_bool!=hUsbDeviceFS.dev_connection_status){
 //            prev_bool = hUsbDeviceFS.dev_connection_status;
-//            printf("bool_state has changed \r \n");
+//            RTT(0,"bool_state has changed \r \n");
 //        }
 ////            xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
 //            HAL_GPIO_TogglePin(LED2.port, LED2.pin);
@@ -708,31 +691,53 @@ void LED_manager(void *argument) {
 #endif
 
 
+void DISPLAY_manager(void *argument) {
+    RTT(0,"DISPLAY manager started \r \n");
+    while (1) {
+        if(hUsbDeviceFS.dev_connection_status==0x01){
+            RTT(0,"displaying data \r \n");
+            char display_data[RX_BUFF_SIZE];
+            memset(display_data, 0x00, RX_BUFF_SIZE);
+            sprintf(display_data, "T: %.2f C", ACTUAL_TEMP.value);
+            CDC_Transmit_FS(display_data, RX_BUFF_SIZE);
+        }
+        osDelay(1000);
+    }
+}
 
+
+
+
+void TOF_manager(void *argument) {
+    RTT(0,"TOF manager started \r \n");
+  char msgBuffer[52];
+	for (uint8_t i = 0; i < 52; i++) {
+		msgBuffer[i] = ' ';
+	}
+
+	// Initialise the VL53L0X
+	statInfo_t_VL53L0X distanceStr;
+	initVL53L0X(1, &hi2c1);
+	uint16_t distance;
+
+	// Configure the sensor for high accuracy and speed in 20 cm.
+	setSignalRateLimit(400);
+	setVcselPulsePeriod(VcselPeriodPreRange, 10);
+	setVcselPulsePeriod(VcselPeriodFinalRange, 14);
+	setMeasurementTimingBudget(300 * 1000UL);
+	while (1) {
+
+		distance = readRangeSingleMillimeters(&distanceStr);
+
+    RTT(0, "Distance: %d mm\r\n", distance);
+
+	}
+}
 
 
 
 /* USER CODE END 4 */
 
-/* USER CODE BEGIN Header_StartBlink */
-/**
-  * @brief  Function implementing the Blink thread.
-  * @param  argument: Not used
-  * @retval None
-  */
-/* USER CODE END Header_StartBlink */
-void StartBlink(void *argument)
-{
-  /* init code for USB_DEVICE */
-  MX_USB_DEVICE_Init();
-  /* USER CODE BEGIN 5 */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
-  /* USER CODE END 5 */
-}
 
 /**
   * @brief  Period elapsed callback in non blocking mode
@@ -782,7 +787,7 @@ void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+     ex: RTT(0,"Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
