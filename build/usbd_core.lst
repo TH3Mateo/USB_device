@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
   27:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   * @{
   28:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   */
   29:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 2
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 2
 
 
   30:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
   84:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** /**
   85:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   * @brief  USBD_Init
   86:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   *         Initialize the device stack and load the class driver
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 3
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 3
 
 
   87:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   * @param  pdev: device instance
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
   48              	.LVL1:
   49              		.loc 1 121 19 view .LVU7
   50 0008 C3F8B802 		str	r0, [r3, #696]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 4
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 4
 
 
  122:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   pdev->pUserData[0] = NULL;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
   85              		.cfi_restore 3
   86              		.cfi_restore 14
  103:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 5
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 5
 
 
   87              		.loc 1 103 12 view .LVU25
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  160:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   /* Parse the table of classes in use */
  161:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   for (uint32_t i = 0; i < USBD_MAX_SUPPORTED_CLASS; i++)
  162:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 6
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 6
 
 
  163:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     /* Check if current class is in use */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  151 002a 2046     		mov	r0, r4
  152 002c FFF7FEFF 		bl	USBD_LL_DeInit
  153              	.LVL9:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 7
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 7
 
 
  191:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  209:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     USBD_ErrLog("Invalid Class handle");
  210:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** #endif /* (USBD_DEBUG_LEVEL > 1U) */
  211:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     return USBD_FAIL;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 8
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 8
 
 
  212:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   }
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  224              		.loc 1 233 10 is_stmt 0 view .LVU73
  225 0036 0020     		movs	r0, #0
  226              	.LVL13:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 9
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 9
 
 
  227              	.L13:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  258:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       ret = USBD_OK;
  259:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
  260:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       pdev->tclasslist[pdev->classId].EpAdd = EpAddr;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 10
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 10
 
 
  261:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  315:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         /* Free Class Resources */
  316:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         if (pdev->pClass[pdev->classId]->DeInit(pdev, (uint8_t)pdev->dev_config) != 0U)
  317:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 11
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 11
 
 
  318:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** #if (USBD_DEBUG_LEVEL > 1U)
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  372:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   pdev->DevStateCallback = pUserCallback;
  373:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
  374:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   return USBD_OK;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 12
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 12
 
 
  375:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** }
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  286              		.loc 1 401 1 is_stmt 1 view -0
  287              		.cfi_startproc
  288              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 13
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 13
 
 
  289              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  430:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
  431:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   return USBD_OK;
  315              		.loc 1 431 3 is_stmt 1 view .LVU92
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 14
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 14
 
 
  432:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** }
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  349              		.align	1
  350              		.global	USBD_SetClassConfig
  351              		.syntax unified
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 15
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 15
 
 
  352              		.thumb
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  374 0006 13B1     		cbz	r3, .L25
  489:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   {
  490:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     /* Set configuration and Start the Class */
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 16
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 16
 
 
  491:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     ret = (USBD_StatusTypeDef)pdev->pClass[0]->Init(pdev, cfgidx);
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  413              		.cfi_offset 3, -8
  414              		.cfi_offset 14, -4
  507:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   USBD_StatusTypeDef ret = USBD_OK;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 17
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 17
 
 
  415              		.loc 1 507 3 is_stmt 1 view .LVU115
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  440              		.section	.text.USBD_LL_SetupStage,"ax",%progbits
  441              		.align	1
  442              		.global	USBD_LL_SetupStage
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 18
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 18
 
 
  443              		.syntax unified
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  555:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
  556:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   switch (pdev->request.bmRequest & 0x1FU)
  480              		.loc 1 556 3 is_stmt 1 view .LVU134
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 19
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 19
 
 
  481              		.loc 1 556 24 is_stmt 0 view .LVU135
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  512              	.L34:
  567:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       break;
  513              		.loc 1 567 7 view .LVU145
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 20
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 20
 
 
  567:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       break;
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  598:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     {
  599:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       if (pep->rem_length > pep->maxpacket)
  600:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 21
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 21
 
 
  601:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         pep->rem_length -= pep->maxpacket;
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  655:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       if (pdev->dev_state == USBD_STATE_CONFIGURED)
  656:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       {
  657:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         if (pdev->pClass[idx]->DataOut != NULL)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 22
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 22
 
 
  658:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         {
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  712:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
  713:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****           /* Prepare endpoint for premature end of transfer */
  714:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****           (void)USBD_LL_PrepareReceive(pdev, 0U, NULL, 0U);
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 23
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 23
 
 
  715:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         }
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  769:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   * @retval status
  770:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   */
  771:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** USBD_StatusTypeDef USBD_LL_Reset(USBD_HandleTypeDef *pdev)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 24
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 24
 
 
  772:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** {
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  792:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         /* Clear configuration  and De-initialize the Class process*/
  793:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
  794:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         if (pdev->pClass[i]->DeInit != NULL)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 25
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 25
 
 
  795:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         {
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  606              		.loc 1 820 3 is_stmt 1 view .LVU175
  607              		.loc 1 820 38 is_stmt 0 view .LVU176
  608 0038 0126     		movs	r6, #1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 26
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 26
 
 
  609 003a A4F86461 		strh	r6, [r4, #356]	@ movhi
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  651              		.syntax unified
  652              		.thumb
  653              		.thumb_func
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 27
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 27
 
 
  655              	USBD_LL_SetSpeed:
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  688              		@ frame_needed = 0, uses_anonymous_args = 0
  689              		@ link register save eliminated.
  855:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   if (pdev->dev_state != USBD_STATE_SUSPENDED)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 28
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 28
 
 
  690              		.loc 1 855 3 view .LVU196
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  729              		@ frame_needed = 0, uses_anonymous_args = 0
  730              		@ link register save eliminated.
  873:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   if (pdev->dev_state == USBD_STATE_SUSPENDED)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 29
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 29
 
 
  731              		.loc 1 873 3 view .LVU208
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  769              		@ frame_needed = 0, uses_anonymous_args = 0
  770              		.loc 1 888 1 is_stmt 0 view .LVU218
  771 0000 08B5     		push	{r3, lr}
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 30
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 30
 
 
  772              	.LCFI13:
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  791              		.loc 1 910 21 is_stmt 0 view .LVU225
  792 000e D0F8B832 		ldr	r3, [r0, #696]
  910:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 31
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 31
 
 
  793              		.loc 1 910 8 view .LVU226
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  831              		.loc 1 933 3 is_stmt 1 view .LVU235
  832              		.loc 1 933 24 is_stmt 0 view .LVU236
  833 0002 D0F8D432 		ldr	r3, [r0, #724]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 32
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 32
 
 
  834              		.loc 1 933 19 view .LVU237
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  867              		.loc 1 935 12 view .LVU250
  868 0024 0320     		movs	r0, #3
  869              	.LVL67:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 33
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 33
 
 
  935:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   }
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  961:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     return USBD_FAIL;
  962:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   }
  963:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 34
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 34
 
 
  964:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   if (pdev->dev_state == USBD_STATE_CONFIGURED)
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  945              		.loc 1 972 10 view .LVU273
  946 0028 0020     		movs	r0, #0
  947              	.LVL77:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 35
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 35
 
 
  972:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** }
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  991:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   *         Handle device disconnection event
  992:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   * @param  pdev: device instance
  993:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   * @retval status
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 36
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 36
 
 
  994:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   */
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1012              		.loc 1 1023 9 view .LVU290
  1013 0010 0179     		ldrb	r1, [r0, #4]	@ zero_extendqisi2
  1014 0012 9847     		blx	r3
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 37
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 37
 
 
  1015              	.LVL82:
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1050              		@ frame_needed = 0, uses_anonymous_args = 0
  1051              		@ link register save eliminated.
 1042:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** #ifdef USE_USBD_COMPOSITE
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 38
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 38
 
 
 1043:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   /* Parse the table of classes in use */
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
 1078:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   * @retval index of the class using the selected endpoint number. 0xFF if no class found.
 1079:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   */
 1080:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** uint8_t USBD_CoreFindEP(USBD_HandleTypeDef *pdev, uint8_t index)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 39
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 39
 
 
 1081:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** {
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1098              	.LFB237:
  588:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   USBD_EndpointTypeDef *pep;
  1099              		.loc 1 588 1 is_stmt 1 view -0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 40
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 40
 
 
  1100              		.cfi_startproc
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1140              		.loc 1 599 14 is_stmt 0 view .LVU323
  1141 0018 D0F85C11 		ldr	r1, [r0, #348]
  1142              	.LVL96:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 41
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 41
 
 
  599:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       {
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1183              		.loc 1 617 19 is_stmt 0 view .LVU337
  1184 004e 90F8AE12 		ldrb	r1, [r0, #686]	@ zero_extendqisi2
  1185 0052 FFF7FEFF 		bl	USBD_CoreFindIF
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 42
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 42
 
 
  1186              	.LVL102:
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1225 007c 1A69     		ldr	r2, [r3, #16]
  635:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****             {
  1226              		.loc 1 635 16 view .LVU353
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 43
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 43
 
 
  1227 007e 002A     		cmp	r2, #0
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1264              		.loc 1 657 12 view .LVU370
  1265 00aa 002A     		cmp	r2, #0
  1266 00ac B3D0     		beq	.L80
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 44
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 44
 
 
  659:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****           ret = (USBD_StatusTypeDef)pdev->pClass[idx]->DataOut(pdev, epnum);
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1312              		.cfi_offset 5, -8
  1313              		.cfi_offset 14, -4
  1314 0002 0446     		mov	r4, r0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 45
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 45
 
 
  684:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****   USBD_StatusTypeDef ret;
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1352              	.L102:
  694:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       {
  1353              		.loc 1 694 7 is_stmt 1 view .LVU399
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 46
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 46
 
 
  694:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       {
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  698:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
  1394              		.loc 1 698 9 is_stmt 1 view .LVU414
  698:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 47
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 47
 
 
  1395              		.loc 1 698 15 is_stmt 0 view .LVU415
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1437              	.LVL133:
  714:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****         }
  1438              		.loc 1 714 11 view .LVU428
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 48
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 48
 
 
  1439 0086 C5E7     		b	.L95
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  746:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       {
  1477              		.loc 1 746 15 is_stmt 0 view .LVU445
  1478 00aa 94F89C32 		ldrb	r3, [r4, #668]	@ zero_extendqisi2
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 49
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 49
 
 
  746:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       {
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1520              		.thumb
  1521              		.thumb_func
  1523              	USBD_GetNextDesc:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 50
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 50
 
 
  1524              	.LVL144:
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
 1164:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       pdesc = USBD_GetNextDesc((uint8_t *)pdesc, &ptr);
 1165:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c **** 
 1166:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       if (pdesc->bDescriptorType == USB_DESC_TYPE_ENDPOINT)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 51
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 51
 
 
 1167:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****       {
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1546              	.LVL146:
  1547              		.loc 1 1200 1 view .LVU469
  1548 000c 7047     		bx	lr
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 52
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 52
 
 
  1549              		.cfi_endproc
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
 1162:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c ****     {
  1593              		.loc 1 1162 5 is_stmt 1 view .LVU482
  1594              	.LVL148:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 53
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 53
 
 
  1595              	.L109:
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1635              	.LVL153:
  1636              	.L111:
  1637              	.LCFI22:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 54
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 54
 
 
  1638              		.cfi_def_cfa_offset 0
@@ -3204,59 +3204,59 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 1
  1656              		.file 5 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h"
  1657              		.file 6 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h"
  1658              		.file 7 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h"
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 55
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 55
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usbd_core.c
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:21     .text.USBD_Init:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:27     .text.USBD_Init:00000000 USBD_Init
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:96     .text.USBD_DeInit:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:102    .text.USBD_DeInit:00000000 USBD_DeInit
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:162    .text.USBD_RegisterClass:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:168    .text.USBD_RegisterClass:00000000 USBD_RegisterClass
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:248    .text.USBD_Start:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:254    .text.USBD_Start:00000000 USBD_Start
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:277    .text.USBD_Stop:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:283    .text.USBD_Stop:00000000 USBD_Stop
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:324    .text.USBD_RunTestMode:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:330    .text.USBD_RunTestMode:00000000 USBD_RunTestMode
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:349    .text.USBD_SetClassConfig:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:355    .text.USBD_SetClassConfig:00000000 USBD_SetClassConfig
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:396    .text.USBD_ClrClassConfig:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:402    .text.USBD_ClrClassConfig:00000000 USBD_ClrClassConfig
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:441    .text.USBD_LL_SetupStage:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:447    .text.USBD_LL_SetupStage:00000000 USBD_LL_SetupStage
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:535    .text.USBD_LL_Reset:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:541    .text.USBD_LL_Reset:00000000 USBD_LL_Reset
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:649    .text.USBD_LL_SetSpeed:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:655    .text.USBD_LL_SetSpeed:00000000 USBD_LL_SetSpeed
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:676    .text.USBD_LL_Suspend:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:682    .text.USBD_LL_Suspend:00000000 USBD_LL_Suspend
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:717    .text.USBD_LL_Resume:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:723    .text.USBD_LL_Resume:00000000 USBD_LL_Resume
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:757    .text.USBD_LL_SOF:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:763    .text.USBD_LL_SOF:00000000 USBD_LL_SOF
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:812    .text.USBD_LL_IsoINIncomplete:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:818    .text.USBD_LL_IsoINIncomplete:00000000 USBD_LL_IsoINIncomplete
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:883    .text.USBD_LL_IsoOUTIncomplete:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:889    .text.USBD_LL_IsoOUTIncomplete:00000000 USBD_LL_IsoOUTIncomplete
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:954    .text.USBD_LL_DevConnected:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:960    .text.USBD_LL_DevConnected:00000000 USBD_LL_DevConnected
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:979    .text.USBD_LL_DevDisconnected:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:985    .text.USBD_LL_DevDisconnected:00000000 USBD_LL_DevDisconnected
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1038   .text.USBD_CoreFindIF:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1044   .text.USBD_CoreFindIF:00000000 USBD_CoreFindIF
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1064   .text.USBD_CoreFindEP:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1070   .text.USBD_CoreFindEP:00000000 USBD_CoreFindEP
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1090   .text.USBD_LL_DataOutStage:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1096   .text.USBD_LL_DataOutStage:00000000 USBD_LL_DataOutStage
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1293   .text.USBD_LL_DataInStage:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1299   .text.USBD_LL_DataInStage:00000000 USBD_LL_DataInStage
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1517   .text.USBD_GetNextDesc:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1523   .text.USBD_GetNextDesc:00000000 USBD_GetNextDesc
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1553   .text.USBD_GetEpDesc:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s:1559   .text.USBD_GetEpDesc:00000000 USBD_GetEpDesc
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:21     .text.USBD_Init:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:27     .text.USBD_Init:00000000 USBD_Init
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:96     .text.USBD_DeInit:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:102    .text.USBD_DeInit:00000000 USBD_DeInit
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:162    .text.USBD_RegisterClass:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:168    .text.USBD_RegisterClass:00000000 USBD_RegisterClass
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:248    .text.USBD_Start:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:254    .text.USBD_Start:00000000 USBD_Start
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:277    .text.USBD_Stop:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:283    .text.USBD_Stop:00000000 USBD_Stop
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:324    .text.USBD_RunTestMode:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:330    .text.USBD_RunTestMode:00000000 USBD_RunTestMode
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:349    .text.USBD_SetClassConfig:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:355    .text.USBD_SetClassConfig:00000000 USBD_SetClassConfig
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:396    .text.USBD_ClrClassConfig:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:402    .text.USBD_ClrClassConfig:00000000 USBD_ClrClassConfig
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:441    .text.USBD_LL_SetupStage:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:447    .text.USBD_LL_SetupStage:00000000 USBD_LL_SetupStage
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:535    .text.USBD_LL_Reset:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:541    .text.USBD_LL_Reset:00000000 USBD_LL_Reset
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:649    .text.USBD_LL_SetSpeed:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:655    .text.USBD_LL_SetSpeed:00000000 USBD_LL_SetSpeed
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:676    .text.USBD_LL_Suspend:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:682    .text.USBD_LL_Suspend:00000000 USBD_LL_Suspend
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:717    .text.USBD_LL_Resume:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:723    .text.USBD_LL_Resume:00000000 USBD_LL_Resume
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:757    .text.USBD_LL_SOF:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:763    .text.USBD_LL_SOF:00000000 USBD_LL_SOF
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:812    .text.USBD_LL_IsoINIncomplete:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:818    .text.USBD_LL_IsoINIncomplete:00000000 USBD_LL_IsoINIncomplete
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:883    .text.USBD_LL_IsoOUTIncomplete:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:889    .text.USBD_LL_IsoOUTIncomplete:00000000 USBD_LL_IsoOUTIncomplete
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:954    .text.USBD_LL_DevConnected:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:960    .text.USBD_LL_DevConnected:00000000 USBD_LL_DevConnected
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:979    .text.USBD_LL_DevDisconnected:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:985    .text.USBD_LL_DevDisconnected:00000000 USBD_LL_DevDisconnected
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1038   .text.USBD_CoreFindIF:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1044   .text.USBD_CoreFindIF:00000000 USBD_CoreFindIF
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1064   .text.USBD_CoreFindEP:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1070   .text.USBD_CoreFindEP:00000000 USBD_CoreFindEP
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1090   .text.USBD_LL_DataOutStage:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1096   .text.USBD_LL_DataOutStage:00000000 USBD_LL_DataOutStage
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1293   .text.USBD_LL_DataInStage:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1299   .text.USBD_LL_DataInStage:00000000 USBD_LL_DataInStage
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1517   .text.USBD_GetNextDesc:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1523   .text.USBD_GetNextDesc:00000000 USBD_GetNextDesc
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1553   .text.USBD_GetEpDesc:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s:1559   .text.USBD_GetEpDesc:00000000 USBD_GetEpDesc
 
 UNDEFINED SYMBOLS
 USBD_LL_Init
@@ -3264,7 +3264,7 @@ USBD_LL_Stop
 USBD_LL_DeInit
 USBD_LL_Start
 USBD_ParseSetupRequest
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\cc9VwWTh.s 			page 56
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccMtnDJY.s 			page 56
 
 
 USBD_StdDevReq

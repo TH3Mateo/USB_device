@@ -36,6 +36,7 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
+Core/Src/utils.c \
 Core/Src/main.c \
 Core/Src/thermal_control.c \
 Core/Src/freertos.c \

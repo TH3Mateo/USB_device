@@ -1,0 +1,420 @@
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"utils.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/utils.c"
+  20              		.section	.text.calculate_checksum,"ax",%progbits
+  21              		.align	1
+  22              		.global	calculate_checksum
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	calculate_checksum:
+  28              	.LVL0:
+  29              	.LFB0:
+   1:Core/Src/utils.c **** //
+   2:Core/Src/utils.c **** // Created by M on 27/07/2023.
+   3:Core/Src/utils.c **** //
+   4:Core/Src/utils.c **** 
+   5:Core/Src/utils.c **** #include "utils.h"
+   6:Core/Src/utils.c **** #include <string.h> // memcpy
+   7:Core/Src/utils.c **** 
+   8:Core/Src/utils.c **** uint8_t calculate_checksum(uint8_t cmd, uint8_t len, const uint8_t *payload) {
+  30              		.loc 1 8 78 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+   9:Core/Src/utils.c ****     uint16_t sum = cmd + len;
+  35              		.loc 1 9 5 view .LVU1
+  36              		.loc 1 9 14 is_stmt 0 view .LVU2
+  37 0000 0844     		add	r0, r0, r1
+  38              	.LVL1:
+  10:Core/Src/utils.c ****     for (uint8_t i = 0; i < len; i++) {
+  39              		.loc 1 10 5 is_stmt 1 view .LVU3
+  40              	.LBB2:
+  41              		.loc 1 10 10 view .LVU4
+  42              		.loc 1 10 18 is_stmt 0 view .LVU5
+  43 0002 0023     		movs	r3, #0
+  44              		.loc 1 10 5 view .LVU6
+  45 0004 05E0     		b	.L2
+  46              	.LVL2:
+  47              	.L3:
+  11:Core/Src/utils.c ****         sum += payload[i];
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s 			page 2
+
+
+  48              		.loc 1 11 9 is_stmt 1 view .LVU7
+  49              		.loc 1 11 23 is_stmt 0 view .LVU8
+  50 0006 12F803C0 		ldrb	ip, [r2, r3]	@ zero_extendqisi2
+  51              		.loc 1 11 13 view .LVU9
+  52 000a 6044     		add	r0, r0, ip
+  53              	.LVL3:
+  54              		.loc 1 11 13 view .LVU10
+  55 000c 80B2     		uxth	r0, r0
+  56              	.LVL4:
+  10:Core/Src/utils.c ****     for (uint8_t i = 0; i < len; i++) {
+  57              		.loc 1 10 35 is_stmt 1 discriminator 3 view .LVU11
+  58 000e 0133     		adds	r3, r3, #1
+  59              	.LVL5:
+  10:Core/Src/utils.c ****     for (uint8_t i = 0; i < len; i++) {
+  60              		.loc 1 10 35 is_stmt 0 discriminator 3 view .LVU12
+  61 0010 DBB2     		uxtb	r3, r3
+  62              	.LVL6:
+  63              	.L2:
+  10:Core/Src/utils.c ****     for (uint8_t i = 0; i < len; i++) {
+  64              		.loc 1 10 27 is_stmt 1 discriminator 1 view .LVU13
+  65 0012 8B42     		cmp	r3, r1
+  66 0014 F7D3     		bcc	.L3
+  10:Core/Src/utils.c ****     for (uint8_t i = 0; i < len; i++) {
+  67              		.loc 1 10 27 is_stmt 0 discriminator 1 view .LVU14
+  68              	.LBE2:
+  12:Core/Src/utils.c ****     }
+  13:Core/Src/utils.c ****     return (uint8_t)(sum % 256);
+  69              		.loc 1 13 5 is_stmt 1 view .LVU15
+  14:Core/Src/utils.c **** }
+  70              		.loc 1 14 1 is_stmt 0 view .LVU16
+  71 0016 C0B2     		uxtb	r0, r0
+  72              	.LVL7:
+  73              		.loc 1 14 1 view .LVU17
+  74 0018 7047     		bx	lr
+  75              		.cfi_endproc
+  76              	.LFE0:
+  78              		.section	.text.create_packet,"ax",%progbits
+  79              		.align	1
+  80              		.global	create_packet
+  81              		.syntax unified
+  82              		.thumb
+  83              		.thumb_func
+  85              	create_packet:
+  86              	.LVL8:
+  87              	.LFB1:
+  15:Core/Src/utils.c **** 
+  16:Core/Src/utils.c **** int create_packet(uint8_t *buffer_out, uint8_t cmd, const uint8_t *payload, uint8_t length) {
+  88              		.loc 1 16 93 is_stmt 1 view -0
+  89              		.cfi_startproc
+  90              		@ args = 0, pretend = 0, frame = 0
+  91              		@ frame_needed = 0, uses_anonymous_args = 0
+  17:Core/Src/utils.c ****     if (length > (MAX_PACKET_SIZE - 4)) return -1;
+  92              		.loc 1 17 5 view .LVU19
+  93              		.loc 1 17 8 is_stmt 0 view .LVU20
+  94 0000 3C2B     		cmp	r3, #60
+  95 0002 1CD8     		bhi	.L7
+  16:Core/Src/utils.c ****     if (length > (MAX_PACKET_SIZE - 4)) return -1;
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s 			page 3
+
+
+  96              		.loc 1 16 93 view .LVU21
+  97 0004 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  98              	.LCFI0:
+  99              		.cfi_def_cfa_offset 24
+ 100              		.cfi_offset 4, -24
+ 101              		.cfi_offset 5, -20
+ 102              		.cfi_offset 6, -16
+ 103              		.cfi_offset 7, -12
+ 104              		.cfi_offset 8, -8
+ 105              		.cfi_offset 14, -4
+ 106 0008 0546     		mov	r5, r0
+ 107 000a 0E46     		mov	r6, r1
+ 108 000c 1746     		mov	r7, r2
+ 109 000e 1C46     		mov	r4, r3
+  18:Core/Src/utils.c **** 
+  19:Core/Src/utils.c ****     buffer_out[0] = START_BYTE;
+ 110              		.loc 1 19 5 is_stmt 1 view .LVU22
+ 111              		.loc 1 19 19 is_stmt 0 view .LVU23
+ 112 0010 AA23     		movs	r3, #170
+ 113              	.LVL9:
+ 114              		.loc 1 19 19 view .LVU24
+ 115 0012 0370     		strb	r3, [r0]
+  20:Core/Src/utils.c ****     buffer_out[1] = cmd;
+ 116              		.loc 1 20 5 is_stmt 1 view .LVU25
+ 117              		.loc 1 20 19 is_stmt 0 view .LVU26
+ 118 0014 4170     		strb	r1, [r0, #1]
+  21:Core/Src/utils.c ****     buffer_out[2] = length;
+ 119              		.loc 1 21 5 is_stmt 1 view .LVU27
+ 120              		.loc 1 21 19 is_stmt 0 view .LVU28
+ 121 0016 8470     		strb	r4, [r0, #2]
+  22:Core/Src/utils.c **** 
+  23:Core/Src/utils.c ****     if (length > 0 && payload != NULL) {
+ 122              		.loc 1 23 5 is_stmt 1 view .LVU29
+ 123              		.loc 1 23 8 is_stmt 0 view .LVU30
+ 124 0018 2CB1     		cbz	r4, .L6
+ 125              		.loc 1 23 20 discriminator 1 view .LVU31
+ 126 001a 22B1     		cbz	r2, .L6
+  24:Core/Src/utils.c ****         memcpy(&buffer_out[3], payload, length);
+ 127              		.loc 1 24 9 is_stmt 1 view .LVU32
+ 128 001c 2246     		mov	r2, r4
+ 129              	.LVL10:
+ 130              		.loc 1 24 9 is_stmt 0 view .LVU33
+ 131 001e 3946     		mov	r1, r7
+ 132              	.LVL11:
+ 133              		.loc 1 24 9 view .LVU34
+ 134 0020 0330     		adds	r0, r0, #3
+ 135              	.LVL12:
+ 136              		.loc 1 24 9 view .LVU35
+ 137 0022 FFF7FEFF 		bl	memcpy
+ 138              	.LVL13:
+ 139              	.L6:
+  25:Core/Src/utils.c ****     }
+  26:Core/Src/utils.c **** 
+  27:Core/Src/utils.c ****     buffer_out[3 + length] = calculate_checksum(cmd, length, payload);
+ 140              		.loc 1 27 5 is_stmt 1 view .LVU36
+ 141              		.loc 1 27 18 is_stmt 0 view .LVU37
+ 142 0026 04F10308 		add	r8, r4, #3
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s 			page 4
+
+
+ 143              		.loc 1 27 30 view .LVU38
+ 144 002a 3A46     		mov	r2, r7
+ 145 002c 2146     		mov	r1, r4
+ 146 002e 3046     		mov	r0, r6
+ 147 0030 FFF7FEFF 		bl	calculate_checksum
+ 148              	.LVL14:
+ 149              		.loc 1 27 28 discriminator 1 view .LVU39
+ 150 0034 05F80800 		strb	r0, [r5, r8]
+  28:Core/Src/utils.c **** 
+  29:Core/Src/utils.c ****     return 4 + length;
+ 151              		.loc 1 29 5 is_stmt 1 view .LVU40
+ 152              		.loc 1 29 14 is_stmt 0 view .LVU41
+ 153 0038 201D     		adds	r0, r4, #4
+  30:Core/Src/utils.c **** }
+ 154              		.loc 1 30 1 view .LVU42
+ 155 003a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 156              	.LVL15:
+ 157              	.L7:
+ 158              	.LCFI1:
+ 159              		.cfi_def_cfa_offset 0
+ 160              		.cfi_restore 4
+ 161              		.cfi_restore 5
+ 162              		.cfi_restore 6
+ 163              		.cfi_restore 7
+ 164              		.cfi_restore 8
+ 165              		.cfi_restore 14
+  17:Core/Src/utils.c **** 
+ 166              		.loc 1 17 48 discriminator 1 view .LVU43
+ 167 003e 4FF0FF30 		mov	r0, #-1
+ 168              	.LVL16:
+ 169              		.loc 1 30 1 view .LVU44
+ 170 0042 7047     		bx	lr
+ 171              		.cfi_endproc
+ 172              	.LFE1:
+ 174              		.section	.text.parse_packet,"ax",%progbits
+ 175              		.align	1
+ 176              		.global	parse_packet
+ 177              		.syntax unified
+ 178              		.thumb
+ 179              		.thumb_func
+ 181              	parse_packet:
+ 182              	.LVL17:
+ 183              	.LFB2:
+  31:Core/Src/utils.c **** 
+  32:Core/Src/utils.c **** int parse_packet(const uint8_t *buffer_in, int buffer_len, uint8_t *cmd_out, uint8_t *payload_out, 
+ 184              		.loc 1 32 118 is_stmt 1 view -0
+ 185              		.cfi_startproc
+ 186              		@ args = 4, pretend = 0, frame = 0
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188              		.loc 1 32 118 is_stmt 0 view .LVU46
+ 189 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 190              	.LCFI2:
+ 191              		.cfi_def_cfa_offset 32
+ 192              		.cfi_offset 4, -32
+ 193              		.cfi_offset 5, -28
+ 194              		.cfi_offset 6, -24
+ 195              		.cfi_offset 7, -20
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s 			page 5
+
+
+ 196              		.cfi_offset 8, -16
+ 197              		.cfi_offset 9, -12
+ 198              		.cfi_offset 10, -8
+ 199              		.cfi_offset 14, -4
+ 200 0004 DDF82080 		ldr	r8, [sp, #32]
+  33:Core/Src/utils.c ****     if (buffer_len < 4) return -1;
+ 201              		.loc 1 33 5 is_stmt 1 view .LVU47
+ 202              		.loc 1 33 8 is_stmt 0 view .LVU48
+ 203 0008 0329     		cmp	r1, #3
+ 204 000a 28DD     		ble	.L16
+ 205 000c 1546     		mov	r5, r2
+ 206 000e 1F46     		mov	r7, r3
+  34:Core/Src/utils.c ****     if (buffer_in[0] != START_BYTE) return -2;
+ 207              		.loc 1 34 5 is_stmt 1 view .LVU49
+ 208              		.loc 1 34 18 is_stmt 0 view .LVU50
+ 209 0010 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 210              	.LVL18:
+ 211              		.loc 1 34 8 view .LVU51
+ 212 0012 AA2B     		cmp	r3, #170
+ 213 0014 26D1     		bne	.L17
+  35:Core/Src/utils.c **** 
+  36:Core/Src/utils.c ****     uint8_t cmd = buffer_in[1];
+ 214              		.loc 1 36 5 is_stmt 1 view .LVU52
+ 215              		.loc 1 36 13 is_stmt 0 view .LVU53
+ 216 0016 90F80190 		ldrb	r9, [r0, #1]	@ zero_extendqisi2
+ 217              	.LVL19:
+  37:Core/Src/utils.c ****     uint8_t len = buffer_in[2];
+ 218              		.loc 1 37 5 is_stmt 1 view .LVU54
+ 219              		.loc 1 37 13 is_stmt 0 view .LVU55
+ 220 001a 8678     		ldrb	r6, [r0, #2]	@ zero_extendqisi2
+ 221              	.LVL20:
+  38:Core/Src/utils.c **** 
+  39:Core/Src/utils.c ****     if (buffer_len < (len + 4)) return -3;
+ 222              		.loc 1 39 5 is_stmt 1 view .LVU56
+ 223              		.loc 1 39 20 is_stmt 0 view .LVU57
+ 224 001c F31C     		adds	r3, r6, #3
+ 225              		.loc 1 39 8 view .LVU58
+ 226 001e 8B42     		cmp	r3, r1
+ 227 0020 23DA     		bge	.L18
+  40:Core/Src/utils.c **** 
+  41:Core/Src/utils.c ****     uint8_t checksum = buffer_in[3 + len];
+ 228              		.loc 1 41 5 is_stmt 1 view .LVU59
+ 229              		.loc 1 41 13 is_stmt 0 view .LVU60
+ 230 0022 10F803A0 		ldrb	r10, [r0, r3]	@ zero_extendqisi2
+ 231              	.LVL21:
+  42:Core/Src/utils.c ****     if (checksum != calculate_checksum(cmd, len, &buffer_in[3])) return -4;
+ 232              		.loc 1 42 5 is_stmt 1 view .LVU61
+ 233              		.loc 1 42 21 is_stmt 0 view .LVU62
+ 234 0026 C41C     		adds	r4, r0, #3
+ 235 0028 2246     		mov	r2, r4
+ 236              	.LVL22:
+ 237              		.loc 1 42 21 view .LVU63
+ 238 002a 3146     		mov	r1, r6
+ 239              	.LVL23:
+ 240              		.loc 1 42 21 view .LVU64
+ 241 002c 4846     		mov	r0, r9
+ 242              	.LVL24:
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s 			page 6
+
+
+ 243              		.loc 1 42 21 view .LVU65
+ 244 002e FFF7FEFF 		bl	calculate_checksum
+ 245              	.LVL25:
+ 246              		.loc 1 42 8 discriminator 1 view .LVU66
+ 247 0032 5045     		cmp	r0, r10
+ 248 0034 1CD1     		bne	.L19
+  43:Core/Src/utils.c **** 
+  44:Core/Src/utils.c ****     if (cmd_out) *cmd_out = cmd;
+ 249              		.loc 1 44 5 is_stmt 1 view .LVU67
+ 250              		.loc 1 44 8 is_stmt 0 view .LVU68
+ 251 0036 0DB1     		cbz	r5, .L14
+ 252              		.loc 1 44 18 is_stmt 1 discriminator 1 view .LVU69
+ 253              		.loc 1 44 27 is_stmt 0 discriminator 1 view .LVU70
+ 254 0038 85F80090 		strb	r9, [r5]
+ 255              	.L14:
+  45:Core/Src/utils.c ****     if (len_out) *len_out = len;
+ 256              		.loc 1 45 5 is_stmt 1 view .LVU71
+ 257              		.loc 1 45 8 is_stmt 0 view .LVU72
+ 258 003c B8F1000F 		cmp	r8, #0
+ 259 0040 01D0     		beq	.L15
+ 260              		.loc 1 45 18 is_stmt 1 discriminator 1 view .LVU73
+ 261              		.loc 1 45 27 is_stmt 0 discriminator 1 view .LVU74
+ 262 0042 88F80060 		strb	r6, [r8]
+ 263              	.L15:
+  46:Core/Src/utils.c ****     if (payload_out && len > 0) {
+ 264              		.loc 1 46 5 is_stmt 1 view .LVU75
+ 265              		.loc 1 46 8 is_stmt 0 view .LVU76
+ 266 0046 B7B1     		cbz	r7, .L20
+ 267              		.loc 1 46 21 discriminator 1 view .LVU77
+ 268 0048 16B9     		cbnz	r6, .L23
+  47:Core/Src/utils.c ****         memcpy(payload_out, &buffer_in[3], len);
+  48:Core/Src/utils.c ****     }
+  49:Core/Src/utils.c **** 
+  50:Core/Src/utils.c ****     return 0;
+ 269              		.loc 1 50 12 view .LVU78
+ 270 004a 0020     		movs	r0, #0
+ 271              	.LVL26:
+ 272              	.L12:
+  51:Core/Src/utils.c **** }
+ 273              		.loc 1 51 1 view .LVU79
+ 274 004c BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 275              	.LVL27:
+ 276              	.L23:
+  47:Core/Src/utils.c ****         memcpy(payload_out, &buffer_in[3], len);
+ 277              		.loc 1 47 9 is_stmt 1 view .LVU80
+ 278 0050 3246     		mov	r2, r6
+ 279 0052 2146     		mov	r1, r4
+ 280 0054 3846     		mov	r0, r7
+ 281 0056 FFF7FEFF 		bl	memcpy
+ 282              	.LVL28:
+  50:Core/Src/utils.c **** }
+ 283              		.loc 1 50 12 is_stmt 0 view .LVU81
+ 284 005a 0020     		movs	r0, #0
+ 285 005c F6E7     		b	.L12
+ 286              	.LVL29:
+ 287              	.L16:
+  33:Core/Src/utils.c ****     if (buffer_in[0] != START_BYTE) return -2;
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s 			page 7
+
+
+ 288              		.loc 1 33 32 discriminator 1 view .LVU82
+ 289 005e 4FF0FF30 		mov	r0, #-1
+ 290              	.LVL30:
+  33:Core/Src/utils.c ****     if (buffer_in[0] != START_BYTE) return -2;
+ 291              		.loc 1 33 32 discriminator 1 view .LVU83
+ 292 0062 F3E7     		b	.L12
+ 293              	.LVL31:
+ 294              	.L17:
+  34:Core/Src/utils.c **** 
+ 295              		.loc 1 34 44 discriminator 1 view .LVU84
+ 296 0064 6FF00100 		mvn	r0, #1
+ 297              	.LVL32:
+  34:Core/Src/utils.c **** 
+ 298              		.loc 1 34 44 discriminator 1 view .LVU85
+ 299 0068 F0E7     		b	.L12
+ 300              	.LVL33:
+ 301              	.L18:
+  39:Core/Src/utils.c **** 
+ 302              		.loc 1 39 40 discriminator 1 view .LVU86
+ 303 006a 6FF00200 		mvn	r0, #2
+ 304              	.LVL34:
+  39:Core/Src/utils.c **** 
+ 305              		.loc 1 39 40 discriminator 1 view .LVU87
+ 306 006e EDE7     		b	.L12
+ 307              	.LVL35:
+ 308              	.L19:
+  42:Core/Src/utils.c **** 
+ 309              		.loc 1 42 73 discriminator 1 view .LVU88
+ 310 0070 6FF00300 		mvn	r0, #3
+ 311 0074 EAE7     		b	.L12
+ 312              	.L20:
+  50:Core/Src/utils.c **** }
+ 313              		.loc 1 50 12 view .LVU89
+ 314 0076 0020     		movs	r0, #0
+ 315 0078 E8E7     		b	.L12
+ 316              		.cfi_endproc
+ 317              	.LFE2:
+ 319              		.text
+ 320              	.Letext0:
+ 321              		.file 2 "c:/Program Files/ARMtoolchain/arm-none-eabi/include/machine/_default_types.h"
+ 322              		.file 3 "c:/Program Files/ARMtoolchain/arm-none-eabi/include/sys/_stdint.h"
+ 323              		.file 4 "c:/Program Files/ARMtoolchain/arm-none-eabi/include/string.h"
+ 324              		.file 5 "<built-in>"
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 utils.c
+C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s:21     .text.calculate_checksum:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s:27     .text.calculate_checksum:00000000 calculate_checksum
+C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s:79     .text.create_packet:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s:85     .text.create_packet:00000000 create_packet
+C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s:175    .text.parse_packet:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\cco0WFTd.s:181    .text.parse_packet:00000000 parse_packet
+
+UNDEFINED SYMBOLS
+memcpy

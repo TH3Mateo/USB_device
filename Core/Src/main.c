@@ -503,86 +503,90 @@ static void MX_GPIO_Init(void)
 
 
 
-
-
 void COM_manager(void *argument) {
-    uint32_t len = 32;
-    char feedback[RX_BUFF_SIZE];
-    printf("COM manager started \r \n");
-    printf("before while loop \r \n");
-//    extern uint8_t received_bool;
-    while (1) {
+    uint8_t status;
+    uint8_t cmd;
+    uint8_t len;
+    uint8_t payload[32];     // bufor na dane przychodzące
+    uint8_t response[64];    // bufor na dane wychodzące
 
-//printf("waiting for data \r \n");
+    printf("COM manager started \r\n");
+
+    while (1) {
         if (hUsbDeviceFS.dev_connection_status == 0x01) {
             HAL_Delay(1);
 
+            int result = parse_packet(UserRxBufferFS, RX_BUFF_SIZE, &cmd, payload, &len);
 
-            printf("received command: %02X \r \n", UserRxBufferFS[0]);
-            for (int i = 0; i < RX_BUFF_SIZE; i++) {
-                printf("%02X ", UserRxBufferFS[i]);
-            }
-            switch (UserRxBufferFS[0]) {
-                case SET_LED_STATE:
-                    switch(UserRxBufferFS[RX_BUFF_SIZE - 2]){
-                        case 0x01:
-                            HAL_GPIO_WritePin(RED_LED.port, RED_LED.pin, !UserRxBufferFS[RX_BUFF_SIZE - 1]);
-                            strcpy(feedback+(RX_BUFF_SIZE-12), "BL switched");
+            if (result == 0) {
+                switch (cmd) {
+                    case SET_LED_STATE: {
+                        if (len < 2) break;
+                        uint8_t led_nr = payload[0];
+                        uint8_t state = payload[1];
 
-                            break;
-                        case 0x02:
-                            HAL_GPIO_WritePin(GREEN_LED.port, GREEN_LED.pin, !UserRxBufferFS[RX_BUFF_SIZE - 1]);
-                            strcpy(feedback+(RX_BUFF_SIZE-12), "EL switched");
-                            break;
-                        default:
-                            printf("unknown command \r \n");
-                            break;
+                        const char *msg;
+                        if (led_nr == 0x01) {
+                            HAL_GPIO_WritePin(RED_LED.port, RED_LED.pin, !state);
+                            msg = "BL switched";
+                        } else if (led_nr == 0x02) {
+                            HAL_GPIO_WritePin(GREEN_LED.port, GREEN_LED.pin, !state);
+                            msg = "EL switched";
+                        } else {
+                            msg = "unknown LED";
+                        }
+
+                        create_packet(response, SET_LED_STATE, (uint8_t *)msg, strlen(msg));
+                        CDC_Transmit_FS(response, 4 + strlen(msg));
+                        break;
                     }
 
-                    feedback[0]= SET_LED_STATE;
-                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
-                    break;
-                case REQUEST_ACTUAL_TEMPERATURE:
-                    printf("sending actual temperature \r \n");
-                    char value[RX_BUFF_SIZE];
-// Write
-                    memset(value, 0x00, RX_BUFF_SIZE);
-                    * ((double *) (value + (sizeof(value) - sizeof(double)))) = ACTUAL_TEMP.value;
-                    value[0]= REQUEST_ACTUAL_TEMPERATURE;
-// Read
-//                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
-                    CDC_Transmit_FS(value, RX_BUFF_SIZE);
-//                    xSemaphoreGive(ACTUAL_TEMP.semaphore);
-                    break;
-                case SET_TARGET_TEMPERATURE:
-                    printf("setting target temperature \r \n");
-//                    float ee =
-                    TARGET_TEMP.value = * ((float *) (UserRxBufferFS + (sizeof(UserRxBufferFS) - sizeof(float))));
-                    memset(feedback, 0x00, RX_BUFF_SIZE);
-                    * ((double *) (feedback + (sizeof(feedback) - sizeof(double)))) = TARGET_TEMP.value;
-                    feedback[0]= SET_TARGET_TEMPERATURE;
-                    CDC_Transmit_FS(feedback, RX_BUFF_SIZE);
+                    case REQUEST_ACTUAL_TEMPERATURE: {
+                        double temp = ACTUAL_TEMP.value;
+                        create_packet(response, REQUEST_ACTUAL_TEMPERATURE, (uint8_t *)&temp, sizeof(temp));
+                        while(status != USBD_OK){
+                          status = CDC_Transmit_FS(response, 4 + sizeof(temp));
+                        }
+                        status = USBD_BUSY; 
+                        break;
+                    }
 
-                    break;
-                case REQUEST_ACTUAL_HEATER_STATE:
-                    printf("sending actual heater state \r \n");
-                    char h_value[RX_BUFF_SIZE];
-// Write
-                    memset(h_value, 0x00, RX_BUFF_SIZE);
-                    // * ((uint8_t *) (h_value + (sizeof(h_value) - sizeof(uint8_t)))) = ;
-                    h_value[0]= REQUEST_ACTUAL_HEATER_STATE;
-                    h_value[RX_BUFF_SIZE - 1] = 25;
-// Read
-//                    int outValue = * ((int *) (set + (sizeof(set) - sizeof(int))));
-                    CDC_Transmit_FS(h_value, RX_BUFF_SIZE);
-                default:
-                    printf("unknown command \r \n");
-                    break;
+                    case SET_TARGET_TEMPERATURE: {
+                        if (len < sizeof(float)) break;
+                        float target;
+                        memcpy(&target, payload, sizeof(float));
+                        TARGET_TEMP.value = target;
+
+                        create_packet(response, SET_TARGET_TEMPERATURE, (uint8_t *)&target, sizeof(target));
+                        while(status != USBD_OK){
+                          status = CDC_Transmit_FS(response, 4 + sizeof(target));
+                        }
+                        status = USBD_BUSY; 
+                        break;
+                    }
+
+                    case REQUEST_ACTUAL_HEATER_STATE: {
+                        uint8_t heater_state = 25; // przykładowa wartość
+                        create_packet(response, REQUEST_ACTUAL_HEATER_STATE, &heater_state, 1);
+                        while(status != USBD_OK){
+                          status = CDC_Transmit_FS(response, 5);
+                        }
+                        status = USBD_BUSY; 
+                        break;
+                    }
+
+                    default: {
+                        const char *err = "Unknown CMD";
+                        create_packet(response, 0xFF, (uint8_t *)err, strlen(err));
+                        CDC_Transmit_FS(response, 4 + strlen(err));
+                        break;
+                    }
+                }
+            } else {
+                printf("Bad packet (err %d)\r\n", result);
             }
 
-            memset(feedback, 0x20, RX_BUFF_SIZE);
             hUsbDeviceFS.dev_connection_status = 0x00;
-//        osDelay(100);
         }
     }
 }

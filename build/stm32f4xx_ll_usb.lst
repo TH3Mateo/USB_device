@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   ==============================================================================
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     [..]
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       (#) Fill parameters of Init structure in USB_CfgTypeDef structure.
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 2
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 2
 
 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   HAL_StatusTypeDef ret;
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   if (cfg.phy_itface == USB_OTG_ULPI_PHY)
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 3
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 3
 
 
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx->GCCFG &= ~(USB_OTG_GCCFG_PWRDWN);
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t UsbTrd;
  143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* The USBTRD is configured according to the tables below, depending on AHB frequency
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 4
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 4
 
 
  145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   used by application. In the low AHB frequency range it is used to stretch enough the USB response
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
  200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
  201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   else if (speed == USBD_HS_SPEED)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 5
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 5
 
 
  202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
  257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx->GUSBCFG |= USB_OTG_GUSBCFG_FHMOD;
  258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 6
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 6
 
 
  259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     do
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_DEVICE->DCTL |= USB_OTG_DCTL_SDIS;
  314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     /* Deactivate VBUS Sensing B */
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 7
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 7
 
 
  316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx->GCCFG &= ~USB_OTG_GCCFG_VBDEN;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  370:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
  371:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  372:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* Flush the FIFOs */
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 8
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 8
 
 
  373:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   if (USB_FlushTxFifo(USBx, 0x10U) != HAL_OK) /* all Tx FIFOs */
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  428:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_OUTEP(i)->DOEPTSIZ = 0U;
  429:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_OUTEP(i)->DOEPINT  = 0xFB7FU;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 9
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 9
 
 
  430:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       return HAL_TIMEOUT;
  485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   } while ((USBx->GRSTCTL & USB_OTG_GRSTCTL_AHBIDL) == 0U);
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 10
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 10
 
 
  487:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  542:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** /**
  543:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @brief  USB_SetDevSpeed  Initializes the DevSpd field of DCFG register
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 11
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 11
 
 
  544:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   *         depending the PHY type and the enumeration speed of the device.
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  598:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** HAL_StatusTypeDef USB_ActivateEndpoint(const USB_OTG_GlobalTypeDef *USBx, const USB_OTG_EPTypeDef *
  599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** {
  600:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t USBx_BASE = (uint32_t)USBx;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 12
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 12
 
 
  601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t epnum = (uint32_t)ep->num;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  655:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
  656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     if (((USBx_OUTEP(epnum)->DOEPCTL) & USB_OTG_DOEPCTL_USBAEP) == 0U)
  657:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 13
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 13
 
 
  658:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       USBx_OUTEP(epnum)->DOEPCTL |= (ep->maxpacket & USB_OTG_DOEPCTL_MPSIZ) |
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  712:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  713:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   return HAL_OK;
  714:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 14
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 14
 
 
  715:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  770:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* IN endpoint */
  771:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   if (ep->is_in == 1U)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 15
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 15
 
 
  772:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  826:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         }
  827:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         else
  828:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 16
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 16
 
 
  829:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****           USBx_INEP(epnum)->DIEPCTL |= USB_OTG_DIEPCTL_SD0PID_SEVNFRM;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  883:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       USBx_OUTEP(epnum)->DOEPTSIZ |= (USB_OTG_DOEPTSIZ_XFRSIZ & ep->xfer_size);
  884:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       USBx_OUTEP(epnum)->DOEPTSIZ |= (USB_OTG_DOEPTSIZ_PKTCNT & (1U << 19));
  885:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 17
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 17
 
 
  886:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     else
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  940:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t USBx_BASE = (uint32_t)USBx;
  941:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  942:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* IN endpoint */
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 18
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 18
 
 
  943:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   if (ep->is_in == 1U)
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  997:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   *           1 : DMA feature used
  998:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @retval HAL status
  999:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   */
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 19
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 19
 
 
 1000:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** HAL_StatusTypeDef USB_WritePacket(const USB_OTG_GlobalTypeDef *USBx, uint8_t *src,
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1054:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
 1055:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     do
 1056:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 20
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 20
 
 
 1057:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       *(uint8_t *)pDest = (uint8_t)(pData >> (8U * (uint8_t)(i)));
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_INEP(epnum)->DIEPCTL &= ~USB_OTG_DIEPCTL_STALL;
 1112:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     if ((ep->type == EP_TYPE_INTR) || (ep->type == EP_TYPE_BULK))
 1113:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 21
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 21
 
 
 1114:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       USBx_INEP(epnum)->DIEPCTL |= USB_OTG_DIEPCTL_SD0PID_SEVNFRM; /* DATA0 */
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1168:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @brief  USB_SetDevAddress : Stop the usb device mode
 1169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @param  USBx  Selected device
 1170:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @param  address  new device address to be assigned
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 22
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 22
 
 
 1171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   *          This parameter can be a value from 0 to 255
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t tmpreg;
 1226:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
 1227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   tmpreg = USBx->GINTSTS;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 23
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 23
 
 
 1228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   tmpreg &= USBx->GINTMSK;
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** /**
 1283:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @brief  Returns Device OUT EP Interrupt register
 1284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @param  USBx  Selected device
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 24
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 24
 
 
 1285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @param  epnum  endpoint number
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1339:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   *           1 : Device
 1340:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   */
 1341:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** uint32_t USB_GetMode(const USB_OTG_GlobalTypeDef *USBx)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 25
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 25
 
 
 1342:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** {
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1396:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
 1397:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
 1398:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   return HAL_OK;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 26
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 26
 
 
 1399:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** }
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1421:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* Core Soft Reset */
 1422:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   count = 0U;
   61              		.loc 1 1422 3 is_stmt 1 view .LVU13
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 27
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 27
 
 
   62              		.loc 1 1422 9 is_stmt 0 view .LVU14
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  101              		.loc 1 1436 1 view .LVU30
  102 0042 02B0     		add	sp, sp, #8
  103              	.LCFI1:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 28
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 28
 
 
  104              		.cfi_remember_state
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
  152              		.loc 1 86 6 view .LVU39
  153 0010 012B     		cmp	r3, #1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 29
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 29
 
 
  154 0012 21D1     		bne	.L9
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  191 0042 012B     		cmp	r3, #1
  192 0044 1CD0     		beq	.L16
  193              	.L13:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 30
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 30
 
 
  129:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** }
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  234              		.loc 1 111 8 view .LVU70
  235 006a 23B9     		cbnz	r3, .L12
  114:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 31
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 31
 
 
  236              		.loc 1 114 7 is_stmt 1 view .LVU71
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  280              		@ args = 0, pretend = 0, frame = 0
  281              		@ frame_needed = 0, uses_anonymous_args = 0
  282              		@ link register save eliminated.
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 32
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 32
 
 
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  320 0020 9342     		cmp	r3, r2
  321 0022 2FD9     		bls	.L20
  155:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 33
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 33
 
 
  322              		.loc 1 155 10 is_stmt 1 view .LVU101
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  180:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
  362              		.loc 1 180 10 is_stmt 1 view .LVU116
  180:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 34
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 34
 
 
  363              		.loc 1 180 34 is_stmt 0 view .LVU117
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  405              	.L24:
  173:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
  406              		.loc 1 173 14 view .LVU130
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 35
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 35
 
 
  407 0094 0B22     		movs	r2, #11
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  458              		@ args = 0, pretend = 0, frame = 0
  459              		@ frame_needed = 0, uses_anonymous_args = 0
  460              		@ link register save eliminated.
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 36
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 36
 
 
  224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   return HAL_OK;
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  504              	.LFE223:
  506              		.section	.text.USB_FlushTxFifo,"ax",%progbits
  507              		.align	1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 37
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 37
 
 
  508              		.global	USB_FlushTxFifo
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  489:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   USBx->GRSTCTL = (USB_OTG_GRSTCTL_TXFFLSH | (num << 6));
  549              		.loc 1 489 9 is_stmt 0 view .LVU163
  550 001a 0023     		movs	r3, #0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 38
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 38
 
 
  551 001c 0193     		str	r3, [sp, #4]
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  589              	.L35:
  503:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  590              		.loc 1 503 1 view .LVU180
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 39
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 39
 
 
  591 0042 02B0     		add	sp, sp, #8
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  638 000a 0193     		str	r3, [sp, #4]
  519:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
  639              		.loc 1 519 5 is_stmt 1 view .LVU190
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 40
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 40
 
 
  519:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  676 0032 13F0100F 		tst	r3, #16
  677 0036 F4D1     		bne	.L44
  539:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 41
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 41
 
 
  678              		.loc 1 539 10 view .LVU209
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  725              		.loc 1 557 14 is_stmt 0 view .LVU218
  726 0000 D0F80038 		ldr	r3, [r0, #2048]
  557:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   return HAL_OK;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 42
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 42
 
 
  727              		.loc 1 557 21 view .LVU219
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  299:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t i;
  775              		.loc 1 299 3 view .LVU228
  300:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 43
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 43
 
 
  776              		.loc 1 300 3 view .LVU229
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  814 003a A363     		str	r3, [r4, #56]
  337:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx->GCCFG &= ~USB_OTG_GCCFG_VBUSASEN;
  815              		.loc 1 337 5 is_stmt 1 view .LVU246
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 44
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 44
 
 
  337:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx->GCCFG &= ~USB_OTG_GCCFG_VBUSASEN;
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  853              		.loc 1 343 9 is_stmt 0 view .LVU263
  854 006a A36B     		ldr	r3, [r4, #56]
  855              	.LVL45:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 45
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 45
 
 
  343:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx->GCCFG |= USB_OTG_GCCFG_VBUSBSEN;
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  896              		.loc 1 378 7 is_stmt 0 view .LVU277
  897 009c 2046     		mov	r0, r4
  898 009e FFF7FEFF 		bl	USB_FlushRxFifo
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 46
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 46
 
 
  899              	.LVL50:
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  937 00cc 0A61     		str	r2, [r1, #16]
  407:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
  938              		.loc 1 407 5 is_stmt 1 view .LVU294
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 47
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 47
 
 
  407:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  414:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       {
  978              		.loc 1 414 7 is_stmt 1 view .LVU310
  414:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 48
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 48
 
 
  979              		.loc 1 414 10 is_stmt 0 view .LVU311
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1017              		.loc 1 416 32 is_stmt 0 view .LVU327
  1018 0132 4FF00067 		mov	r7, #134217728
  1019 0136 C2F8007B 		str	r7, [r2, #2816]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 49
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 49
 
 
  1020 013a E6E7     		b	.L67
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  452:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
  1057              		.loc 1 452 10 is_stmt 0 view .LVU345
  1058 0168 9DF82230 		ldrb	r3, [sp, #34]	@ zero_extendqisi2
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 50
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 50
 
 
  452:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1101 018a 43F00403 		orr	r3, r3, #4
  1102 018e A361     		str	r3, [r4, #24]
  1103 0190 F3E7     		b	.L71
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 51
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 51
 
 
  1104              	.L81:
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  573:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  1150              		.loc 1 573 12 view .LVU368
  1151 0018 7047     		bx	lr
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 52
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 52
 
 
  1152              	.LVL66:
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
  1197              		.loc 1 603 9 is_stmt 0 view .LVU380
  1198 0006 4B78     		ldrb	r3, [r1, #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 53
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 53
 
 
  603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1236 0042 1343     		orrs	r3, r3, r2
  1237 0044 43F08053 		orr	r3, r3, #268435456
  1238 0048 43F40043 		orr	r3, r3, #32768
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 54
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 54
 
 
  1239 004c C0F8003B 		str	r3, [r0, #2816]
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1276              		.loc 1 610 49 view .LVU414
  1277 0080 0979     		ldrb	r1, [r1, #4]	@ zero_extendqisi2
  1278              	.LVL78:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 55
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 55
 
 
  609:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****                                    ((uint32_t)ep->type << 18) | (epnum << 22) |
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
  1324              		.loc 1 656 5 is_stmt 1 view .LVU426
  656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 56
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 56
 
 
  1325              		.loc 1 656 11 is_stmt 0 view .LVU427
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  663:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
  1363              		.loc 1 663 27 view .LVU444
  1364 0046 43EA0243 		orr	r3, r3, r2, lsl #16
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 57
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 57
 
 
  1365 004a C0F83C38 		str	r3, [r0, #2108]
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
  1403              		.loc 1 652 16 is_stmt 0 view .LVU461
  1404 0084 D0F83C28 		ldr	r2, [r0, #2108]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 58
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 58
 
 
  1405              	.LVL86:
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1450              		.loc 1 681 3 is_stmt 1 view .LVU472
  681:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
  1451              		.loc 1 681 9 is_stmt 0 view .LVU473
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 59
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 59
 
 
  1452 0004 4A78     		ldrb	r2, [r1, #1]	@ zero_extendqisi2
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  706:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_OUTEP(epnum)->DOEPCTL &= ~(USB_OTG_DOEPCTL_USBAEP |
  1490              		.loc 1 706 27 view .LVU490
  1491 003e 22EA0C42 		bic	r2, r2, ip, lsl #16
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 60
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 60
 
 
  1492 0042 C0F81C28 		str	r2, [r0, #2076]
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  689:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_DEVICE->DAINTMSK &= ~(USB_OTG_DAINTMSK_IEPM & (uint32_t)(1UL << (ep->num & EP_ADDR_MSK)));
  1533              		.loc 1 689 83 view .LVU504
  1534 006a 02F00F02 		and	r2, r2, #15
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 61
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 61
 
 
  689:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_DEVICE->DAINTMSK &= ~(USB_OTG_DAINTMSK_IEPM & (uint32_t)(1UL << (ep->num & EP_ADDR_MSK)));
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1573 00aa C3F80029 		str	r2, [r3, #2304]
  1574              	.LVL100:
  686:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 62
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 62
 
 
  1575              		.loc 1 686 7 is_stmt 1 view .LVU521
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1621              		.loc 1 724 3 view .LVU531
  725:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  1622              		.loc 1 725 3 view .LVU532
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 63
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 63
 
 
  725:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1660              		.loc 1 748 27 view .LVU549
  1661 002e 23EA0243 		bic	r3, r3, r2, lsl #16
  1662 0032 C0F81C38 		str	r3, [r0, #2076]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 64
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 64
 
 
  1663              	.L113:
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1701 0060 9BB2     		uxth	r3, r3
  737:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
  1702              		.loc 1 737 27 view .LVU566
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 65
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 65
 
 
  1703 0062 22EA0303 		bic	r3, r2, r3
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1746              		.thumb_func
  1748              	USB_EPStopXfer:
  1749              	.LVL117:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 66
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 66
 
 
  1750              	.LFB235:
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1790              	.L120:
  1791              	.LVL120:
  983:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 67
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 67
 
 
  1792              		.loc 1 983 3 is_stmt 1 view .LVU593
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1834 0054 C3F80049 		str	r4, [r3, #2304]
  1835              	.L121:
  951:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       {
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 68
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 68
 
 
  1836              		.loc 1 951 7 is_stmt 1 view .LVU606
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1874 0090 40F08040 		orr	r0, r0, #1073741824
  1875 0094 C3F8000B 		str	r0, [r3, #2816]
  1876              	.L122:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 69
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 69
 
 
  970:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       {
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1920              		.cfi_startproc
  1921              		@ args = 4, pretend = 0, frame = 0
  1922              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 70
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 70
 
 
 1002:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t USBx_BASE = (uint32_t)USBx;
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  1960              		.loc 1 1014 7 is_stmt 1 view .LVU652
  1961              	.LVL128:
 1015:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       pSrc++;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 71
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 71
 
 
  1962              		.loc 1 1015 7 view .LVU653
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2008              	.LCFI31:
  2009              		.cfi_def_cfa_offset 32
  766:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t epnum = (uint32_t)ep->num;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 72
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 72
 
 
  2010              		.loc 1 766 3 is_stmt 1 view .LVU664
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  877:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       }
  2047              		.loc 1 877 9 is_stmt 1 view .LVU682
  877:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 73
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 73
 
 
  2048              		.loc 1 877 26 is_stmt 0 view .LVU683
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  923:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
  2086              		.loc 1 923 5 is_stmt 1 view .LVU700
  923:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 74
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 74
 
 
  2087              		.loc 1 923 22 is_stmt 0 view .LVU701
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2127 0088 D3F81059 		ldr	r5, [r3, #2320]
  778:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
  2128              		.loc 1 778 34 view .LVU716
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 75
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 75
 
 
  2129 008c 6FF31205 		bfc	r5, #0, #19
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2166 00be 0122     		movs	r2, #1
  2167              	.LVL141:
  846:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 76
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 76
 
 
  2168              		.loc 1 846 42 view .LVU734
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  797:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       }
  2206              		.loc 1 797 25 is_stmt 0 view .LVU751
  2207 00ee 1D69     		ldr	r5, [r3, #16]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 77
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 77
 
 
  797:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       }
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2246              		.loc 1 804 9 is_stmt 1 view .LVU767
  804:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         {
  2247              		.loc 1 804 15 is_stmt 0 view .LVU768
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 78
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 78
 
 
  2248 0122 0D79     		ldrb	r5, [r1, #4]	@ zero_extendqisi2
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  821:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       {
  2286              		.loc 1 821 10 view .LVU785
  2287 0150 012B     		cmp	r3, #1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 79
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 79
 
 
  2288 0152 08D0     		beq	.L162
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  851:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         {
  2328              		.loc 1 851 25 is_stmt 0 view .LVU800
  2329 0194 D0F80838 		ldr	r3, [r0, #2056]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 80
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 80
 
 
  851:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         {
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2369              		.loc 1 888 10 view .LVU815
  2370 01c8 54B9     		cbnz	r4, .L153
  890:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         USBx_OUTEP(epnum)->DOEPTSIZ |= (USB_OTG_DOEPTSIZ_PKTCNT & (1U << 19));
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 81
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 81
 
 
  2371              		.loc 1 890 9 is_stmt 1 view .LVU816
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  898:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         USBx_OUTEP(epnum)->DOEPTSIZ |= USB_OTG_DOEPTSIZ_XFRSIZ & ep->xfer_size;
  2408              		.loc 1 898 64 view .LVU834
  2409 01f4 124E     		ldr	r6, .L163
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 82
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 82
 
 
  2410 01f6 06EAC444 		and	r4, r6, r4, lsl #19
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2448              		.loc 1 915 26 is_stmt 0 view .LVU850
  2449 0222 DCF8003B 		ldr	r3, [ip, #2816]
  915:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 83
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 83
 
 
  2450              		.loc 1 915 36 view .LVU851
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2496              		.loc 1 1037 3 view .LVU861
 1037:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint16_t remaining_bytes = len % 4U;
  2497              		.loc 1 1037 37 is_stmt 0 view .LVU862
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 84
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 84
 
 
  2498 0006 4FEA920E 		lsr	lr, r2, #2
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2535              		.loc 1 1053 5 is_stmt 0 view .LVU879
  2536 0028 DCF80040 		ldr	r4, [ip]
 1052:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     __UNALIGNED_UINT32_WRITE(&pData, USBx_DFIFO(0U));
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 85
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 85
 
 
  2537              		.loc 1 1052 7 view .LVU880
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2578              		.thumb
  2579              		.thumb_func
  2581              	USB_EPSetStall:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 86
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 86
 
 
  2582              	.LVL177:
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2620              		.loc 1 1092 5 is_stmt 1 view .LVU910
 1092:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
  2621              		.loc 1 1092 22 is_stmt 0 view .LVU911
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 87
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 87
 
 
  2622 0022 D0F8003B 		ldr	r3, [r0, #2816]
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2663              		.section	.text.USB_EPClearStall,"ax",%progbits
  2664              		.align	1
  2665              		.global	USB_EPClearStall
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 88
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 88
 
 
  2666              		.syntax unified
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2706              		.loc 1 1120 8 view .LVU940
  2707 001e 012B     		cmp	r3, #1
  2708 0020 15D9     		bls	.L181
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 89
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 89
 
 
  2709              	.L179:
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2747              		.loc 1 1122 34 view .LVU956
  2748 0052 43F08053 		orr	r3, r3, #268435456
  2749 0056 C0F8003B 		str	r3, [r0, #2816]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 90
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 90
 
 
  2750 005a E2E7     		b	.L179
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
  2794              		.loc 1 1140 26 is_stmt 1 discriminator 3 view .LVU969
  2795 0018 0132     		adds	r2, r2, #1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 91
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 91
 
 
  2796              	.LVL198:
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2833              		.loc 1 1158 9 view .LVU986
  2834 003a FFF7FEFF 		bl	USB_FlushTxFifo
  2835              	.LVL204:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 92
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 92
 
 
 1159:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2878              	.LVL207:
 1182:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  2879              		.loc 1 1182 1 view .LVU1001
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 93
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 93
 
 
  2880 001e 7047     		bx	lr
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2928              	.LVL210:
  2929              	.LFB243:
 1207:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t USBx_BASE = (uint32_t)USBx;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 94
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 94
 
 
  2930              		.loc 1 1207 1 is_stmt 1 view -0
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  2973              		.loc 1 1227 10 is_stmt 0 view .LVU1025
  2974 0000 4269     		ldr	r2, [r0, #20]
  2975              	.LVL213:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 95
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 95
 
 
 1228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3018              	.LVL219:
 1247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** }
  3019              		.loc 1 1247 3 is_stmt 1 view .LVU1040
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 96
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 96
 
 
 1248:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3062              		.loc 1 1264 1 view .LVU1054
  3063 000e 7047     		bx	lr
  3064              		.cfi_endproc
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 97
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 97
 
 
  3065              	.LFE246:
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3110              		.thumb
  3111              		.thumb_func
  3113              	USB_ReadDevOutEPInterrupt:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 98
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 98
 
 
  3114              	.LVL231:
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3157              		.cfi_startproc
  3158              		@ args = 0, pretend = 0, frame = 0
  3159              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 99
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 99
 
 
  3160              		@ link register save eliminated.
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3195              		.loc 1 1320 1 is_stmt 0 view .LVU1098
  3196 0020 1840     		ands	r0, r0, r3
  3197              	.LVL244:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 100
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 100
 
 
 1320:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3247              	.LVL247:
 1344:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  3248              		.loc 1 1344 1 view .LVU1108
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 101
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 101
 
 
  3249 0002 00F00100 		and	r0, r0, #1
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3293              		.loc 1 267 9 is_stmt 0 view .LVU1120
  3294 0012 C368     		ldr	r3, [r0, #12]
  267:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 102
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 102
 
 
  3295              		.loc 1 267 19 view .LVU1121
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  3335              		.loc 1 257 9 is_stmt 0 view .LVU1136
  3336 0038 C368     		ldr	r3, [r0, #12]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 103
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 103
 
 
  257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3378              	.LFE224:
  3380              		.section	.text.USB_ActivateSetup,"ax",%progbits
  3381              		.align	1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 104
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 104
 
 
  3382              		.global	USB_ActivateSetup
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3427              		.loc 1 1374 1 is_stmt 1 view -0
  3428              		.cfi_startproc
  3429              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 105
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 105
 
 
  3430              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1388:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   USBx_OUTEP(0U)->DOEPTSIZ |=  USB_OTG_DOEPTSIZ_STUPCNT;
  3468              		.loc 1 1388 17 is_stmt 0 view .LVU1178
  3469 0024 D0F8104B 		ldr	r4, [r0, #2832]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 106
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 106
 
 
 1388:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   USBx_OUTEP(0U)->DOEPTSIZ |=  USB_OTG_DOEPTSIZ_STUPCNT;
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3511 005c 0A30544F 		.word	1330917386
  3512              		.cfi_endproc
  3513              	.LFE253:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 107
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 107
 
 
  3515              		.section	.text.USB_HostInit,"ax",%progbits
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1454:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
 1455:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** #if defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx) || defined(STM32F412Zx) \
 1456:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****  || defined(STM32F412Vx) || defined(STM32F412Rx) || defined(STM32F412Cx) || defined(STM32F413xx) \
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 108
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 108
 
 
 1457:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****  || defined(STM32F423xx)
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1481:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
 1482:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       /* Force Device Enumeration to FS/LS mode only */
 1483:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       USBx_HOST->HCFG |= USB_OTG_HCFG_FSLSS;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 109
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 109
 
 
 1484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3617              	.L221:
  3618              	.LVL275:
 1501:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 110
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 110
 
 
 1502:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1515:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* Disable all interrupts. */
 1516:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   USBx->GINTMSK = 0U;
  3656              		.loc 1 1516 3 is_stmt 1 view .LVU1243
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 111
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 111
 
 
  3657              		.loc 1 1516 17 is_stmt 0 view .LVU1244
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3687              	.L225:
 1541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
 1542:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 112
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 112
 
 
 1543:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* Enable interrupts matching to the Host mode ONLY */
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1557:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   *           HCFG_48_MHZ : Full Speed 48 MHz Clock
 1558:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   *           HCFG_6_MHZ : Low Speed 6 MHz Clock
 1559:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   * @retval HAL status
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 113
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 113
 
 
 1560:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   */
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1581:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   return HAL_OK;
  3763              		.loc 1 1581 10 view .LVU1280
  3764 002e 0020     		movs	r0, #0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 114
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 114
 
 
  3765              	.LVL283:
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3807              		.cfi_offset 4, -12
  3808              		.cfi_offset 5, -8
  3809              		.cfi_offset 14, -4
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 115
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 115
 
 
  3810 0002 83B0     		sub	sp, sp, #12
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3851              	.LVL292:
 1606:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
 1607:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   return HAL_OK;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 116
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 116
 
 
  3852              		.loc 1 1607 3 view .LVU1307
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3892              		.loc 1 1623 9 view .LVU1317
  3893 000a 0193     		str	r3, [sp, #4]
 1624:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 117
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 117
 
 
 1625:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   hprt0 &= ~(USB_OTG_HPRT_PENA | USB_OTG_HPRT_PCDET |
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3935              	.LVL296:
  3936              	.L243:
  3937              	.LCFI49:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 118
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 118
 
 
  3938              		.cfi_restore_state
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  3975              		.loc 1 1653 11 is_stmt 0 view .LVU1343
  3976 0006 D0F84034 		ldr	r3, [r0, #1088]
  3977              		.loc 1 1653 9 view .LVU1344
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 119
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 119
 
 
  3978 000a 0193     		str	r3, [sp, #4]
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4020              	.LFE260:
  4022              		.section	.text.USB_HC_Init,"ax",%progbits
  4023              		.align	1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 120
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 120
 
 
  4024              		.global	USB_HC_Init
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4050 0008 9DF82450 		ldrb	r5, [sp, #36]	@ zero_extendqisi2
 1697:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   HAL_StatusTypeDef ret = HAL_OK;
  4051              		.loc 1 1697 3 is_stmt 1 view .LVU1356
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 121
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 121
 
 
  4052              	.LVL304:
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1697:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t USBx_BASE = (uint32_t)USBx;
  4085              		.loc 1 1697 21 view .LVU1369
  4086 0032 0027     		movs	r7, #0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 122
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 122
 
 
  4087              	.L248:
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4091 0034 0022     		movs	r2, #0
  4092 0036 5A60     		str	r2, [r3, #4]
 1769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 123
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 123
 
 
 1770:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* Enable host channel Halt interrupt */
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4127 0064 FFF7FEFF 		bl	USB_GetHostSpeed
  4128              	.LVL310:
 1790:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 124
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 124
 
 
 1791:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* LS device plugged to HUB */
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4165 009c 43F48013 		orr	r3, r3, #1048576
 1801:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****                                       ((((uint32_t)epnum & 0x7FU) << 11) & USB_OTG_HCCHAR_EPNUM) |
  4166              		.loc 1 1801 37 view .LVU1404
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 125
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 125
 
 
  4167 00a0 C6F80035 		str	r3, [r6, #1280]
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1743:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       {
  4206              		.loc 1 1743 10 is_stmt 0 view .LVU1421
  4207 00d0 19F0800F 		tst	r9, #128
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 126
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 126
 
 
  4208 00d4 01D1     		bne	.L268
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4247 0104 96E7     		b	.L248
  4248              	.LVL315:
  4249              	.L266:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 127
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 127
 
 
 1782:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4289              		.cfi_offset 14, -4
  4290 0002 84B0     		sub	sp, sp, #16
  4291              	.LCFI54:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 128
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 128
 
 
  4292              		.cfi_def_cfa_offset 32
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1863:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     num_packets = 1U;
 1864:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
 1865:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     if (hc->ep_is_in != 0U)
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 129
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 129
 
 
 1866:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     {
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4311              		.loc 1 1918 11 is_stmt 0 view .LVU1455
  4312 000c 0C6A     		ldr	r4, [r1, #32]
  4313              		.loc 1 1918 8 view .LVU1456
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 130
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 130
 
 
  4314 000e 002C     		cmp	r4, #0
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4353              		.loc 1 1867 20 view .LVU1476
  4354 003a CC61     		str	r4, [r1, #28]
 1863:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 131
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 131
 
 
  4355              		.loc 1 1863 17 view .LVU1477
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4392 0060 0C62     		str	r4, [r1, #32]
 1879:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****           {
  4393              		.loc 1 1879 11 is_stmt 1 view .LVU1495
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 132
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 132
 
 
 1879:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****           {
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4431 0088 CC60     		str	r4, [r1, #12]
 1863:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
  4432              		.loc 1 1863 17 view .LVU1513
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 133
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 133
 
 
  4433 008a 4FF0010C 		mov	ip, #1
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4465              		.loc 1 1937 11 is_stmt 0 view .LVU1526
  4466 00ae CD78     		ldrb	r5, [r1, #3]	@ zero_extendqisi2
  4467              		.loc 1 1937 8 view .LVU1527
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 134
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 134
 
 
  4468 00b0 002D     		cmp	r5, #0
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4504 00e2 CEF81040 		str	r4, [lr, #16]
  4505              	.LVL328:
 1951:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 135
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 135
 
 
 1952:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   if (dma != 0U)
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1968:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     /* unmask ack & nyet for IN/OUT transactions */
 1969:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_HC((uint32_t)ch_num)->HCINTMSK |= (USB_OTG_HCINTMSK_ACKM |
 1970:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****                                             USB_OTG_HCINTMSK_NYET);
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 136
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 136
 
 
 1971:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 2020:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
 2021:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   /* Set host channel enable */
 2022:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   tmpreg = USBx_HC(ch_num)->HCCHAR;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 137
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 137
 
 
  4549              		.loc 1 2022 3 is_stmt 1 view .LVU1564
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 2042:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   if ((hc->ep_is_in == 0U) && (hc->xfer_len > 0U) && (hc->do_csplit == 0U))
  4584              		.loc 1 2042 3 is_stmt 1 view .LVU1580
  4585              		.loc 1 2042 10 is_stmt 0 view .LVU1581
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 138
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 138
 
 
  4586 0154 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1965:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****                                         (uint32_t)hc->hub_port_nbr | USB_OTG_HCSPLT_SPLITEN;
  4631              		.loc 1 1965 39 view .LVU1597
  4632 0186 CEF80440 		str	r4, [lr, #4]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 139
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 139
 
 
 1969:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****                                             USB_OTG_HCINTMSK_NYET);
@@ -8338,7 +8338,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 1988:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       {
  4670              		.loc 1 1988 7 view .LVU1615
  4671 01b4 013C     		subs	r4, r4, #1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 140
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 140
 
 
  4672 01b6 032C     		cmp	r4, #3
@@ -8398,7 +8398,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4712              		.loc 1 1981 32 is_stmt 0 view .LVU1629
  4713 01ee DEF80440 		ldr	r4, [lr, #4]
 1981:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     }
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 141
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 141
 
 
  4714              		.loc 1 1981 41 view .LVU1630
@@ -8458,7 +8458,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4752              		.loc 1 2008 11 is_stmt 1 view .LVU1646
  4753 0232 77E7     		b	.L287
  4754              	.L293:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 142
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 142
 
 
 2032:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   }
@@ -8518,7 +8518,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 2066:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         {
 2067:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****           /* need to process data in ptxfempty interrupt */
 2068:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****           USBx->GINTMSK |= USB_OTG_GINTMSK_PTXFEM;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 143
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 143
 
 
 2069:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         }
@@ -8578,7 +8578,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4821              	.LVL342:
 2065:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****         {
  4822              		.loc 1 2065 12 view .LVU1669
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 144
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 144
 
 
  4823 0272 9A42     		cmp	r2, r3
@@ -8638,7 +8638,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 2093:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** }
  4864              		.loc 1 2093 1 view .LVU1679
  4865 0006 80B2     		uxth	r0, r0
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 145
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 145
 
 
  4866 0008 7047     		bx	lr
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4908              		.loc 1 2107 38 view .LVU1689
  4909 0010 D1F80035 		ldr	r3, [r1, #1280]
  4910              		.loc 1 2107 12 view .LVU1690
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 146
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 146
 
 
  4911 0014 C3F38143 		ubfx	r3, r3, #18, #2
@@ -8758,7 +8758,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4950 003c 21D0     		beq	.L316
 2123:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   {
 2124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****     USBx_HC(hcnum)->HCCHAR |= USB_OTG_HCCHAR_CHDIS;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 147
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 147
 
 
 2125:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c **** 
@@ -8818,7 +8818,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  4970              		.loc 1 2159 7 is_stmt 1 view .LVU1715
  4971              		.loc 1 2159 21 is_stmt 0 view .LVU1716
  4972 0060 D1F80035 		ldr	r3, [r1, #1280]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 148
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 148
 
 
  4973              		.loc 1 2159 30 view .LVU1717
@@ -8878,7 +8878,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5011              		.loc 1 2128 7 is_stmt 1 view .LVU1733
 2128:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       {
  5012              		.loc 1 2128 16 is_stmt 0 view .LVU1734
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 149
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 149
 
 
  5013 0096 C36A     		ldr	r3, [r0, #44]
@@ -8938,7 +8938,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5050              		.loc 1 2144 9 is_stmt 1 view .LVU1751
 2144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****       }
  5051              		.loc 1 2144 23 is_stmt 0 view .LVU1752
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 150
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 150
 
 
  5052 00cc D1F80035 		ldr	r3, [r1, #1280]
@@ -8998,7 +8998,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5090 00f6 C1F80035 		str	r3, [r1, #1280]
  5091 00fa F4E7     		b	.L315
  5092              		.cfi_endproc
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 151
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 151
 
 
  5093              	.LFE264:
@@ -9058,7 +9058,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 2199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   tmpreg |= USB_OTG_HCCHAR_CHENA;
  5128              		.loc 1 2199 3 is_stmt 1 view .LVU1773
  5129              		.loc 1 2199 10 is_stmt 0 view .LVU1774
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 152
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 152
 
 
  5130 0012 43F00043 		orr	r3, r3, #-2147483648
@@ -9118,7 +9118,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
 2213:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   uint32_t USBx_BASE = (uint32_t)USBx;
  5173              		.loc 1 2213 3 view .LVU1782
 2214:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c ****   __IO uint32_t count = 0U;
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 153
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 153
 
 
  5174              		.loc 1 2214 3 view .LVU1783
@@ -9178,7 +9178,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5210 0026 0022     		movs	r2, #0
  5211              		.loc 1 2232 3 view .LVU1799
  5212 0028 0AE0     		b	.L330
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 154
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 154
 
 
  5213              	.LVL373:
@@ -9238,7 +9238,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5253 004e 04EB4110 		add	r0, r4, r1, lsl #5
  5254 0052 00F5A062 		add	r2, r0, #1280
  5255              		.loc 1 2244 11 view .LVU1816
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 155
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 155
 
 
  5256 0056 D0F80035 		ldr	r3, [r0, #1280]
@@ -9298,7 +9298,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5292              		.loc 1 2262 3 is_stmt 1 view .LVU1832
  5293              		.loc 1 2262 20 is_stmt 0 view .LVU1833
  5294 007c 4FF0FF33 		mov	r3, #-1
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 156
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 156
 
 
  5295 0080 C4F81434 		str	r3, [r4, #1044]
@@ -9358,7 +9358,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5334 0000 D0F80838 		ldr	r3, [r0, #2056]
  5335              		.loc 1 2279 8 view .LVU1845
  5336 0004 00F50060 		add	r0, r0, #2048
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 157
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 157
 
 
  5337              	.LVL387:
@@ -9418,7 +9418,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5374              		.loc 1 2298 14 is_stmt 0 view .LVU1856
  5375 0000 D0F80438 		ldr	r3, [r0, #2052]
  5376              		.loc 1 2298 21 view .LVU1857
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 158
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 158
 
 
  5377 0004 23F00103 		bic	r3, r3, #1
@@ -9443,127 +9443,127 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 1
  5394              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
  5395              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h"
  5396              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 159
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 159
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_ll_usb.c
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:21     .text.USB_CoreReset:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:26     .text.USB_CoreReset:00000000 USB_CoreReset
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:121    .text.USB_CoreInit:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:127    .text.USB_CoreInit:00000000 USB_CoreInit
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:269    .text.USB_SetTurnaroundTime:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:275    .text.USB_SetTurnaroundTime:00000000 USB_SetTurnaroundTime
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:428    .text.USB_SetTurnaroundTime:000000a8 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:447    .text.USB_EnableGlobalInt:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:453    .text.USB_EnableGlobalInt:00000000 USB_EnableGlobalInt
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:477    .text.USB_DisableGlobalInt:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:483    .text.USB_DisableGlobalInt:00000000 USB_DisableGlobalInt
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:507    .text.USB_FlushTxFifo:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:513    .text.USB_FlushTxFifo:00000000 USB_FlushTxFifo
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:610    .text.USB_FlushRxFifo:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:616    .text.USB_FlushRxFifo:00000000 USB_FlushRxFifo
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:709    .text.USB_SetDevSpeed:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:715    .text.USB_SetDevSpeed:00000000 USB_SetDevSpeed
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:742    .text.USB_DevInit:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:748    .text.USB_DevInit:00000000 USB_DevInit
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1107   .text.USB_DevInit:00000194 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1112   .text.USB_GetDevSpeed:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1118   .text.USB_GetDevSpeed:00000000 USB_GetDevSpeed
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1171   .text.USB_ActivateEndpoint:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1177   .text.USB_ActivateEndpoint:00000000 USB_ActivateEndpoint
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1293   .text.USB_ActivateDedicatedEndpoint:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1299   .text.USB_ActivateDedicatedEndpoint:00000000 USB_ActivateDedicatedEndpoint
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1424   .text.USB_DeactivateEndpoint:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1430   .text.USB_DeactivateEndpoint:00000000 USB_DeactivateEndpoint
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1601   .text.USB_DeactivateEndpoint:000000d8 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1607   .text.USB_DeactivateDedicatedEndpoint:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1613   .text.USB_DeactivateDedicatedEndpoint:00000000 USB_DeactivateDedicatedEndpoint
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1742   .text.USB_EPStopXfer:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1748   .text.USB_EPStopXfer:00000000 USB_EPStopXfer
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1910   .text.USB_WritePacket:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1916   .text.USB_WritePacket:00000000 USB_WritePacket
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1985   .text.USB_EPStartXfer:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:1991   .text.USB_EPStartXfer:00000000 USB_EPStartXfer
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2465   .text.USB_EPStartXfer:00000240 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2470   .text.USB_ReadPacket:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2476   .text.USB_ReadPacket:00000000 USB_ReadPacket
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2575   .text.USB_EPSetStall:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2581   .text.USB_EPSetStall:00000000 USB_EPSetStall
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2664   .text.USB_EPClearStall:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2670   .text.USB_EPClearStall:00000000 USB_EPClearStall
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2755   .text.USB_StopDevice:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2761   .text.USB_StopDevice:00000000 USB_StopDevice
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2843   .text.USB_SetDevAddress:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2849   .text.USB_SetDevAddress:00000000 USB_SetDevAddress
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2885   .text.USB_DevConnect:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2891   .text.USB_DevConnect:00000000 USB_DevConnect
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2921   .text.USB_DevDisconnect:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2927   .text.USB_DevDisconnect:00000000 USB_DevDisconnect
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2957   .text.USB_ReadInterrupts:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2963   .text.USB_ReadInterrupts:00000000 USB_ReadInterrupts
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2990   .text.USB_ReadChInterrupts:00000000 $t
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 160
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:21     .text.USB_CoreReset:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:26     .text.USB_CoreReset:00000000 USB_CoreReset
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:121    .text.USB_CoreInit:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:127    .text.USB_CoreInit:00000000 USB_CoreInit
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:269    .text.USB_SetTurnaroundTime:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:275    .text.USB_SetTurnaroundTime:00000000 USB_SetTurnaroundTime
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:428    .text.USB_SetTurnaroundTime:000000a8 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:447    .text.USB_EnableGlobalInt:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:453    .text.USB_EnableGlobalInt:00000000 USB_EnableGlobalInt
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:477    .text.USB_DisableGlobalInt:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:483    .text.USB_DisableGlobalInt:00000000 USB_DisableGlobalInt
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:507    .text.USB_FlushTxFifo:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:513    .text.USB_FlushTxFifo:00000000 USB_FlushTxFifo
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:610    .text.USB_FlushRxFifo:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:616    .text.USB_FlushRxFifo:00000000 USB_FlushRxFifo
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:709    .text.USB_SetDevSpeed:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:715    .text.USB_SetDevSpeed:00000000 USB_SetDevSpeed
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:742    .text.USB_DevInit:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:748    .text.USB_DevInit:00000000 USB_DevInit
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1107   .text.USB_DevInit:00000194 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1112   .text.USB_GetDevSpeed:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1118   .text.USB_GetDevSpeed:00000000 USB_GetDevSpeed
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1171   .text.USB_ActivateEndpoint:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1177   .text.USB_ActivateEndpoint:00000000 USB_ActivateEndpoint
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1293   .text.USB_ActivateDedicatedEndpoint:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1299   .text.USB_ActivateDedicatedEndpoint:00000000 USB_ActivateDedicatedEndpoint
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1424   .text.USB_DeactivateEndpoint:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1430   .text.USB_DeactivateEndpoint:00000000 USB_DeactivateEndpoint
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1601   .text.USB_DeactivateEndpoint:000000d8 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1607   .text.USB_DeactivateDedicatedEndpoint:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1613   .text.USB_DeactivateDedicatedEndpoint:00000000 USB_DeactivateDedicatedEndpoint
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1742   .text.USB_EPStopXfer:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1748   .text.USB_EPStopXfer:00000000 USB_EPStopXfer
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1910   .text.USB_WritePacket:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1916   .text.USB_WritePacket:00000000 USB_WritePacket
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1985   .text.USB_EPStartXfer:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:1991   .text.USB_EPStartXfer:00000000 USB_EPStartXfer
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2465   .text.USB_EPStartXfer:00000240 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2470   .text.USB_ReadPacket:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2476   .text.USB_ReadPacket:00000000 USB_ReadPacket
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2575   .text.USB_EPSetStall:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2581   .text.USB_EPSetStall:00000000 USB_EPSetStall
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2664   .text.USB_EPClearStall:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2670   .text.USB_EPClearStall:00000000 USB_EPClearStall
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2755   .text.USB_StopDevice:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2761   .text.USB_StopDevice:00000000 USB_StopDevice
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2843   .text.USB_SetDevAddress:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2849   .text.USB_SetDevAddress:00000000 USB_SetDevAddress
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2885   .text.USB_DevConnect:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2891   .text.USB_DevConnect:00000000 USB_DevConnect
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2921   .text.USB_DevDisconnect:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2927   .text.USB_DevDisconnect:00000000 USB_DevDisconnect
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2957   .text.USB_ReadInterrupts:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2963   .text.USB_ReadInterrupts:00000000 USB_ReadInterrupts
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2990   .text.USB_ReadChInterrupts:00000000 $t
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 160
 
 
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:2996   .text.USB_ReadChInterrupts:00000000 USB_ReadChInterrupts
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3029   .text.USB_ReadDevAllOutEpInterrupt:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3035   .text.USB_ReadDevAllOutEpInterrupt:00000000 USB_ReadDevAllOutEpInterrupt
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3068   .text.USB_ReadDevAllInEpInterrupt:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3074   .text.USB_ReadDevAllInEpInterrupt:00000000 USB_ReadDevAllInEpInterrupt
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3107   .text.USB_ReadDevOutEPInterrupt:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3113   .text.USB_ReadDevOutEPInterrupt:00000000 USB_ReadDevOutEPInterrupt
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3147   .text.USB_ReadDevInEPInterrupt:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3153   .text.USB_ReadDevInEPInterrupt:00000000 USB_ReadDevInEPInterrupt
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3204   .text.USB_ClearInterrupts:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3210   .text.USB_ClearInterrupts:00000000 USB_ClearInterrupts
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3230   .text.USB_GetMode:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3236   .text.USB_GetMode:00000000 USB_GetMode
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3255   .text.USB_SetCurrentMode:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3261   .text.USB_SetCurrentMode:00000000 USB_SetCurrentMode
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3381   .text.USB_ActivateSetup:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3387   .text.USB_ActivateSetup:00000000 USB_ActivateSetup
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3418   .text.USB_EP0_OutStart:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3424   .text.USB_EP0_OutStart:00000000 USB_EP0_OutStart
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3511   .text.USB_EP0_OutStart:0000005c $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3516   .text.USB_HostInit:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3522   .text.USB_HostInit:00000000 USB_HostInit
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3715   .text.USB_HostInit:000000d4 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3721   .text.USB_InitFSLSPClkSel:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3727   .text.USB_InitFSLSPClkSel:00000000 USB_InitFSLSPClkSel
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3790   .text.USB_ResetPort:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3796   .text.USB_ResetPort:00000000 USB_ResetPort
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3865   .text.USB_DriveVbus:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3871   .text.USB_DriveVbus:00000000 USB_DriveVbus
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3950   .text.USB_GetHostSpeed:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3956   .text.USB_GetHostSpeed:00000000 USB_GetHostSpeed
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:3994   .text.USB_GetCurrentFrame:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4000   .text.USB_GetCurrentFrame:00000000 USB_GetCurrentFrame
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4023   .text.USB_HC_Init:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4029   .text.USB_HC_Init:00000000 USB_HC_Init
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4071   .text.USB_HC_Init:00000022 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4075   .text.USB_HC_Init:00000026 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4269   .text.USB_HC_StartXfer:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4275   .text.USB_HC_StartXfer:00000000 USB_HC_StartXfer
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4609   .text.USB_HC_StartXfer:00000172 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4614   .text.USB_HC_StartXfer:00000176 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4676   .text.USB_HC_StartXfer:000001be $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4680   .text.USB_HC_StartXfer:000001c2 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4837   .text.USB_HC_StartXfer:00000280 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4842   .text.USB_HC_ReadInterrupt:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4848   .text.USB_HC_ReadInterrupt:00000000 USB_HC_ReadInterrupt
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4871   .text.USB_HC_Halt:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:4877   .text.USB_HC_Halt:00000000 USB_HC_Halt
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5096   .text.USB_DoPing:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5102   .text.USB_DoPing:00000000 USB_DoPing
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5142   .text.USB_DoPing:00000020 $d
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5147   .text.USB_StopHost:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5153   .text.USB_StopHost:00000000 USB_StopHost
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5317   .text.USB_ActivateRemoteWakeup:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5323   .text.USB_ActivateRemoteWakeup:00000000 USB_ActivateRemoteWakeup
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5358   .text.USB_DeActivateRemoteWakeup:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s:5364   .text.USB_DeActivateRemoteWakeup:00000000 USB_DeActivateRemoteWakeup
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccOAzQD9.s 			page 161
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:2996   .text.USB_ReadChInterrupts:00000000 USB_ReadChInterrupts
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3029   .text.USB_ReadDevAllOutEpInterrupt:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3035   .text.USB_ReadDevAllOutEpInterrupt:00000000 USB_ReadDevAllOutEpInterrupt
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3068   .text.USB_ReadDevAllInEpInterrupt:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3074   .text.USB_ReadDevAllInEpInterrupt:00000000 USB_ReadDevAllInEpInterrupt
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3107   .text.USB_ReadDevOutEPInterrupt:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3113   .text.USB_ReadDevOutEPInterrupt:00000000 USB_ReadDevOutEPInterrupt
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3147   .text.USB_ReadDevInEPInterrupt:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3153   .text.USB_ReadDevInEPInterrupt:00000000 USB_ReadDevInEPInterrupt
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3204   .text.USB_ClearInterrupts:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3210   .text.USB_ClearInterrupts:00000000 USB_ClearInterrupts
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3230   .text.USB_GetMode:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3236   .text.USB_GetMode:00000000 USB_GetMode
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3255   .text.USB_SetCurrentMode:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3261   .text.USB_SetCurrentMode:00000000 USB_SetCurrentMode
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3381   .text.USB_ActivateSetup:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3387   .text.USB_ActivateSetup:00000000 USB_ActivateSetup
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3418   .text.USB_EP0_OutStart:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3424   .text.USB_EP0_OutStart:00000000 USB_EP0_OutStart
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3511   .text.USB_EP0_OutStart:0000005c $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3516   .text.USB_HostInit:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3522   .text.USB_HostInit:00000000 USB_HostInit
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3715   .text.USB_HostInit:000000d4 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3721   .text.USB_InitFSLSPClkSel:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3727   .text.USB_InitFSLSPClkSel:00000000 USB_InitFSLSPClkSel
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3790   .text.USB_ResetPort:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3796   .text.USB_ResetPort:00000000 USB_ResetPort
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3865   .text.USB_DriveVbus:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3871   .text.USB_DriveVbus:00000000 USB_DriveVbus
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3950   .text.USB_GetHostSpeed:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3956   .text.USB_GetHostSpeed:00000000 USB_GetHostSpeed
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:3994   .text.USB_GetCurrentFrame:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4000   .text.USB_GetCurrentFrame:00000000 USB_GetCurrentFrame
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4023   .text.USB_HC_Init:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4029   .text.USB_HC_Init:00000000 USB_HC_Init
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4071   .text.USB_HC_Init:00000022 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4075   .text.USB_HC_Init:00000026 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4269   .text.USB_HC_StartXfer:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4275   .text.USB_HC_StartXfer:00000000 USB_HC_StartXfer
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4609   .text.USB_HC_StartXfer:00000172 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4614   .text.USB_HC_StartXfer:00000176 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4676   .text.USB_HC_StartXfer:000001be $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4680   .text.USB_HC_StartXfer:000001c2 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4837   .text.USB_HC_StartXfer:00000280 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4842   .text.USB_HC_ReadInterrupt:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4848   .text.USB_HC_ReadInterrupt:00000000 USB_HC_ReadInterrupt
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4871   .text.USB_HC_Halt:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:4877   .text.USB_HC_Halt:00000000 USB_HC_Halt
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5096   .text.USB_DoPing:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5102   .text.USB_DoPing:00000000 USB_DoPing
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5142   .text.USB_DoPing:00000020 $d
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5147   .text.USB_StopHost:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5153   .text.USB_StopHost:00000000 USB_StopHost
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5317   .text.USB_ActivateRemoteWakeup:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5323   .text.USB_ActivateRemoteWakeup:00000000 USB_ActivateRemoteWakeup
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5358   .text.USB_DeActivateRemoteWakeup:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s:5364   .text.USB_DeActivateRemoteWakeup:00000000 USB_DeActivateRemoteWakeup
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccKKYR8B.s 			page 161
 
 
 

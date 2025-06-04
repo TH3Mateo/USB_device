@@ -14,7 +14,8 @@
         "type_traits": "c",
         "usbd_cdc_if.h": "c",
         "cmsis_os.h": "c",
-        "utils.h": "c"
+        "utils.h": "c",
+        "thermal_control.h": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "C_Cpp.default.compilerPath": "arm-none-eabi-gcc",

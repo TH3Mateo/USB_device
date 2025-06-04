@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
   29:USB_DEVICE/App/usbd_cdc_if.c **** /* Private macro -------------------------------------------------------------*/
   30:USB_DEVICE/App/usbd_cdc_if.c **** 
   31:USB_DEVICE/App/usbd_cdc_if.c **** /* USER CODE BEGIN PV */
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 2
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 2
 
 
   32:USB_DEVICE/App/usbd_cdc_if.c **** /* Private variables ---------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
   86:USB_DEVICE/App/usbd_cdc_if.c ****   */
   87:USB_DEVICE/App/usbd_cdc_if.c **** /* Create buffer for reception and transmission           */
   88:USB_DEVICE/App/usbd_cdc_if.c **** /* It's up to user to redefine and/or remove those define */
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 3
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 3
 
 
   89:USB_DEVICE/App/usbd_cdc_if.c **** /** Received data over USB are stored in this buffer      */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  143:USB_DEVICE/App/usbd_cdc_if.c ****   CDC_TransmitCplt_FS
  144:USB_DEVICE/App/usbd_cdc_if.c **** };
  145:USB_DEVICE/App/usbd_cdc_if.c **** 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 4
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 4
 
 
  146:USB_DEVICE/App/usbd_cdc_if.c **** /* Private functions ---------------------------------------------------------*/
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  181:USB_DEVICE/App/usbd_cdc_if.c **** {
   49              		.loc 1 181 1 is_stmt 1 view -0
   50              		.cfi_startproc
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 5
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 5
 
 
   51              		@ args = 0, pretend = 0, frame = 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  232:USB_DEVICE/App/usbd_cdc_if.c ****     break;
  233:USB_DEVICE/App/usbd_cdc_if.c **** 
  234:USB_DEVICE/App/usbd_cdc_if.c ****     case CDC_SEND_BREAK:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 6
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 6
 
 
  235:USB_DEVICE/App/usbd_cdc_if.c **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  272:USB_DEVICE/App/usbd_cdc_if.c **** //    printf("\r \n");
  273:USB_DEVICE/App/usbd_cdc_if.c **** 
  274:USB_DEVICE/App/usbd_cdc_if.c ****   return (USBD_OK);
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 7
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 7
 
 
  275:USB_DEVICE/App/usbd_cdc_if.c ****   /* USER CODE END 6 */
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  321:USB_DEVICE/App/usbd_cdc_if.c ****   UNUSED(epnum);
   82              		.loc 1 321 3 view .LVU13
  322:USB_DEVICE/App/usbd_cdc_if.c ****   /* USER CODE END 13 */
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 8
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 8
 
 
  323:USB_DEVICE/App/usbd_cdc_if.c ****   return result;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  129              		.loc 1 266 38 is_stmt 0 view .LVU24
  130 0014 0123     		movs	r3, #1
  131 0016 85F89F32 		strb	r3, [r5, #671]
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 9
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 9
 
 
  267:USB_DEVICE/App/usbd_cdc_if.c **** //  printf("setting received flag to %d \r \n", hUsbDeviceFS.received_flag);
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  180 0016 2046     		mov	r0, r4
  181 0018 FFF7FEFF 		bl	USBD_CDC_ReceivePacket
  182              	.LVL12:
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 10
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 10
 
 
  158:USB_DEVICE/App/usbd_cdc_if.c ****   /* USER CODE END 3 */
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  228              	.L19:
  290:USB_DEVICE/App/usbd_cdc_if.c ****   uint8_t result = USBD_OK;
  229              		.loc 1 290 1 view .LVU44
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 11
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 11
 
 
  230 0010 10B5     		push	{r4, lr}
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  280      00000000 
  280      00000000 
  280      00000000 
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 12
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 12
 
 
  280      00000000 
@@ -678,32 +678,32 @@ ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 1
  292              		.file 4 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h"
  293              		.file 5 "Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h"
  294              		.file 6 "USB_DEVICE/App/usbd_cdc_if.h"
-ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s 			page 13
+ARM GAS  C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usbd_cdc_if.c
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:21     .text.CDC_DeInit_FS:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:26     .text.CDC_DeInit_FS:00000000 CDC_DeInit_FS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:41     .text.CDC_Control_FS:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:46     .text.CDC_Control_FS:00000000 CDC_Control_FS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:66     .text.CDC_TransmitCplt_FS:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:71     .text.CDC_TransmitCplt_FS:00000000 CDC_TransmitCplt_FS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:93     .text.CDC_Receive_FS:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:98     .text.CDC_Receive_FS:00000000 CDC_Receive_FS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:145    .text.CDC_Receive_FS:00000024 $d
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:286    .bss.UserRxBufferFS:00000000 UserRxBufferFS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:151    .text.CDC_Init_FS:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:156    .text.CDC_Init_FS:00000000 CDC_Init_FS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:190    .text.CDC_Init_FS:00000020 $d
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:279    .bss.UserTxBufferFS:00000000 UserTxBufferFS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:197    .text.CDC_Transmit_FS:00000000 $t
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:203    .text.CDC_Transmit_FS:00000000 CDC_Transmit_FS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:259    .text.CDC_Transmit_FS:00000028 $d
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:268    .data.USBD_Interface_fops_FS:00000000 USBD_Interface_fops_FS
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:265    .data.USBD_Interface_fops_FS:00000000 $d
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:276    .bss.UserTxBufferFS:00000000 $d
-C:\Users\oleku\AppData\Local\Temp\ccuZJAxS.s:283    .bss.UserRxBufferFS:00000000 $d
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:21     .text.CDC_DeInit_FS:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:26     .text.CDC_DeInit_FS:00000000 CDC_DeInit_FS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:41     .text.CDC_Control_FS:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:46     .text.CDC_Control_FS:00000000 CDC_Control_FS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:66     .text.CDC_TransmitCplt_FS:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:71     .text.CDC_TransmitCplt_FS:00000000 CDC_TransmitCplt_FS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:93     .text.CDC_Receive_FS:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:98     .text.CDC_Receive_FS:00000000 CDC_Receive_FS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:145    .text.CDC_Receive_FS:00000024 $d
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:286    .bss.UserRxBufferFS:00000000 UserRxBufferFS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:151    .text.CDC_Init_FS:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:156    .text.CDC_Init_FS:00000000 CDC_Init_FS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:190    .text.CDC_Init_FS:00000020 $d
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:279    .bss.UserTxBufferFS:00000000 UserTxBufferFS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:197    .text.CDC_Transmit_FS:00000000 $t
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:203    .text.CDC_Transmit_FS:00000000 CDC_Transmit_FS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:259    .text.CDC_Transmit_FS:00000028 $d
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:268    .data.USBD_Interface_fops_FS:00000000 USBD_Interface_fops_FS
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:265    .data.USBD_Interface_fops_FS:00000000 $d
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:276    .bss.UserTxBufferFS:00000000 $d
+C:\Users\oleku\AppData\Local\Temp\ccuEKeyk.s:283    .bss.UserRxBufferFS:00000000 $d
 
 UNDEFINED SYMBOLS
 USBD_CDC_SetRxBuffer
