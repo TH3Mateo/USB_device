@@ -40,6 +40,7 @@ Core/Src/main.c \
 Core/Src/thermal_control.c \
 Core/Src/freertos.c \
 Core/Src/VL53L0X.c \
+Core/Src/lcd.c \
 Core/Src/stm32f4xx_it.c \
 Core/Src/stm32f4xx_hal_msp.c \
 Core/Src/stm32f4xx_hal_timebase_tim.c \
@@ -175,9 +176,9 @@ C_INCLUDES =  \
 
 
 # compile gcc flags
-ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -w -fdata-sections -ffunction-sections
 
-CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT)  -Wall -fdata-sections -ffunction-sections 
+CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT)  -w -fdata-sections -ffunction-sections 
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -gdwarf-2

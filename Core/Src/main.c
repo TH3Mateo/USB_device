@@ -29,6 +29,7 @@
 #include "usbd_cdc_if.h"
 #include "usbd_core.h"
 #include "VL53L0X.h"
+#include "lcd.h"
 #include "stdio.h"
 #include "configurables.h"
 #include "commands.h"
