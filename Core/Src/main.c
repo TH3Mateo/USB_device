@@ -694,15 +694,15 @@ void LED_manager(void *argument) {
 
 void DISPLAY_manager(void *argument) {
     RTT(0,"DISPLAY manager started \r \n");
+      initLCD();
+  char *stl = "Github: @fatay";
+  writeLCD(stl);
+  char *ttl = "LCD Library";
+  setCursor(0,1);
+  writeLCD(ttl);
+
     while (1) {
-        if(hUsbDeviceFS.dev_connection_status==0x01){
-            RTT(0,"displaying data \r \n");
-            char display_data[RX_BUFF_SIZE];
-            memset(display_data, 0x00, RX_BUFF_SIZE);
-            sprintf(display_data, "T: %.2f C", ACTUAL_TEMP.value);
-            CDC_Transmit_FS(display_data, RX_BUFF_SIZE);
-        }
-        osDelay(1000);
+        osDelay(400);
     }
 }
 

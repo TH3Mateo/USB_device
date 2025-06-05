@@ -11,7 +11,7 @@
 //#define STM32F7
 
 
-#define MODE LCD_4BIT
+#define MODE LCD_8BIT
 
 /* CONFIG FOR LIBRARY USER */
 
@@ -24,13 +24,13 @@ typedef struct {
 //4 pin mode -> pins
 
 
-GPIO DATA6_Pin = { GPIOA,GPIO_PIN_0};
-GPIO DATA7_Pin = { GPIOA,GPIO_PIN_1};
-GPIO DATA8_Pin = { GPIOA,GPIO_PIN_2};
-GPIO DATA5_Pin = { GPIOA,GPIO_PIN_3};
+GPIO DATA6_Pin = { GPIOA,GPIO_PIN_7};
+GPIO DATA7_Pin = { GPIOB,GPIO_PIN_0};
+GPIO DATA8_Pin = { GPIOB,GPIO_PIN_1};
+GPIO DATA5_Pin = { GPIOB,GPIO_PIN_2};
 
-GPIO RS_Pin = {.port = GPIOA, .pin = GPIO_PIN_4};
-GPIO EN_Pin = {.port = GPIOA, .pin = GPIO_PIN_5};
+GPIO RS_Pin = {.port = GPIOB, .pin = GPIO_PIN_13};
+GPIO EN_Pin = {.port = GPIOB, .pin = GPIO_PIN_5};
 //RW Pin not used,connect to GND
 
 //if you want to work with 8 bit mode uncomment the area which is given below
@@ -39,10 +39,10 @@ GPIO EN_Pin = {.port = GPIOA, .pin = GPIO_PIN_5};
 
 
 
-GPIO DATA1_Pin = {.port = GPIOA, .pin = GPIO_PIN_6};
-GPIO DATA2_Pin = {.port = GPIOA, .pin = GPIO_PIN_7};
-GPIO DATA3_Pin = {.port = GPIOB, .pin = GPIO_PIN_0};
-GPIO DATA4_Pin = {.port = GPIOB, .pin = GPIO_PIN_1};
+GPIO DATA1_Pin = {.port = GPIOA, .pin = GPIO_PIN_3};
+GPIO DATA2_Pin = {.port = GPIOA, .pin = GPIO_PIN_4};
+GPIO DATA3_Pin = {.port = GPIOA, .pin = GPIO_PIN_5};
+GPIO DATA4_Pin = {.port = GPIOA, .pin = GPIO_PIN_6};
 #endif
 
 
