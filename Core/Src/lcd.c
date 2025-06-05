@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include "lcd.h"
 #include "lcd_config.h"
-
+#define LCD8Bit
 
 #define SET_IF(expr)  ((expr) ? GPIO_PIN_SET : GPIO_PIN_RESET)
 char display_settings;
@@ -53,7 +53,7 @@ static void fallingEdge(void)
 static void sendCommand(char cmd)
 {
 	#ifdef LCD8Bit
-    	HAL_GPIO_WritePin(GPIO_PORT, RS_Pin, GPIO_PIN_RESET);
+    	HAL_GPIO_WritePin(RS_Pin.port, RS_Pin.pin, GPIO_PIN_RESET);
 		send8Bits(cmd);
 	#else
 	    HAL_GPIO_WritePin(RS_Pin.port, RS_Pin.pin, GPIO_PIN_RESET);
@@ -65,7 +65,7 @@ static void sendCommand(char cmd)
 static void sendData(char data)
 {
 	#ifdef LCD8Bit
-    	HAL_GPIO_WritePin(GPIO_PORT, RS_Pin, GPIO_PIN_SET);
+    	HAL_GPIO_WritePin(RS_Pin.port, RS_Pin.pin, GPIO_PIN_SET);
 		send8Bits(data);
 	#else
 	    HAL_GPIO_WritePin(RS_Pin.port, RS_Pin.pin, GPIO_PIN_SET);

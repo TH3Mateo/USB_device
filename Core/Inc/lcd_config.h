@@ -30,7 +30,7 @@ GPIO DATA8_Pin = { GPIOB,GPIO_PIN_1};
 GPIO DATA5_Pin = { GPIOB,GPIO_PIN_2};
 
 GPIO RS_Pin = {.port = GPIOB, .pin = GPIO_PIN_13};
-GPIO EN_Pin = {.port = GPIOB, .pin = GPIO_PIN_5};
+GPIO EN_Pin = {.port = GPIOB, .pin = GPIO_PIN_15};
 //RW Pin not used,connect to GND
 
 //if you want to work with 8 bit mode uncomment the area which is given below
