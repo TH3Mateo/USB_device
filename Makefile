@@ -85,12 +85,11 @@ Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
-Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c\ \
+Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c \
 Core/Src/gpio.c \
 Core/Src/adc.c \
 Core/Src/i2c.c \
 Core/Src/tim.c \
-Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
 
 C_SOURCES += $(wildcard Core/RTT/*.c) $(wildcard Core/RTT/Syscalls/*.c)	
 
@@ -165,8 +164,8 @@ AS_INCLUDES =  \
 # C includes
 C_INCLUDES =  \
 -ICore/Inc \
--I Core/RTT \
--I Core/RTT/Syscalls \
+-ICore/RTT \
+-ICore/RTT/Syscalls \
 -IUSB_DEVICE/App \
 -IUSB_DEVICE/Target \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \

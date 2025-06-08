@@ -24,6 +24,8 @@
 #include "tim.h"
 #include "usb_device.h"
 #include "gpio.h"
+#include "SEGGER_RTT_printf.h"
+// #include "SEGGER_RTT_printf.c"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -166,7 +168,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
     // SEGGER_SYSVIEW_Conf();
-    SEGGER_SYSVIEW_Start();
+    // SEGGER_SYSVIEW_Start();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -505,15 +507,16 @@ void LED_manager(void *argument) {
 
 void DISPLAY_manager(void *argument) {
     RTT(0,"DISPLAY manager started \r \n");
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+    // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+    // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
       initLCD();
   char *stl = "Github: @fatay";
   writeLCD(stl);
   char *ttl = "LCD Library";
   setCursor(0,1);
-  writeLCD(ttl);
 
+  writeLCD(ttl);
+  
     while (1) {
         osDelay(400);
     }

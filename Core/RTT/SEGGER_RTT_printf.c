@@ -53,6 +53,7 @@ Revision: $Rev: 17697 $
 */
 #include "SEGGER_RTT.h"
 #include "SEGGER_RTT_Conf.h"
+#include "SEGGER_RTT_printf.h"
 
 /*********************************************************************
 *
@@ -60,6 +61,7 @@ Revision: $Rev: 17697 $
 *
 **********************************************************************
 */
+#pragma once
 
 #ifndef SEGGER_RTT_PRINTF_BUFFER_SIZE
   #define SEGGER_RTT_PRINTF_BUFFER_SIZE (64)
@@ -492,7 +494,7 @@ int SEGGER_RTT_vprintf(unsigned BufferIndex, const char * sFormat, va_list * pPa
 *          s: Print the string pointed to by the argument
 *          p: Print the argument as an 8-digit hexadecimal integer. (Argument shall be a pointer to void.)
 */
-int SEGGER_RTT_printf(unsigned BufferIndex, const char * sFormat, ...) {
+int RTT(unsigned BufferIndex, const char * sFormat, ...) {
   int r;
   va_list ParamList;
 
@@ -501,6 +503,6 @@ int SEGGER_RTT_printf(unsigned BufferIndex, const char * sFormat, ...) {
   va_end(ParamList);
   return r;
 }
-void RTT(unsigned BufferIndex, const char * sFormat, ...) __attribute__ ((alias("SEGGER_RTT_printf"))); 
+
 
 /*************************** End of file ****************************/
