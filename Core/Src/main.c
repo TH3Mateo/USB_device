@@ -297,10 +297,6 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-
-
-
-
 void COM_manager(void *argument) {
     uint32_t len = 32;
     char feedback[RX_BUFF_SIZE];
@@ -382,7 +378,6 @@ void COM_manager(void *argument) {
     }
 }
 
-
 void POT_manager(void *argument) {
     uint16_t potentiometer_value = HAL_ADC_GetValue(&hadc1);
     while(1) {
@@ -435,76 +430,6 @@ void TEMP_manager(void *argument) {
     }
 }
 
-#if LED1_BINARY_BLINK==0x01
-void LED_manager(void *argument) {
-    while (1) {
-        if(received_bool==1){
-            unsigned char order[8];
-            HexToBin(CDC_RX_Buffer[0], order);
-            xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
-            for (int i = 7; i >= 0; i--) {
-                HAL_Delay(10);
-                HAL_GPIO_WritePin(LED1.port, LED1.pin, order[i]);
-            }
-            xSemaphoreGive(LED1.semaphore);
-            while (received_bool==1){
-                HAL_Delay(10);
-            }
-
-        }
-
-
-
-    }
-}
-#else
-//void LED_manager(void *argument) {
-//    while (1) {
-//        if(received_bool==1){
-//            xSemaphoreTake(LED1.semaphore, portMAX_DELAY);
-//            HAL_GPIO_WritePin(LED1.port, LED1.pin, CDC_RX_Buffer[0]);
-//            xSemaphoreGive(LED1.semaphore);
-//            while (received_bool==1){
-//                HAL_Delay(10);
-//            }
-//
-//        }
-//
-
-void LED_manager(void *argument) {
-    uint8_t prev_bool = hUsbDeviceFS.dev_connection_status;
-    RTT(0,"LED manager started \r \n");
-    RTT(0,"prev_bool: %d \r \n", prev_bool);
-    while (1) {
-//if(prev_bool!=hUsbDeviceFS.dev_connection_status){
-//            prev_bool = hUsbDeviceFS.dev_connection_status;
-//            RTT(0,"bool_state has changed \r \n");
-//        }
-////            xSemaphoreTake(LED2.semaphore, portMAX_DELAY);
-//            HAL_GPIO_TogglePin(LED2.port, LED2.pin);
-////            xSemaphoreGive(LED2.semaphore);
-//            HAL_Delay(200);
-
-
-    }
-}
-#endif
-
-#if LED1_HEATER_INFO==0x01
-void LED_manager(void *argument) {
-    while (1) {
-
-    }
-}
-
-#endif
-
-#if LED2_CONNECTION_INFO==0x01
-
-
-#endif
-
-
 void DISPLAY_manager(void *argument) {
     RTT(0,"DISPLAY manager started \r \n");
     // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
@@ -521,9 +446,6 @@ void DISPLAY_manager(void *argument) {
         osDelay(400);
     }
 }
-
-
-
 
 void TOF_manager(void *argument) {
     RTT(0,"TOF manager started \r \n");
@@ -550,8 +472,6 @@ void TOF_manager(void *argument) {
 
 	}
 }
-
-
 
 /* USER CODE END 4 */
 
