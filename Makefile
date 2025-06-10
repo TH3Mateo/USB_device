@@ -38,8 +38,10 @@ BUILD_DIR = build
 C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/thermal_control.c \
+Core/Src/TOF_manager.c \
 Core/Src/freertos.c \
-Core/Src/VL53L0X.c \
+Core/Src/VL53L1X_ULP_api.c \
+Core/Src/VL53L1X_ULP_platform.c \
 Core/Src/lcd.c \
 Core/Src/stm32f4xx_it.c \
 Core/Src/stm32f4xx_hal_msp.c \
@@ -182,7 +184,7 @@ C_INCLUDES =  \
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -w -fdata-sections -ffunction-sections
 
-CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT)  -w -fdata-sections -ffunction-sections 
+CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT)  -w -fdata-sections -ffunction-sections -std=c23
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -gdwarf-2
@@ -244,9 +246,9 @@ $(BUILD_DIR):
 #######################################
 # clean up
 #######################################
-clean:
-	-rm -fR $(BUILD_DIR)
-  
+
+  clean:
+	rmdir /s /q $(BUILD_DIR)
 #######################################
 # dependencies
 #######################################
@@ -254,4 +256,5 @@ clean:
 
 
 include flash_tools.mk
+
 # *** EOF ***

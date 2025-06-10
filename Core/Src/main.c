@@ -15,6 +15,7 @@
   *
   ******************************************************************************
   */
+ 
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -32,13 +33,15 @@
 #include "semphr.h"
 #include "usbd_cdc_if.h"
 #include "usbd_core.h"
-#include "VL53L0X.h"
 #include "lcd.h"
 #include "stdio.h"
 #include "configurables.h"
 #include "commands.h"
 #include "utils.h"
 #include "thermal_control.h"
+
+#include "TOF_manager.h"
+
 //#include "usbd_cdc_if.h"
 //#include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
@@ -93,12 +96,6 @@ const osThreadAttr_t TEMP_attributes = {
         .priority = (osPriority_t) osPriorityNormal,
 };
 
-osThreadId_t TOF_manager_handle;
-const osThreadAttr_t TOF_attributes = {
-        .name = "TOF",
-        .stack_size = 128 * 1,
-        .priority = (osPriority_t) osPriorityNormal,
-};
 
 osThreadId_t DISPLAY_manager_handle;
 const osThreadAttr_t DISPLAY_attributes = {
@@ -120,7 +117,6 @@ void LED_manager(void *argument);
 
 void TEMP_manager(void *argument);
 
-void TOF_manager(void *argument);
 void DISPLAY_manager(void *argument);
 
 /* USER CODE END PFP */
@@ -212,14 +208,14 @@ int main(void)
 
     }else
     {
-        osThreadNew(COM_manager, NULL, &COM_attributes);
+        // osThreadNew(COM_manager, NULL, &COM_attributes);
 
     }
 
     // COM_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
     // TEMP_manager_handle = osThreadNew(TEMP_manager, NULL, &TEMP_attributes);
-  DISPLAY_manager_handle = osThreadNew(DISPLAY_manager, NULL, &DISPLAY_attributes);
-  TOF_manager_handle = osThreadNew(TOF_manager, NULL, &TOF_attributes);
+  // DISPLAY_manager_handle = osThreadNew(DISPLAY_manager, NULL, &DISPLAY_attributes);
+    TOF_manager_handle = osThreadNew(TOF_manager, NULL, &TOF_attributes);
     // LED_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
 
     // RTT(0,"starting scheduler \r \n ");
@@ -525,31 +521,7 @@ void DISPLAY_manager(void *argument) {
 
 
 
-void TOF_manager(void *argument) {
-    RTT(0,"TOF manager started \r \n");
-  char msgBuffer[52];
-	for (uint8_t i = 0; i < 52; i++) {
-		msgBuffer[i] = ' ';
-	}
 
-	// Initialise the VL53L0X
-	statInfo_t_VL53L0X distanceStr;
-	initVL53L0X(1, &hi2c1);
-	uint16_t distance;
-
-	// Configure the sensor for high accuracy and speed in 20 cm.
-	setSignalRateLimit(400);
-	setVcselPulsePeriod(VcselPeriodPreRange, 10);
-	setVcselPulsePeriod(VcselPeriodFinalRange, 14);
-	setMeasurementTimingBudget(300 * 1000UL);
-	while (1) {
-
-		distance = readRangeSingleMillimeters(&distanceStr);
-
-    RTT(0, "Distance: %d mm\r\n", distance);
-
-	}
-}
 
 
 
