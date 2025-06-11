@@ -18,7 +18,13 @@
         "segger_sysview.h": "c",
         "segger.h": "c",
         "iterator": "c",
-        "lcd_config.h": "c"
+        "lcd_config.h": "c",
+        "temp_manager.h": "c",
+        "freertos.h": "c",
+        "semphr.h": "c",
+        "usb_device.h": "c",
+        "usbd_core.h": "c",
+        "gpio.h": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "C_Cpp.default.compilerPath": "arm-none-eabi-gcc",

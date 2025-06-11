@@ -36,20 +36,26 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
-Core/Src/main.c \
-Core/Src/thermal_control.c \
-Core/Src/TOF_manager.c \
-Core/Src/freertos.c \
-Core/Src/VL53L1X_ULP_api.c \
-Core/Src/VL53L1X_ULP_platform.c \
-Core/Src/lcd.c \
-Core/Src/stm32f4xx_it.c \
-Core/Src/stm32f4xx_hal_msp.c \
-Core/Src/stm32f4xx_hal_timebase_tim.c \
-USB_DEVICE/App/usb_device.c \
-USB_DEVICE/App/usbd_desc.c \
-USB_DEVICE/App/usbd_cdc_if.c \
-USB_DEVICE/Target/usbd_conf.c \
+App/core/Src/main.c \
+App/core/Src/utils.c \
+App/core/Src/thermal_control.c \
+App/tasks/Src/TOF_manager.c \
+App/tasks/Src/TEMP_manager.c \
+App/tasks/Src/COM_manager.c \
+App/core/Src/freertos.c \
+App/peripherals/Src/lcd.c \
+App/core/Src/stm32f4xx_it.c \
+App/core/Src/stm32f4xx_hal_msp.c \
+App/core/Src/stm32f4xx_hal_timebase_tim.c \
+App/core/Src/system_stm32f4xx.c \
+App/peripherals/Src/usb/usb_device.c \
+App/peripherals/Src/usb/usbd_desc.c \
+App/peripherals/Src/usb/usbd_cdc_if.c \
+App/peripherals/Src/usb/usbd_conf.c \
+App/peripherals/Src/usb/usbd_cdc.c \
+App/peripherals/Src/usb/usbd_ctlreq.c \
+App/peripherals/Src/usb/usbd_core.c \
+App/peripherals/Src/usb/usbd_ioreq.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
@@ -73,7 +79,6 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c \
-Core/Src/system_stm32f4xx.c \
 Middlewares/Third_Party/FreeRTOS/Source/croutine.c \
 Middlewares/Third_Party/FreeRTOS/Source/event_groups.c \
 Middlewares/Third_Party/FreeRTOS/Source/list.c \
@@ -84,23 +89,19 @@ Middlewares/Third_Party/FreeRTOS/Source/timers.c \
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c \
 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
-Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
-Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
-Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
-Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c \
-Core/Src/gpio.c \
-Core/Src/adc.c \
-Core/Src/i2c.c \
-Core/Src/tim.c \
+App/peripherals/Src/gpio.c \
+App/peripherals/Src/adc.c \
+App/peripherals/Src/i2c.c \
+App/peripherals/Src/tim.c \
 
-C_SOURCES += $(wildcard Core/RTT/*.c) $(wildcard Core/RTT/Syscalls/*.c)	
+C_SOURCES += $(wildcard App/RTT/*.c) $(wildcard App/RTT/Syscalls/*.c)	
 
 # ASM sources
 ASM_SOURCES =  \
-startup_stm32f411ccux.s
+Platforms/startup_stm32f411ccux.s
 
 # ASM sources
-ASMM_SOURCES = Core/RTT/SEGGER_RTT_ASM_ARMv7M.S
+ASMM_SOURCES = App/RTT/SEGGER_RTT_ASM_ARMv7M.S
 
 
 #######################################
@@ -150,33 +151,31 @@ C_DEFS =  \
 
 # AS includes
 AS_INCLUDES =  \
--ICore/Inc \
--IUSB_DEVICE/App \
--IUSB_DEVICE/Target \
+-IApp/peripherals/Inc \
+-IApp/peripherals/Inc/usb \
+-IApp/core/Inc \
+-IApp/tasks/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -IMiddlewares/Third_Party/FreeRTOS/Source/include \
 -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
--IMiddlewares/ST/STM32_USB_Device_Library/Core/Inc \
--IMiddlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
 -IDrivers/CMSIS/Include
 
 # C includes
 C_INCLUDES =  \
--ICore/Inc \
--ICore/RTT \
--ICore/RTT/Syscalls \
--IUSB_DEVICE/App \
--IUSB_DEVICE/Target \
+-IApp/peripherals/Inc \
+-IApp/peripherals/Inc/usb \
+-IApp/core/Inc \
+-IApp/tasks/Inc \
+-IApp/RTT \
+-IApp/RTT/Syscalls \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -IMiddlewares/Third_Party/FreeRTOS/Source/include \
 -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
--IMiddlewares/ST/STM32_USB_Device_Library/Core/Inc \
--IMiddlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
 -IDrivers/CMSIS/Include
 
@@ -199,7 +198,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-LDSCRIPT = STM32F401XX_FLASH.ld
+LDSCRIPT = Platforms/STM32F401XX_FLASH.ld
 
 # libraries
 LIBS = -lc -lm -lnosys

@@ -1,0 +1,33 @@
+//
+// Created by M on 24/07/2023.
+//
+#pragma once
+
+#define LED1_BINARY_BLINK 0x00
+#define LED1_HEATER_INFO 0x00
+#define LED2_CONNECTION_INFO 0x01
+#define RECONNECTION_TIMEOUT 2500 //in ms
+
+#define DEVICE_ID 0xFF
+#define CONNECTION_TIMEOUT 4000
+#define RX_BUFF_SIZE 16
+#define START_BYTE 0xAA
+#define MAX_PACKET_SIZE 64
+
+
+#define PID_PROPORTIONAL (float)0.1
+#define PID_INTEGRAL (float)0.01
+#define PID_DERIVATIVE (float)0.1
+#define MAX_DYNAMIC_ERROR 10 //in
+
+#define TEMP_CORRECTION_INTERVAL (uint16_t)200
+#define MAX_PWM_VALUE 65535
+
+
+#define VL53L0X_I2C_ADDR 0x52 
+#define VL53L0X_REG_SYSRANGE_START 0x00
+#define VL53L0X_REG_RESULT_RANGE_STATUS 0x14
+
+
+
+
