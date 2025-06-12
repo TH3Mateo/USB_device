@@ -5,7 +5,10 @@
 
 extern osThreadId_t TEMP_manager_handle;
 extern const osThreadAttr_t TEMP_attributes;
-struct TEMP_args {MUTEX_f *CURRENT_TEMP;MUTEX_f *TARGET_TEMP;MUTEX_uint8 *heater_state;};
+struct TEMP_args {
+    MUTEX_f *CURRENT_TEMP;
+    MUTEX_f *TARGET_TEMP;
+    MUTEX_uint8 *heater_state;};
 
 void TEMP_manager(void* arguments);
 

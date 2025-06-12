@@ -54,8 +54,8 @@
   * @{
   */
 /* Define size for the receive and transmit buffer over CDC */
-#define APP_RX_DATA_SIZE  1024
-#define APP_TX_DATA_SIZE  1024
+#define APP_RX_DATA_SIZE  17
+#define APP_TX_DATA_SIZE  17
 /* USER CODE BEGIN EXPORTED_DEFINES */
 extern uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
 /* USER CODE END EXPORTED_DEFINES */

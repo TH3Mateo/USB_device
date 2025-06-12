@@ -29,9 +29,9 @@
 /* Configure GPIO                                                             */
 /*----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
-MUTEX_digitPin BLUE_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_5};
-MUTEX_digitPin RED_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_6};
-MUTEX_digitPin GREEN_LED = {.semaphore=NULL, .port = GPIOA, .pin = GPIO_PIN_7};
+MUTEX_digitPin BLUE_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_13};
+MUTEX_digitPin RED_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_14};
+MUTEX_digitPin GREEN_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_15};
 /* USER CODE END 1 */
 
 /** Configure pins as
@@ -88,6 +88,11 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  GPIO_InitStruct.Pin = GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
 /* USER CODE BEGIN 2 */

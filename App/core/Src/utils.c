@@ -9,6 +9,8 @@
 #include "configurables.h"
 
 
+
+
 const unsigned char* HexToBin(uint8_t byte, unsigned char* bits){
 
 
@@ -74,3 +76,5 @@ int parse_packet(const uint8_t *buffer_in, int buffer_len, uint8_t *cmd_out, uin
 
     return 0;
 }
+
+

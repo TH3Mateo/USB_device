@@ -42,6 +42,7 @@ App/core/Src/thermal_control.c \
 App/tasks/Src/TOF_manager.c \
 App/tasks/Src/TEMP_manager.c \
 App/tasks/Src/COM_manager.c \
+App/tasks/Src/DISPLAY_manager.c \
 App/core/Src/freertos.c \
 App/peripherals/Src/lcd.c \
 App/core/Src/stm32f4xx_it.c \
@@ -95,6 +96,7 @@ App/peripherals/Src/i2c.c \
 App/peripherals/Src/tim.c \
 
 C_SOURCES += $(wildcard App/RTT/*.c) $(wildcard App/RTT/Syscalls/*.c)	
+C_SOURCES += $(wildcard App/peripherals/Src/ir/*.c) \
 
 # ASM sources
 ASM_SOURCES =  \
@@ -167,6 +169,7 @@ AS_INCLUDES =  \
 C_INCLUDES =  \
 -IApp/peripherals/Inc \
 -IApp/peripherals/Inc/usb \
+-IApp/peripherals/Inc/ir \
 -IApp/core/Inc \
 -IApp/tasks/Inc \
 -IApp/RTT \
