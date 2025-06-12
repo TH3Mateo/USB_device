@@ -29,9 +29,9 @@
 /* Configure GPIO                                                             */
 /*----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
-MUTEX_digitPin BLUE_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_13};
-MUTEX_digitPin RED_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_14};
-MUTEX_digitPin GREEN_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_15};
+MUTEX_digitPin BLUE_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_14};
+MUTEX_digitPin RED_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_15};
+MUTEX_digitPin GREEN_LED = {.semaphore=NULL, .port = GPIOC, .pin = GPIO_PIN_13};
 /* USER CODE END 1 */
 
 /** Configure pins as

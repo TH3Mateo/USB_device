@@ -13,6 +13,8 @@
 #define REQUEST_CURRENT_LED_STATE 0x07
 #define SET_LED_STATE 0x08
 
+#define DISTANCE_ERROR 0x11
+
 
 
 #endif //USB_COMMANDS_H

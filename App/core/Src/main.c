@@ -124,8 +124,8 @@ int main(void)
   USB_connected.value = 0;
   // uint8_t* usb_ptr = &USB_connected; // Pointer to USB_connected variable
 
-  send_queue = xMessageBufferCreate(sizeof(DataToSend)*sizeof(uint8_t) * 16);
-  receive_queue = xMessageBufferCreate(sizeof(DataToSend)*sizeof(uint8_t) * 16);
+  send_queue = xMessageBufferCreate(sizeof(DataToSend) * sizeof(uint8_t) * 16);
+  receive_queue = xMessageBufferCreate(sizeof(DataToSend) * sizeof(uint8_t) * 16);
 
   RTT(0, "%lu\r\n", &USB_connected);
 
@@ -166,12 +166,12 @@ int main(void)
   HAL_GPIO_WritePin(RED_LED.port, RED_LED.pin, 1);
   HAL_GPIO_WritePin(GREEN_LED.port, GREEN_LED.pin, 1);
 
-
   COM_args.receive_queue = &receive_queue; // Set the receive queue in COM_args
   COM_args.send_queue = &send_queue;       // Set the send queue in COM_args
-  COM_args.connected = &USB_connected; // Set the USB_connected semaphore in COM_args
+  COM_args.connected = &USB_connected;     // Set the USB_connected semaphore in COM_args
   COM_manager_handle = osThreadNew(COM_manager, &COM_args, &COM_attributes);
 
+  
   TEMP_manager_handle = osThreadNew(TEMP_manager, &TEMP_args, &TEMP_attributes);
 
   osThreadNew(MAIN_task, NULL, &(const osThreadAttr_t){
@@ -181,7 +181,8 @@ int main(void)
   });
 
   // DISPLAY_manager_handle = osThreadNew(DISPLAY_manager, &DISPLAY_args, &DISPLAY_attributes);
-  // TOF_manager_handle = osThreadNew(TOF_manager, &TOF_args, &TOF_attributes);
+  TOF_args.distance = &OBJECT_DISTANCE; // Set the distance mutex in TOF_args
+  TOF_manager_handle = osThreadNew(TOF_manager, &TOF_args, &TOF_attributes);
   // LED_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
 
   RTT(0, "starting scheduler \r \n ");
@@ -260,10 +261,12 @@ void MAIN_task(void *argument)
   uint8_t status;
   uint8_t cmd;
   uint8_t len;
-  uint8_t payload[32];  // bufor na dane przychodzące
-  uint8_t response[64]; // bufor na dane wychodzące
+  uint8_t payload[32];          // bufor na dane przychodzące
+  uint8_t response[64];         // bufor na dane wychodzące
   uint8_t packet[RX_BUFF_SIZE]; // bufor na dane przychodzące z USB
   printf("main task started \r\n");
+
+  uint32_t last_check = HAL_GetTick();
 
   while (1)
   {
@@ -286,7 +289,7 @@ void MAIN_task(void *argument)
           const char *msg;
           if (led_nr == 0x01)
           {
-            while(!xSemaphoreTake(RED_LED.semaphore, portMAX_DELAY))
+            while (!xSemaphoreTake(RED_LED.semaphore, portMAX_DELAY))
               ;
             HAL_GPIO_WritePin(RED_LED.port, RED_LED.pin, !state);
             xSemaphoreGive(RED_LED.semaphore);
@@ -294,7 +297,7 @@ void MAIN_task(void *argument)
           }
           else if (led_nr == 0x02)
           {
-            while(!xSemaphoreTake(GREEN_LED.semaphore, portMAX_DELAY))
+            while (!xSemaphoreTake(GREEN_LED.semaphore, portMAX_DELAY))
               ;
             HAL_GPIO_WritePin(GREEN_LED.port, GREEN_LED.pin, !state);
             xSemaphoreGive(GREEN_LED.semaphore);
@@ -363,6 +366,18 @@ void MAIN_task(void *argument)
       {
         RTT(0, "Bad packet (err %d)\r\n", result);
       }
+    }
+    if (HAL_GetTick() - last_check > SAFETY_CHECK_TIME)
+    {
+
+      while (!xSemaphoreTake(OBJECT_DISTANCE.semaphore, portMAX_DELAY))
+        ;
+      if (OBJECT_DISTANCE.value > SAFETY_DISTANCE)
+      {
+        create_packet(response, DISTANCE_ERROR, (uint8_t *)&(OBJECT_DISTANCE.value), sizeof(OBJECT_DISTANCE.value));
+        xMessageBufferSend(send_queue, response, 4 + sizeof(OBJECT_DISTANCE.value), portMAX_DELAY);
+      }
+      xSemaphoreGive(OBJECT_DISTANCE.semaphore);
     }
   }
 }

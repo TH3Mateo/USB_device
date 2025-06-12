@@ -19,6 +19,8 @@ void TEMP_manager(void *arguments)
     MUTEX_f *out_temp = args->CURRENT_TEMP;
     MUTEX_f *wanted_temp = args->TARGET_TEMP;
     MUTEX_uint8 *heater_state = args->heater_state;
+
+    HAL_TIM_PWM_Init(&htim2);
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 100 - 0);
 
@@ -59,6 +61,10 @@ void TEMP_manager(void *arguments)
             // PID computation
             error = TARGET_TEMP == 0.0 ? 0.0 : (TARGET_TEMP - new_temp);
             integral += error * TEMP_CORRECTION_INTERVAL;
+            if (integral > INTEGRAL_MAX)
+                integral = INTEGRAL_MAX;
+            else if (integral < -INTEGRAL_MAX)
+                integral = -INTEGRAL_MAX;
             derivative = (error - prev_error) / TEMP_CORRECTION_INTERVAL;
 
             dac_out = PID_PROPORTIONAL * error + PID_INTEGRAL * integral + PID_DERIVATIVE * derivative;
@@ -70,7 +76,7 @@ void TEMP_manager(void *arguments)
                 dac_out = 0.0;
 
             // Update PWM output
-            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 100 - (uint32_t)dac_out);
+            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, dac_out);
 
             // Save current values at the end
             CURRENT_TEMP = new_temp;
