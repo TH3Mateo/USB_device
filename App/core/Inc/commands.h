@@ -1,5 +1,18 @@
+/**
+ * @file commands.h
+ * @brief USB command codes for controlling and querying device states.
+ * 
+ * @details
+ * This header defines the USB command codes used for communication
+ * with the thermal control device, including commands to get or set
+ * temperature, heater state, LED state, and error codes.
+ * 
+ * @authors Mateusz Turycz and Aleksander Uliczny
+ * @date 2025-05-21
+ */
+
 //
-// Created by M on 26/07/2023.
+// Created by Mateusz Turycz and Aleksander Uliczny on 2025-05-21.
 //
 
 #ifndef USB_COMMANDS_H

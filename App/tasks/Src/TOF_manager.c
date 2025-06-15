@@ -48,79 +48,54 @@ void TOF_manager(void *argument)
 	uint16_t wordData;
 	volatile int IntCount;
 
-	while (1)
+	uint8_t firstTimeInterrupt = 1;
+	printf("Fast Ranging Test\n");
+	status = VL53L1_WaitDeviceBooted(Dev);
+	status = VL53L1_DataInit(Dev);
+	status = VL53L1_StaticInit(Dev);
+	status = VL53L1_SetPresetMode(Dev, VL53L1_PRESETMODE_LITE_RANGING);
+	status = VL53L1_SetDistanceMode(Dev, VL53L1_DISTANCEMODE_SHORT);
+	status = VL53L1_SetMeasurementTimingBudgetMicroSeconds(Dev, 10000);
+	vTaskDelay(30); // Wait for the sensor to be ready
+	for (int attempt = 0; attempt < 5; attempt++)
 	{
-		uint8_t firstTimeInterrupt = 1;
-		static VL53L1_RangingMeasurementData_t RangingData;
-		printf("Fast Ranging Test\n");
-		status = VL53L1_WaitDeviceBooted(Dev);
-		status = VL53L1_DataInit(Dev);
-		status = VL53L1_StaticInit(Dev);
-		status = VL53L1_SetPresetMode(Dev, VL53L1_PRESETMODE_LITE_RANGING);
-		status = VL53L1_SetDistanceMode(Dev, VL53L1_DISTANCEMODE_SHORT);
-		status = VL53L1_SetMeasurementTimingBudgetMicroSeconds(Dev, 10000);
-		vTaskDelay(30); // Wait for the sensor to be ready
-		for (int attempt = 0; attempt < 5; attempt++)
+		status = VL53L1_StartMeasurement(Dev);
+		if (status == 0)
 		{
-			status = VL53L1_StartMeasurement(Dev);
-			if (status == 0)
+			break;
+		}
+		vTaskDelay(10);
+	}
+
+	do /* polling mode */
+	{
+		status = VL53L1_WaitMeasurementDataReady(Dev);
+		if (!status)
+		{
+			if (firstTimeInterrupt == 0)
 			{
-				break;
+				status = VL53L1_GetRangingMeasurementData(Dev, &RangingData);
+				if (status == 0)
+				{
+					printf("Distance: %d\n", RangingData.RangeMilliMeter);
+				}
+				status = VL53L1_ClearInterruptAndStartMeasurement(Dev);
 			}
-			vTaskDelay(10);
+			else
+			{ /* Must not read data at the first interrupt, must clear interrupt and start measurement */
+				status = VL53L1_ClearInterruptAndStartMeasurement(Dev);
+				firstTimeInterrupt = 0;
+			}
+			while (!xSemaphoreTake(distance.semaphore, portMAX_DELAY))
+				;
+			distance.value = RangingData.RangeMilliMeter;
+			xSemaphoreGive(distance.semaphore);
+			vTaskDelay(200);
 		}
 
-		do /* polling mode */
-		{
-			status = VL53L1_WaitMeasurementDataReady(Dev);
-			if (!status)
-			{
-				if (firstTimeInterrupt == 0)
-				{
-					status = VL53L1_GetRangingMeasurementData(Dev, &RangingData);
-					if (status == 0)
-					{
-						printf("Distance: %d\n", RangingData.RangeMilliMeter);
-					}
-					status = VL53L1_ClearInterruptAndStartMeasurement(Dev);
-				}
-				else
-				{ /* Must not read data at the first interrupt, must clear interrupt and start measurement */
-					status = VL53L1_ClearInterruptAndStartMeasurement(Dev);
-					firstTimeInterrupt = 0;
-				}
-				while (!xSemaphoreTake(distance.semaphore, portMAX_DELAY))
-					;
-				distance.value = RangingData.RangeMilliMeter;
-				xSemaphoreGive(distance.semaphore);
-				vTaskDelay(200);
-			}
+	} while (1);
 
-		} while (1);
-
-		//  return status;
-	}
-	/* (Optional) Change I2C address */
-	// status = VL53L1X_ULP_SetI2CAddress(dev, 0x20);
-	// dev = 0x20;
-
-	/*********************************/
-	/*   Power on sensor and init    */
-	/*********************************/
-
-	/* (Optional) Check if there is a VL53L1X sensor connected */
-
-	/*********************************/
-	/*     Sensor configuration      */
-	/*********************************/
-
-	/* (Optional) Program sensor to raise an interrupt ONLY below 300mm */
-
-	/* (Optional) Program a 10Hz ranging frequency */
-
-	/*********************************/
-	/*         Ranging loop          */
-	/*********************************/
+	//  return status;
 
 	RTT(0, "End of VL53L1X ultra low power demo\n");
 }

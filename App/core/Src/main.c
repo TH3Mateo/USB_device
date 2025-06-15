@@ -1,19 +1,12 @@
-/* USER CODE BEGIN Header */
 /**
- ******************************************************************************
- * @file           : main.c
- * @brief          : Main program body
- ******************************************************************************
- * @attention
- *
- * Copyright (c) 2023 STMicroelectronics.
- * All rights reserved.
- *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
- *
- ******************************************************************************
+ * @file        main.c
+ * @brief       Main entry point for the STM32 FreeRTOS-based thermal control system.
+ *              Initializes peripherals, configures RTOS threads, and handles command processing.
+ * 
+ * @authors     Mateusz Turycz  
+ *              Aleksander Uliczny
+ * @date        2025-05-21
+ * @version     1.0
  */
 
 /* USER CODE END Header */
@@ -26,7 +19,6 @@
 #include "tim.h"
 #include "gpio.h"
 #include "SEGGER_RTT_printf.h"
-// #include "SEGGER_RTT_printf.c"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -42,30 +34,10 @@
 #include "TEMP_manager.h"
 #include "DISPLAY_manager.h"
 #include "COM_manager.h"
-// #include "usbd_cdc_if.h"
-// #include "C:\Users\M\Desktop\STMprojects\USB\Api\core\src"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -113,8 +85,12 @@ static struct DISPLAY_args DISPLAY_args = {
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
+ * @brief Application entry point.
+ * 
+ * Initializes hardware peripherals, creates message queues, sets up RTOS threads,
+ * and starts the FreeRTOS scheduler.
+ * 
+ * @retval int Always returns 0 (though this point should never be reached).
  */
 int main(void)
 {
@@ -133,7 +109,6 @@ int main(void)
 
   /* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
   /* USER CODE BEGIN Init */
@@ -150,11 +125,6 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-  // SEGGER_SYSVIEW_Conf();
-  // SEGGER_SYSVIEW_Start();
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
@@ -200,15 +170,6 @@ int main(void)
   osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  //    while (1) {
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-  //    }
-  /* USER CODE END 3 */
 }
 
 /**
@@ -256,7 +217,15 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+/**
+ * @brief Main task loop for handling USB command processing.
+ * 
+ * Waits for messages from the USB receive queue, parses commands,
+ * updates system state (LEDs, temperature targets, etc.), and sends responses.
+ * Also performs periodic safety checks based on object distance.
+ * 
+ * @param argument Unused parameter.
+ */
 void MAIN_task(void *argument)
 {
   uint8_t status;

@@ -5,6 +5,9 @@
   * @brief          : Header for main.c file.
   *                   This file contains the common defines of the application.
   ******************************************************************************
+  * @authors        : Mateusz Turycz and Aleksander Uliczny
+  * @date           : 2025-05-21
+  * 
   * @attention
   *
   * Copyright (c) 2023 STMicroelectronics.
