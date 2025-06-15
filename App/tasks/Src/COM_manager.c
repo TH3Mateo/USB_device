@@ -1,3 +1,15 @@
+/**
+ * @file        COM_manager.c
+ * @brief       Source file for USB communication manager using FreeRTOS.
+ *              Implements the communication task that handles CDC data exchange.
+ * 
+ * @authors     Mateusz Turycz  
+ *              Aleksander Uliczny
+ * 
+ * @date        2025-05-21
+ * @version     1.0
+ */
+
 #include "COM_manager.h"
 #include "configurables.h"
 
@@ -5,13 +17,29 @@
 
 #include "SEGGER_RTT_printf.h"
 
+/**
+ * @brief Handle for the COM manager thread.
+ */
 osThreadId_t COM_manager_handle;
+
+/**
+ * @brief Thread attributes for the COM manager thread.
+ */
 const osThreadAttr_t COM_attributes = {
     .name = "COM",
     .stack_size = 128 * 2,
     .priority = (osPriority_t)osPriorityNormal,
 };
 
+/**
+ * @brief FreeRTOS task for handling USB CDC communication.
+ * 
+ * Sends received USB data to a message buffer and handles outgoing data
+ * by transmitting it via the USB CDC interface. Also manages connection
+ * monitoring and reconnection logic using device status and GPIO.
+ * 
+ * @param arguments Pointer to a @ref COM_args structure containing buffers and connection flag.
+ */
 void COM_manager(void *arguments)
 {
     MX_USB_DEVICE_Init(); // Initialize USB device
@@ -94,6 +122,7 @@ void COM_manager(void *arguments)
                 vTaskDelay(100);
             }
         }
+
         // Optional short delay to prevent task hogging CPU
         vTaskDelay(pdMS_TO_TICKS(10));
     }

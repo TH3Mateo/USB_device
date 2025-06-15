@@ -1,3 +1,16 @@
+/**
+ * @file        TOF_manager.c
+ * @brief       Source file for the Time-of-Flight sensor manager task using FreeRTOS.
+ *              Sets up VL53L1X sensor and includes placeholders for configuration
+ *              and future ranging loop logic.
+ *
+ * @authors     Mateusz Turycz
+ *              Aleksander Uliczny
+ *
+ * @date        2025-05-24
+ * @version     1.0
+ */
+
 #pragma once
 
 #include "TOF_manager.h"
@@ -5,8 +18,14 @@
 #include "vl53l1_api.h"
 #include "i2c.h"
 
+/**
+ * @brief Handle for the TOF manager thread.
+ */
 osThreadId_t TOF_manager_handle;
 
+/**
+ * @brief Thread attributes for the TOF manager thread.
+ */
 const osThreadAttr_t TOF_attributes = {
 	.name = "TOF",
 	.stack_size = 128 * 1,
@@ -15,6 +34,14 @@ const osThreadAttr_t TOF_attributes = {
 
 #define isInterrupt 0 /* If isInterrupt = 1 then device working in interrupt mode, else device working in polling mode */
 
+/**
+ * @brief FreeRTOS task for initializing and managing a VL53L1X TOF sensor.
+ *
+ * Prepares the sensor for ranging by setting its I2C address and configuration,
+ * with placeholders for future implementation of the ranging loop.
+ *
+ * @param argument Pointer to @ref TOF_args structure containing a mutex-protected distance value.
+ */
 void TOF_manager(void *argument)
 {
 	struct TOF_args *args = (struct TOF_args *)argument;
