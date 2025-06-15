@@ -13,6 +13,11 @@
 #include "DISPLAY_manager.h"
 #include "SEGGER_RTT_printf.h"
 
+
+osThreadId_t DISPLAY_manager_handle;
+
+
+
 /**
  * @brief Thread attributes for the DISPLAY manager task.
  */

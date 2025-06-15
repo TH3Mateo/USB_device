@@ -42,7 +42,7 @@ extern const osThreadAttr_t COM_attributes;
 struct COM_args {
     MessageBufferHandle_t* receive_queue; /**< Pointer to the message buffer for received data */
     MessageBufferHandle_t* send_queue;    /**< Pointer to the message buffer for data to send */
-    uint8_t *connected;                   /**< Pointer to connection status flag */
+    MUTEX_uint8 *connected;               /**< Pointer to connection status flag */
 };
 
 /**
