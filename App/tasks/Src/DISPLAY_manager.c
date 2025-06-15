@@ -14,13 +14,12 @@ static void DIPLAY_UART_INIT(void);
 void DISPLAY_manager(void *argument)
 {
   RTT(0, "DISPLAY manager started \r \n");
-  
+
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOA, 8, 1);
   HAL_GPIO_WritePin(GPIOA, 8, 0);
   HAL_GPIO_WritePin(GPIOA, 8, 1);
- 
 
   initLCD();
   char *stl = "Github: @fatay";
@@ -35,6 +34,6 @@ void DISPLAY_manager(void *argument)
     writeLCD(stl);
     char *ttl = "LCD Library";
     setCursor(0, 1);
-    osDelay(10);
+    vTaskDelay(100);
   }
 }

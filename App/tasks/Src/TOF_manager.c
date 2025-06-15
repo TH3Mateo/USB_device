@@ -10,7 +10,7 @@ osThreadId_t TOF_manager_handle;
 const osThreadAttr_t TOF_attributes = {
 	.name = "TOF",
 	.stack_size = 128 * 1,
-	.priority = (osPriority_t)osPriorityBelowNormal1,
+	.priority = (osPriority_t)osPriorityNormal,
 };
 
 #define isInterrupt 0 /* If isInterrupt = 1 then device working in interrupt mode, else device working in polling mode */
@@ -59,7 +59,7 @@ void TOF_manager(void *argument)
 		status = VL53L1_SetPresetMode(Dev, VL53L1_PRESETMODE_LITE_RANGING);
 		status = VL53L1_SetDistanceMode(Dev, VL53L1_DISTANCEMODE_SHORT);
 		status = VL53L1_SetMeasurementTimingBudgetMicroSeconds(Dev, 10000);
-		HAL_Delay(30); // Wait for the sensor to be ready
+		vTaskDelay(30); // Wait for the sensor to be ready
 		for (int attempt = 0; attempt < 5; attempt++)
 		{
 			status = VL53L1_StartMeasurement(Dev);
@@ -67,7 +67,7 @@ void TOF_manager(void *argument)
 			{
 				break;
 			}
-			HAL_Delay(10);
+			vTaskDelay(10);
 		}
 
 		do /* polling mode */
@@ -93,7 +93,7 @@ void TOF_manager(void *argument)
 					;
 				distance.value = RangingData.RangeMilliMeter;
 				xSemaphoreGive(distance.semaphore);
-				HAL_Delay(200);
+				vTaskDelay(200);
 			}
 
 		} while (1);

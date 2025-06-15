@@ -89,9 +89,9 @@ void COM_manager(void *arguments)
             }
             else
             {
-                RTT(0, "waiting for connection \r\n");
+                // RTT(0, "waiting for connection \r\n");
                 HAL_GPIO_TogglePin(BLUE_LED.port, BLUE_LED.pin);
-                HAL_Delay(100);
+                vTaskDelay(100);
             }
         }
         // Optional short delay to prevent task hogging CPU

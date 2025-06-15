@@ -50,7 +50,7 @@ void TEMP_manager(void *arguments)
 
             // Read temperature from ADC
             HAL_ADC_Start(&hadc1);
-            HAL_Delay(10); // Replace with non-blocking ADC later if needed
+            vTaskDelay(10); // Replace with non-blocking ADC later if needed
             new_temp = 0.0;
             if (HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
             {

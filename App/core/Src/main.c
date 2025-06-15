@@ -171,18 +171,19 @@ int main(void)
   COM_args.connected = &USB_connected;     // Set the USB_connected semaphore in COM_args
   COM_manager_handle = osThreadNew(COM_manager, &COM_args, &COM_attributes);
 
-  
   TEMP_manager_handle = osThreadNew(TEMP_manager, &TEMP_args, &TEMP_attributes);
 
-  osThreadNew(MAIN_task, NULL, &(const osThreadAttr_t){
-      .name = "MAIN",
-      .stack_size = 128 * 4,
-      .priority = (osPriority_t)osPriorityNormal,
-  });
-
-  // DISPLAY_manager_handle = osThreadNew(DISPLAY_manager, &DISPLAY_args, &DISPLAY_attributes);
   TOF_args.distance = &OBJECT_DISTANCE; // Set the distance mutex in TOF_args
   TOF_manager_handle = osThreadNew(TOF_manager, &TOF_args, &TOF_attributes);
+
+  DISPLAY_manager_handle = osThreadNew(DISPLAY_manager, &DISPLAY_args, &DISPLAY_attributes);
+
+  osThreadNew(MAIN_task, NULL, &(const osThreadAttr_t){
+                                   .name = "MAIN",
+                                   .stack_size = 128 * 4,
+                                   .priority = (osPriority_t)osPriorityNormal,
+                               });
+
   // LED_manager_handle = osThreadNew(LED_manager, NULL, &LED_attributes);
 
   RTT(0, "starting scheduler \r \n ");
