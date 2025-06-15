@@ -1,3 +1,16 @@
+/**
+ * @file        TEMP_manager.c
+ * @brief       Source file for the temperature control manager task using FreeRTOS.
+ *              Reads temperature from ADC, calculates error, and adjusts PWM output
+ *              to control heating based on target temperature using basic control logic.
+ * 
+ * @authors     Mateusz Turycz  
+ *              Aleksander Uliczny
+ * 
+ * @date        2025-06-02
+ * @version     1.0
+ */
+
 #include "TEMP_manager.h"
 #include "SEGGER_RTT_printf.h"
 #include "utils.h"
@@ -6,13 +19,29 @@
 #include "configurables.h"
 #include "thermal_control.h"
 
+/**
+ * @brief Handle for the TEMP manager thread.
+ */
 osThreadId_t TEMP_manager_handle;
+
+/**
+ * @brief Thread attributes for the TEMP manager.
+ */
 const osThreadAttr_t TEMP_attributes = {
     .name = "TEMP",
     .stack_size = 128 * 1,
     .priority = (osPriority_t)osPriorityNormal,
 };
 
+/**
+ * @brief FreeRTOS task for managing temperature measurement and control.
+ * 
+ * Reads the current temperature via ADC, compares it to the target,
+ * and adjusts PWM output using a simple proportional-based control logic.
+ * 
+ * @param arguments Pointer to a @ref TEMP_args structure containing mutex-protected
+ *                  temperature values and heater state.
+ */
 void TEMP_manager(void *arguments)
 {
     struct TEMP_args *args = (struct TEMP_args *)arguments;
